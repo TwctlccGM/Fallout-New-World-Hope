@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BattleFunctions",
+  "name": "scr_initial_randomize",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "GameData",
+  "name": "scr_game_data",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

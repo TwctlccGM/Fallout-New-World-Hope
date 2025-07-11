@@ -1,27 +1,58 @@
 // Credit to Sara Spalding's video: https://www.youtube.com/watch?v=Sp623fof_Ck&list=PLPRT_JORnIurSiSB5r7UQAdzoEv-HF24L
+// Action library
+global.action_library =
+{
+	attack :
+	{
+		name : "Attack",
+		description : "{0} attacks!",
+		sub_menu : -1,
+		target_required : true,
+		target_enemy_by_default : true,
+		target_all : MODE.NEVER,
+		user_animation : "attack",
+		effect_sprite : spr_hit_ph,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			var _damage = ceil(_user.attack_power + random_range(-_user.attack_power * 0.25, _user.attack_power * 0.25));
+			battle_change_hp(_targets[0], -_damage, 0);
+		}
+	}
+}
+
+enum MODE
+{
+	NEVER = 0,
+	ALWAYS = 1,
+	VARIES = 2,
+}
+
 // Party data
 global.party =
 [
 	{
 		name: "Vaultie",
-		hp: 100,
-		hp_max: 100,
+		hp: 108,
+		hp_max: 108,
 		ap: 10,
 		ap_max: 10,
 		bet: 100,
 		bet_max: 100,
+		attack_power: 10,
 		sprites: { idle: spr_placeholder, attack: spr_placeholder, dodge: spr_placeholder, down: spr_placeholder},
 		actions: []
 	}
 	,
 	{
 		name: "Lobotomite",
-		hp: 100,
-		hp_max: 100,
+		hp: 108,
+		hp_max: 108,
 		ap: 10,
 		ap_max: 10,
 		bet: 100,
 		bet_max: 100,
+		attack_power: 10,
 		sprites: { idle: spr_placeholder, attack: spr_placeholder, dodge: spr_placeholder, down: spr_placeholder},
 		actions: []
 	}
@@ -32,11 +63,12 @@ global.enemies =
 {
 	orderly_mk1:
 	{
-		name: "Mister Orderly MK1",
+		name: "Orderly",
 		hp: 30,
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
+		attack_power: 10,
 		sprites: { idle: spr_placeholder, attack: spr_placeholder},
 		actions: [],
 		xp: 100,
@@ -48,11 +80,12 @@ global.enemies =
 	,
 	cyberdog_police:
 	{
-		name: "Police Cyberdog",
+		name: "P.CybDog",
 		hp: 30,
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
+		attack_power: 10,
 		sprites: { idle: spr_placeholder, attack: spr_placeholder},
 		actions: [],
 		xp: 100,
