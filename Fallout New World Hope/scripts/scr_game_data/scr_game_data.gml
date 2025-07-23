@@ -70,11 +70,19 @@ global.enemies =
 		ap_max: 10,
 		attack_power: 10,
 		sprites: { idle: spr_placeholder, attack: spr_placeholder},
-		actions: [],
+		actions: [global.action_library.attack],
 		xp: 100,
-		AIscript: function()
+		AI_script: function()
 		{
-			// Enemy turn AI goes here	
+			/// Enemy turn AI goes here
+			// Attack random party member
+			var _action = actions[0];
+			var _possible_targets = array_filter(obj_battle.party_units, function(_unit, _index)
+			{
+				return (_unit.hp > 0);
+			});
+			var _target = _possible_targets[irandom(array_length(_possible_targets) - 1)];
+			return [_action, _target];
 		}
 	}
 	,
@@ -87,11 +95,19 @@ global.enemies =
 		ap_max: 10,
 		attack_power: 10,
 		sprites: { idle: spr_placeholder, attack: spr_placeholder},
-		actions: [],
+		actions: [global.action_library.attack],
 		xp: 100,
-		AIscript: function()
+		AI_script: function()
 		{
-			// Enemy turn AI goes here	
+			/// Enemy turn AI goes here
+			// Attack random party member
+			var _action = actions[0];
+			var _possible_targets = array_filter(obj_battle.party_units, function(_unit, _index)
+			{
+				return (_unit.hp > 0);
+			});
+			var _target = _possible_targets[irandom(array_length(_possible_targets) - 1)];
+			return [_action, _target];	
 		}
 	}
 }

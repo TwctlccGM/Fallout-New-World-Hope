@@ -61,7 +61,26 @@ function battle_state_select_action()
 	}
 	
 	// Select an action to perform
-	begin_action(_unit.id, global.action_library.attack, _unit.id);
+	//begin_action(_unit.id, global.action_library.attack, _unit.id);
+	
+	// If unit is player controlled:
+	if (_unit.object_index == obj_battle_units_player)
+	{
+		// Attack random party member
+		var _action = global.action_library.attack;
+		var _possible_targets = array_filter(obj_battle.enemy_units, function(_unit, _index)
+		{
+			return (_unit.hp > 0);
+		});
+		var _target = _possible_targets[irandom(array_length(_possible_targets) - 1)];
+		begin_action(_unit.id, _action, _target);
+	}
+	else
+	{
+		// If unit is AI controlled:
+		var _enemy_action = _unit.AI_script();
+		if (_enemy_action != -1) begin_action(_unit.id, _enemy_action[0], _enemy_action[1]);
+	}
 }
 
 function begin_action(_user, _action, _targets)
