@@ -1,0 +1,62 @@
+// @desc Menu - makes a menu, options provided in the form [["name, function, argument], [...]]
+function menu(_x, _y, _options, _description = -1, _width = undefined, _height = undefined)
+{
+	with (instance_create_depth(_x, _y, -99999, obj_menu))
+	{
+		options = _options;
+		description = _description;
+		var _options_count = array_length(_options);
+		visible_options_max = _options_count;
+		
+		// Set up size
+		x_margin = 10;
+		y_margin = 8;
+		draw_set_font(fnt_fallout_6);
+		height_line = 12;
+		
+		// Auto width
+		if (_width == undefined)
+		{
+			width = 1;
+			if (description !=  -1) width = max(width, string_width(_description));
+			for (var _i = 0; _i < _options_count; _i++)
+			{
+				width = max(width, string_width(_options[_i][0]));
+			}
+			width_full = width + x_margin * 2;
+		} else width_full = _width;
+		
+		// Auto height
+		if (_height == undefined)
+		{
+			height = height_line * (_options_count + (description != -1));
+			height_full = height + y_margin * 2;
+		}
+		else
+		{
+			height_full = _height;
+			// scrolling?
+			if (height_line * (_options_count + (description != -1)) > _height - (y_margin * 2))
+			{
+				scrolling = true;
+				visible_options_max = (_height - y_margin * 2) div height_line;
+			}
+		}
+	}
+}
+
+function sub_menu(_options)
+{
+	// store old options in array and increase submenu level
+	options_above[sub_menu_level] = options;
+	sub_menu_level++;
+	options = _options;
+	hover = 0;
+}
+
+function menu_go_back()
+{
+	sub_menu_level--;
+	options = options_above[sub_menu_level];
+	hover = 0;
+}
