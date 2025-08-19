@@ -1,5 +1,5 @@
 /// @description
-menu(x + 10, y + 10,
+/*menu(x + 10, y + 10,
 [
 	["Fight", -1, -1, true],
 	["Magic", sub_menu,
@@ -11,7 +11,7 @@ menu(x + 10, y + 10,
 	],
 	["Escape", -1, -1, true]
 ]);
-
+*/
 
 
 

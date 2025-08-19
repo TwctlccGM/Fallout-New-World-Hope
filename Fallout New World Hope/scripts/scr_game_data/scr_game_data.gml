@@ -6,7 +6,7 @@ global.action_library =
 	{
 		name : "Attack",
 		description : "{0} attacks!",
-		sub_menu : -1,
+		sub_menu_val : -1,
 		target_required : true,
 		target_enemy_by_default : true,
 		target_all : MODE.NEVER,
@@ -17,6 +17,25 @@ global.action_library =
 		{
 			var _damage = ceil(_user.attack_power + random_range(-_user.attack_power * 0.25, _user.attack_power * 0.25));
 			battle_change_hp(_targets[0], -_damage, 0);
+		}
+	},
+	ice :
+	{
+		name : "Ice",
+		description : "{0} casts Ice!",
+		sub_menu_val : "Magic",
+		ap_cost : 1,
+		target_required : true,
+		target_enemy_by_default : true, // 0: party/self, 1: enemy
+		target_all : MODE.NEVER,
+		user_animation : "cast",
+		effect_sprite : spr_icehit_ph,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			var _damage = irandom_range(10, 15);
+			battle_change_hp(_targets[0], -_damage);
+			// battle_change_ap(_user, -mp_cost)
 		}
 	}
 }
@@ -41,7 +60,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_placeholder, attack: spr_placeholder, dodge: spr_placeholder, down: spr_placeholder},
-		actions: []
+		actions: [global.action_library.attack]
 	}
 	,
 	{
@@ -54,7 +73,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_placeholder, attack: spr_placeholder, dodge: spr_placeholder, down: spr_placeholder},
-		actions: []
+		actions: [global.action_library.attack, global.action_library.ice]
 	}
 ];
 

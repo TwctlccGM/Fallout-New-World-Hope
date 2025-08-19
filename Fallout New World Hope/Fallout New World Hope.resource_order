@@ -36,6 +36,7 @@
     {"name":"obj_player_field","order":1,"path":"objects/obj_player_field/obj_player_field.yy",},
     {"name":"obj_battle_units_player","order":2,"path":"objects/obj_battle_units_player/obj_battle_units_player.yy",},
     {"name":"obj_battle_effect","order":4,"path":"objects/obj_battle_effect/obj_battle_effect.yy",},
+    {"name":"spr_icehit_ph","order":8,"path":"sprites/spr_icehit_ph/spr_icehit_ph.yy",},
     {"name":"obj_battle_units","order":1,"path":"objects/obj_battle_units/obj_battle_units.yy",},
     {"name":"scr_menu_functions","order":3,"path":"scripts/scr_menu_functions/scr_menu_functions.yy",},
     {"name":"spr_field_boom_town_ph","order":3,"path":"sprites/spr_field_boom_town_ph/spr_field_boom_town_ph.yy",},

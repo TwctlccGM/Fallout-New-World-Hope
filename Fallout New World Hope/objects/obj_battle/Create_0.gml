@@ -50,36 +50,85 @@ refresh_render_order();
 
 function battle_state_select_action()
 {
-	// Get current unit
-	var _unit = unit_turn_order[turn];
-	
-	// Is the unit dead or unable to act?
-	if (!instance_exists(_unit)) || (_unit.hp <= 0)
+	if (!instance_exists(obj_menu))
 	{
-		battle_state = battle_state_victory_check;
-		exit;
-	}
+		// Get current unit
+		var _unit = unit_turn_order[turn];
 	
-	// Select an action to perform
-	//begin_action(_unit.id, global.action_library.attack, _unit.id);
-	
-	// If unit is player controlled:
-	if (_unit.object_index == obj_battle_units_player)
-	{
-		// Attack random party member
-		var _action = global.action_library.attack;
-		var _possible_targets = array_filter(obj_battle.enemy_units, function(_unit, _index)
+		// Is the unit dead or unable to act?
+		if (!instance_exists(_unit)) || (_unit.hp <= 0)
 		{
-			return (_unit.hp > 0);
-		});
-		var _target = _possible_targets[irandom(array_length(_possible_targets) - 1)];
-		begin_action(_unit.id, _action, _target);
-	}
-	else
-	{
-		// If unit is AI controlled:
-		var _enemy_action = _unit.AI_script();
-		if (_enemy_action != -1) begin_action(_unit.id, _enemy_action[0], _enemy_action[1]);
+			battle_state = battle_state_victory_check;
+			exit;
+		}
+	
+		// Select an action to perform
+		//begin_action(_unit.id, global.action_library.attack, _unit.id);
+	
+		// If unit is player controlled:
+		if (_unit.object_index == obj_battle_units_player)
+		{
+			/*
+			// Attack random party member
+			var _action = global.action_library.attack;
+			var _possible_targets = array_filter(obj_battle.enemy_units, function(_unit, _index)
+			{
+				return (_unit.hp > 0);
+			});
+			var _target = _possible_targets[irandom(array_length(_possible_targets) - 1)];
+			begin_action(_unit.id, _action, _target);
+			*/
+			
+			// Compile the action menu
+			var _menu_options = [];
+			var _sub_menus = {};
+			
+			var _action_list = _unit.actions;
+			
+			for (var _i = 0; _i < array_length(_action_list); _i++)
+			{
+				var _action = _action_list[_i];
+				var _available = true; // change later for ap cost
+				var _name_and_count = _action.name; // change later for item count
+				if (_action.sub_menu_val == -1)
+				{
+					array_push(_menu_options, [_name_and_count, menu_select_action, [_unit, _action], _available]);
+				}
+				else
+				{
+					// Create or add to a submenu
+					if (is_undefined(_sub_menus[$ _action.sub_menu_val]))
+					{
+						variable_struct_set(_sub_menus, _action.sub_menu_val, [[_name_and_count, menu_select_action, [_unit, _action], _available]]);
+					}
+					else
+					{
+						array_push(_sub_menus[$ _action.sub_menu_val], [[_name_and_count, menu_select_action, [_unit, _action], _available]]);
+					}
+				}
+			}
+			
+			// Turn sub menus into an array
+			var _sub_menus_array = variable_struct_get_names(_sub_menus);
+			for (var _i = 0; _i < array_length(_sub_menus_array); _i++)
+			{
+				// Sort submenu if needed
+				// (here)
+				
+				// Add back option at the end of each submenu
+				array_push(_sub_menus[$ _sub_menus_array[_i]], ["Back", menu_go_back, -1, true]);
+				// Add submenu into main menu
+				array_push(_menu_options, [_sub_menus_array[_i], sub_menu, [_sub_menus[$ _sub_menus_array[_i]]], true]);
+			}
+				
+			menu(x + 10, y + 11, _menu_options, , 74, 60);
+		}
+		else
+		{
+			// If unit is AI controlled:
+			var _enemy_action = _unit.AI_script();
+			if (_enemy_action != -1) begin_action(_unit.id, _enemy_action[0], _enemy_action[1]);
+		}
 	}
 }
 
