@@ -15,6 +15,19 @@ current_user = noone;
 current_action = -1;
 current_targets = noone;
 
+// Make targeting cursor
+cursor = 
+{
+	active_user: noone,
+	active_target: noone,
+	active_action: -1,
+	target_side: -1,
+	target_index: 0,
+	target_all: false,
+	confirm_delay: 0,
+	active: false
+};
+
 // Make enemies
 for (var _i = 0; _i < array_length(enemies); _i++)
 {

@@ -76,3 +76,27 @@ for (var _i = 0; _i < array_length(party_units); _i++)
 	
 	draw_set_color(c_white);
 }
+
+// Draw target cursor
+if (cursor.active)
+{
+	with (cursor)
+	{
+		if (active_target != noone)
+		{
+			if (!is_array(active_target))
+			{
+				draw_sprite(spr_pointer_ph, 0, active_target.x, active_target.y);
+			}
+			else
+			{
+				draw_set_alpha(sin(get_timer()/50000)+1); // Cursor flash
+				for (var _i = 0; _i < array_length(active_target); _i++)
+				{
+					draw_sprite(spr_pointer_ph, 0, active_target[_i].x, active_target[_i].y);
+				}
+				draw_set_alpha(1.0);
+			}
+		}
+	}
+}

@@ -27,15 +27,25 @@ global.action_library =
 		ap_cost : 1,
 		target_required : true,
 		target_enemy_by_default : true, // 0: party/self, 1: enemy
-		target_all : MODE.NEVER,
+		target_all : MODE.VARIES,
 		user_animation : "cast",
 		effect_sprite : spr_icehit_ph,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _damage = irandom_range(10, 15);
-			battle_change_hp(_targets[0], -_damage);
+			//var _damage = irandom_range(10, 15);
+			//battle_change_hp(_targets[0], -_damage);
 			// battle_change_ap(_user, -mp_cost)
+			if (_user.ap >= ap_cost)
+			{
+				for (var _i = 0; _i < array_length(_targets); _i++)
+				{
+					var _damage = irandom_range(15,20);
+					if (array_length(_targets) > 1) _damage = ceil(_damage * 0.75);
+					battle_change_hp(_targets[_i], -_damage);
+				}
+				battle_change_ap(_user, -ap_cost)
+			}
 		}
 	}
 }
@@ -67,8 +77,8 @@ global.party =
 		name: "Lobotomite",
 		hp: 108,
 		hp_max: 108,
-		ap: 10,
-		ap_max: 10,
+		ap: 1,
+		ap_max: 1,
 		bet: 100,
 		bet_max: 100,
 		attack_power: 10,

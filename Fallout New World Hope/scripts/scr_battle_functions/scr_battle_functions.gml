@@ -35,3 +35,31 @@ function battle_change_hp(_target, _amount, _alive_dead_or_either = 0)
 	);
 	if (!_failed) _target.hp = clamp(_target.hp + _amount, 0, _target.hp_max);
 }
+
+function battle_change_ap(_target, _amount, _passive = 1)
+{
+	var _failed = false;
+	if ((_target.ap + _amount) > _target.ap_max) _failed = true;
+	if ((_target.ap + _amount) < 0) _failed = true;
+	
+	var _col = c_white;
+	if (_amount > 0) _col = c_lime;
+	if (_failed)
+	{
+		_col = c_white;
+		_amount = "failed";
+	}
+	// _passive: 0 = not passive (e.g. item used), 1 = passive (no text display)
+	if (!_passive)
+	{
+		instance_create_depth
+		(
+			_target.x,
+			_target.y,
+			_target.depth - 1,
+			obj_battle_floating_text,
+			{font: fnt_fallout_6, col: _col, text: string(_amount)}
+		);
+	}
+	if (!_failed) _target.ap = clamp(_target.ap + _amount, 0, _target.ap_max);
+}
