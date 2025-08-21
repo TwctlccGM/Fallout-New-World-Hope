@@ -11,6 +11,9 @@ turn_count = 0;
 round_count = 0;
 battle_wait_time_frames = 30;
 battle_wait_time_remaining = 0;
+
+battle_text = "";
+
 current_user = noone;
 current_action = -1;
 current_targets = noone;
@@ -150,6 +153,7 @@ function begin_action(_user, _action, _targets)
 	current_user = _user;
 	current_action = _action;
 	current_targets = _targets;
+	battle_text = string_ext(_action.description, [_user.name]);
 	if (!is_array(current_targets)) current_targets = [current_targets];
 	battle_wait_time_remaining = battle_wait_time_frames;
 	with (_user)
@@ -218,6 +222,7 @@ function battle_state_victory_check()
 
 function battle_state_turn_progression()
 {
+	battle_text = ""; // Reset battle text
 	turn_count++;
 	turn++;
 	// Loop turns

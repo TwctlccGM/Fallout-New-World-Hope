@@ -100,3 +100,13 @@ if (cursor.active)
 		}
 	}
 }
+
+// Draw battle text
+if (battle_text != "")
+{
+	var _w = string_width(battle_text) + 20;
+	draw_sprite_stretched(spr_textbox_ph, 0, x + 160 - (_w * 0.5), y + 5, _w, 25);
+	draw_set_halign(fa_center);
+	draw_set_color(c_white);
+	draw_text(x + 160, y + 10, battle_text);
+}
