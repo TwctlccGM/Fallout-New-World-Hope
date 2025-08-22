@@ -1,6 +1,16 @@
 /// @description
 battle_state();
 
+// End battle when enemies are dead
+var _enemies = obj_battle.enemy_units;
+
+if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) == false) 
+{
+	instance_activate_all();
+	instance_destroy(creator);
+	instance_destroy(obj_battle);
+};
+
 // Cursor control
 if (cursor.active)
 {
