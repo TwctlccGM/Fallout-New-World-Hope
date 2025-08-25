@@ -69,7 +69,7 @@ global.party =
 		bet: 100,
 		bet_max: 100,
 		attack_power: 10,
-		sprites: { idle: spr_placeholder, attack: spr_placeholder, dodge: spr_placeholder, down: spr_placeholder},
+		sprites: { idle: spr_vaultie_ph, attack: spr_vaultie_ph, dodge: spr_vaultie_ph, down: spr_vaultie_ph},
 		actions: [global.action_library.attack]
 	}
 	,
