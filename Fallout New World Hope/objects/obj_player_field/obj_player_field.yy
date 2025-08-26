@@ -28,8 +28,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_vaultie_ph",
-    "path": "sprites/spr_vaultie_ph/spr_vaultie_ph.yy",
+    "name": "spr_vaultie",
+    "path": "sprites/spr_vaultie/spr_vaultie.yy",
   },
   "spriteMaskId": null,
   "visible": true,

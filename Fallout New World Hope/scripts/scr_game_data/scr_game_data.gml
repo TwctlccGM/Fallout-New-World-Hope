@@ -69,7 +69,7 @@ global.party =
 		bet: 100,
 		bet_max: 100,
 		attack_power: 10,
-		sprites: { idle: spr_vaultie_ph, attack: spr_vaultie_ph, dodge: spr_vaultie_ph, down: spr_vaultie_ph},
+		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie},
 		actions: [global.action_library.attack]
 	}
 	,
@@ -82,7 +82,7 @@ global.party =
 		bet: 100,
 		bet_max: 100,
 		attack_power: 10,
-		sprites: { idle: spr_placeholder, attack: spr_placeholder, dodge: spr_placeholder, down: spr_placeholder},
+		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite},
 		actions: [global.action_library.attack, global.action_library.ice]
 	}
 ];
