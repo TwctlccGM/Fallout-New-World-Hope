@@ -56,6 +56,7 @@
     {"id":{"name":"spr_vaultie_overworld_ph","path":"sprites/spr_vaultie_overworld_ph/spr_vaultie_overworld_ph.yy",},},
     {"id":{"name":"spr_pointer_ph","path":"sprites/spr_pointer_ph/spr_pointer_ph.yy",},},
     {"id":{"name":"spr_downarrow_ph","path":"sprites/spr_downarrow_ph/spr_downarrow_ph.yy",},},
+    {"id":{"name":"spr_cyberdog","path":"sprites/spr_cyberdog/spr_cyberdog.yy",},},
     {"id":{"name":"obj_location_x7b","path":"objects/obj_location_x7b/obj_location_x7b.yy",},},
     {"id":{"name":"spr_textbox_ph","path":"sprites/spr_textbox_ph/spr_textbox_ph.yy",},},
     {"id":{"name":"spr_overworld_map","path":"sprites/spr_overworld_map/spr_overworld_map.yy",},},

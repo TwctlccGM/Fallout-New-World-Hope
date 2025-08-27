@@ -123,7 +123,7 @@ global.enemies =
 		ap: 10,
 		ap_max: 10,
 		attack_power: 10,
-		sprites: { idle: spr_placeholder, attack: spr_placeholder},
+		sprites: { idle: spr_cyberdog, attack: spr_cyberdog},
 		actions: [global.action_library.attack],
 		xp: 100,
 		AI_script: function()

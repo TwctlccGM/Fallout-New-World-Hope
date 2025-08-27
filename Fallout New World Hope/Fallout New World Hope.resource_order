@@ -35,6 +35,7 @@
     {"name":"spr_vaultie_overworld_ph","order":12,"path":"sprites/spr_vaultie_overworld_ph/spr_vaultie_overworld_ph.yy",},
     {"name":"spr_pointer_ph","order":6,"path":"sprites/spr_pointer_ph/spr_pointer_ph.yy",},
     {"name":"spr_downarrow_ph","order":7,"path":"sprites/spr_downarrow_ph/spr_downarrow_ph.yy",},
+    {"name":"spr_cyberdog","order":13,"path":"sprites/spr_cyberdog/spr_cyberdog.yy",},
     {"name":"obj_location_x7b","order":2,"path":"objects/obj_location_x7b/obj_location_x7b.yy",},
     {"name":"spr_textbox_ph","order":4,"path":"sprites/spr_textbox_ph/spr_textbox_ph.yy",},
     {"name":"spr_overworld_map","order":10,"path":"sprites/spr_overworld_map/spr_overworld_map.yy",},
