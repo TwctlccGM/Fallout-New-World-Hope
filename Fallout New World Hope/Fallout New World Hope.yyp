@@ -41,6 +41,7 @@
     {"id":{"name":"fnt_fixedsys","path":"fonts/fnt_fixedsys/fnt_fixedsys.yy",},},
     {"id":{"name":"scr_battle_functions","path":"scripts/scr_battle_functions/scr_battle_functions.yy",},},
     {"id":{"name":"spr_battle_background_ph","path":"sprites/spr_battle_background_ph/spr_battle_background_ph.yy",},},
+    {"id":{"name":"obj_collision_box","path":"objects/obj_collision_box/obj_collision_box.yy",},},
     {"id":{"name":"obj_player_overworld","path":"objects/obj_player_overworld/obj_player_overworld.yy",},},
     {"id":{"name":"obj_camera_overworld","path":"objects/obj_camera_overworld/obj_camera_overworld.yy",},},
     {"id":{"name":"obj_overworld_transition","path":"objects/obj_overworld_transition/obj_overworld_transition.yy",},},

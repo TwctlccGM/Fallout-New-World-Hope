@@ -1,10 +1,8 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_cyberdog",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_player_field","path":"objects/obj_player_field/obj_player_field.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
-  ],
+  "name": "obj_collision_box",
+  "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
@@ -28,9 +26,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_cyberdog",
-    "path": "sprites/spr_cyberdog/spr_cyberdog.yy",
+    "name": "spr_placeholder",
+    "path": "sprites/spr_placeholder/spr_placeholder.yy",
   },
   "spriteMaskId": null,
-  "visible": true,
+  "visible": false,
 }

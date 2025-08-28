@@ -84,16 +84,16 @@ if (cursor.active)
 	{
 		if (active_target != noone)
 		{
-			if (!is_array(active_target))
+			if (!is_array(active_target)) // Single target
 			{
-				draw_sprite(spr_pointer_ph, 0, active_target.x, active_target.y);
+				draw_sprite(spr_pointer_ph, 0, active_target.x - 15, active_target.y - 15);
 			}
 			else
 			{
-				draw_set_alpha(sin(get_timer()/50000)+1); // Cursor flash
+				draw_set_alpha(sin(get_timer()/50000)+1); // Multi-target and cursor flash
 				for (var _i = 0; _i < array_length(active_target); _i++)
 				{
-					draw_sprite(spr_pointer_ph, 0, active_target[_i].x, active_target[_i].y);
+					draw_sprite(spr_pointer_ph, 0, active_target[_i].x - 15, active_target[_i].y - 15);
 				}
 				draw_set_alpha(1.0);
 			}
