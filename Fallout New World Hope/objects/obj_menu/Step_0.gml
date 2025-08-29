@@ -7,7 +7,7 @@ if (active)
 	if (hover < 0) hover = array_length(options) - 1;
 	
 	// Execute selected option
-	if (keyboard_check_pressed(vk_enter))
+	if (keyboard_check_pressed(ord("Z")))
 	{
 		if (array_length(options[hover]) > 1) && (options[hover][3] == true)
 		{
@@ -19,7 +19,7 @@ if (active)
 		}
 	}
 	
-	if (keyboard_check_pressed(vk_escape))
+	if (keyboard_check_pressed(ord("X")))
 	{
 		if (sub_menu_level > 0) menu_go_back();
 	}

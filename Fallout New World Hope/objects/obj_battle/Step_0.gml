@@ -27,8 +27,8 @@ if (cursor.active)
 		confirm_delay++;
 		if (confirm_delay > 1)
 		{
-			_key_confirm = keyboard_check_pressed(vk_enter);
-			_key_cancel = keyboard_check_pressed(vk_escape);
+			_key_confirm = keyboard_check_pressed(ord("Z"));
+			_key_cancel = keyboard_check_pressed(ord("X"));
 			_key_toggle = keyboard_check_pressed(vk_shift);
 		}
 		var _move_h = _key_right - _key_left;
