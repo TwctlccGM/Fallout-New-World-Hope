@@ -36,15 +36,40 @@ for (var _i = 0; _i < array_length(enemies); _i++)
 {
 	// TO-DO: Replace magic numbers here
 	enemy_units[_i] = instance_create_depth(x + 250 + (_i * 10), y + 68 + (_i * 20), depth - 10, obj_battle_units_enemy, enemies[_i]);
-	array_push(units, enemy_units[_i]);
+	array_push(units, enemy_units[_i]); // Add enemy units to battle units array
 }
 
 // Make party
-for (var _i = 0; _i < array_length(global.party); _i++)
+if (file_exists("savedgame.save")) // Check if there's a save file
 {
+	var _buffer = buffer_load("savedgame.save"); // Read from the save file using a buffer
+	var _string = buffer_read(_buffer, buffer_string);
+	buffer_delete(_buffer);
+	
+	var _load_data = json_parse(_string); // Turn JSON data into an array of player unit stats
+	var _reversed_load_data = array_reverse(_load_data); // Reverse the array to assign stats in correct order
+		
+	// Edit the global.party data using saved data
+	for (var _i = 0; _i < array_length(global.party); _i++) // Loop for each party member
+	{
+		var _load_entity = array_pop(_reversed_load_data); // Take data from the save data array, then delete it from the array
+		global.party[_i].hp = _load_entity.hp; // HP
+		global.party[_i].ap = _load_entity.ap; // AP
+		
+		// TO-DO: Replace magic numbers here
+		party_units[_i] = instance_create_depth(x + 70 + (_i * 10), y + 68 + (_i * 15), depth - 10, obj_battle_units_player, global.party[_i]);
+		array_push(units, party_units[_i]); // Add player units to battle units array
+	}
+}
+else
+{
+	// Make party
+	for (var _i = 0; _i < array_length(global.party); _i++)
+	{
 	// TO-DO: Replace magic numbers here
 	party_units[_i] = instance_create_depth(x + 70 + (_i * 10), y + 68 + (_i * 15), depth - 10, obj_battle_units_player, global.party[_i]);
 	array_push(units, party_units[_i]);
+	}
 }
 
 // Shuffle turn order
@@ -78,23 +103,9 @@ function battle_state_select_action()
 			exit;
 		}
 	
-		// Select an action to perform
-		//begin_action(_unit.id, global.action_library.attack, _unit.id);
-	
 		// If unit is player controlled:
 		if (_unit.object_index == obj_battle_units_player)
 		{
-			/*
-			// Attack random party member
-			var _action = global.action_library.attack;
-			var _possible_targets = array_filter(obj_battle.enemy_units, function(_unit, _index)
-			{
-				return (_unit.hp > 0);
-			});
-			var _target = _possible_targets[irandom(array_length(_possible_targets) - 1)];
-			begin_action(_unit.id, _action, _target);
-			*/
-			
 			// Compile the action menu
 			var _menu_options = [];
 			var _sub_menus = {};

@@ -3,9 +3,30 @@ battle_state();
 
 // End battle when enemies are dead
 var _enemies = obj_battle.enemy_units;
-
 if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) == false) 
 {
+	// Save party data
+	var _save_data = array_create(0); // Make save array
+	for (var _i = 0; _i < array_length(global.party); _i++) // Add party member data to the save array
+	{
+		var _save_entity =	// Make struct
+		{
+			party_member : party_units[_i].name,	// Name
+			hp : party_units[_i].hp,				// HP
+			ap : party_units[_i].ap,				// AP
+		}
+		array_push(_save_data, _save_entity); // Add struct to save array
+	}
+	// Turn this data into a JSON string and save it via a buffer
+	var _string = json_stringify(_save_data);
+	var _buffer = buffer_create(string_byte_length(_string) + 1, buffer_fixed, 1);
+	buffer_write(_buffer, buffer_string, _string);
+	buffer_save(_buffer, "savedgame.save");
+	buffer_delete(_buffer);
+	
+	show_debug_message("Game Saved! " + _string); // Debug message
+	
+	// End battle
 	instance_activate_all();
 	instance_destroy(creator);
 	instance_destroy(obj_battle);

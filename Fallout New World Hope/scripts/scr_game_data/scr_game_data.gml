@@ -38,14 +38,15 @@ global.action_library =
 			// battle_change_ap(_user, -mp_cost)
 			if (_user.ap >= ap_cost)
 			{
-				for (var _i = 0; _i < array_length(_targets); _i++)
+				for (var _i = 0; _i < array_length(_targets); _i++)	// Hit all enemies
 				{
-					var _damage = irandom_range(15,20);
-					if (array_length(_targets) > 1) _damage = ceil(_damage * 0.75);
-					battle_change_hp(_targets[_i], -_damage);
+					var _damage = irandom_range(15,20);	// Calculate damage
+					if (array_length(_targets) > 1) _damage = ceil(_damage * 0.75);	// Reduce damage if hitting multiple enemies
+					battle_change_hp(_targets[_i], -_damage); // Inflict damage
 				}
-				battle_change_ap(_user, -ap_cost)
+				battle_change_ap(_user, -ap_cost) // Update caster's AP
 			}
+			else {/*_available = false;*/ }
 		}
 	}
 }
@@ -77,8 +78,8 @@ global.party =
 		name: "Lobotomite",
 		hp: 108,
 		hp_max: 108,
-		ap: 1,
-		ap_max: 1,
+		ap: 10,
+		ap_max: 10,
 		bet: 100,
 		bet_max: 100,
 		attack_power: 10,

@@ -28,6 +28,7 @@
     {"name":"obj_camera","order":1,"path":"objects/obj_camera/obj_camera.yy",},
     {"name":"obj_overworld_transition","order":2,"path":"objects/obj_overworld_transition/obj_overworld_transition.yy",},
     {"name":"obj_battle_floating_text","order":5,"path":"objects/obj_battle_floating_text/obj_battle_floating_text.yy",},
+    {"name":"obj_save_reseter","order":4,"path":"objects/obj_save_reseter/obj_save_reseter.yy",},
     {"name":"rm_test_y17","order":18,"path":"rooms/rm_test_y17/rm_test_y17.yy",},
     {"name":"spr_background_boom_town_ph","order":2,"path":"sprites/spr_background_boom_town_ph/spr_background_boom_town_ph.yy",},
     {"name":"obj_menu","order":6,"path":"objects/obj_menu/obj_menu.yy",},
