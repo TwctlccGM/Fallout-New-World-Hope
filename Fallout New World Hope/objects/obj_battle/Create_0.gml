@@ -13,6 +13,7 @@ battle_wait_time_frames = 30;
 battle_wait_time_remaining = 0;
 
 battle_text = "";
+action_failed = false;
 
 current_user = noone;
 current_action = -1;
@@ -106,6 +107,8 @@ function battle_state_select_action()
 		// If unit is player controlled:
 		if (_unit.object_index == obj_battle_units_player)
 		{
+			battle_change_ap(_unit, 1, 1); // Restore 1 AP each turn
+			
 			// Compile the action menu
 			var _menu_options = [];
 			var _sub_menus = {};
@@ -164,20 +167,26 @@ function begin_action(_user, _action, _targets)
 	current_user = _user;
 	current_action = _action;
 	current_targets = _targets;
-	battle_text = string_ext(_action.description, [_user.name]);
+	
+	//battle_text = string_ext(_action.description, [_user.name]);
 	if (!is_array(current_targets)) current_targets = [current_targets];
 	battle_wait_time_remaining = battle_wait_time_frames;
-	with (_user)
+	if (_user.ap >= _action.ap_cost)
 	{
-		acting = true;
-		// Play user animation if it is defined for that action, and that user
-		if (!is_undefined(_action[$ "user_animation"])) && (!is_undefined(_user.sprites[$ _action.user_animation]))
+		with (_user)
 		{
-			sprite_index = sprites[$ _action.user_animation];
-			image_index = 0;
+			acting = true;
+			// Play user animation if it is defined for that action, and that user
+			if (!is_undefined(_action[$ "user_animation"])) && (!is_undefined(_user.sprites[$ _action.user_animation]))
+			{
+				sprite_index = sprites[$ _action.user_animation];
+				image_index = 0;
+			}
 		}
+		battle_text = string_ext(_action.description, [_user.name]);
+		battle_state = battle_state_perform_action;
 	}
-	battle_state = battle_state_perform_action;
+	else { action_failed = true; }
 }
 
 function battle_state_perform_action()

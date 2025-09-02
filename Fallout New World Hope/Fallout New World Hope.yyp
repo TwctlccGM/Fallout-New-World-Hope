@@ -71,7 +71,7 @@
     {"id":{"name":"obj_battle_units_player","path":"objects/obj_battle_units_player/obj_battle_units_player.yy",},},
     {"id":{"name":"obj_battle_effect","path":"objects/obj_battle_effect/obj_battle_effect.yy",},},
     {"id":{"name":"scr_game_data","path":"scripts/scr_game_data/scr_game_data.yy",},},
-    {"id":{"name":"spr_icehit_ph","path":"sprites/spr_icehit_ph/spr_icehit_ph.yy",},},
+    {"id":{"name":"spr_hit_ability_ph","path":"sprites/spr_hit_ability_ph/spr_hit_ability_ph.yy",},},
     {"id":{"name":"obj_battle_units","path":"objects/obj_battle_units/obj_battle_units.yy",},},
     {"id":{"name":"scr_menu_functions","path":"scripts/scr_menu_functions/scr_menu_functions.yy",},},
     {"id":{"name":"spr_room_1","path":"sprites/spr_room_1/spr_room_1.yy",},},

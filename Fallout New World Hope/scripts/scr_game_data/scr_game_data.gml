@@ -7,6 +7,7 @@ global.action_library =
 		name : "Attack",
 		description : "{0} attacks!",
 		sub_menu_val : -1,
+		ap_cost : 0,
 		target_required : true,
 		target_enemy_by_default : true,
 		target_all : MODE.NEVER,
@@ -19,17 +20,17 @@ global.action_library =
 			battle_change_hp(_targets[0], -_damage, 0);
 		}
 	},
-	ice :
+	cleave :
 	{
-		name : "Ice",
-		description : "{0} casts Ice!",
-		sub_menu_val : "Magic",
-		ap_cost : 1,
+		name : "Cleave",
+		description : "{0} hits all enemies!",
+		sub_menu_val : "Abilities",
+		ap_cost : 3,
 		target_required : true,
 		target_enemy_by_default : true, // 0: party/self, 1: enemy
 		target_all : MODE.VARIES,
 		user_animation : "cast",
-		effect_sprite : spr_icehit_ph,
+		effect_sprite : spr_hit_ability_ph,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
@@ -84,7 +85,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite},
-		actions: [global.action_library.attack, global.action_library.ice]
+		actions: [global.action_library.attack, global.action_library.cleave]
 	}
 ];
 

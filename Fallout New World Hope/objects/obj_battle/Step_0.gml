@@ -96,13 +96,24 @@ if (cursor.active)
 			}
 		}
 		
+		/// TO-DO: Improve handling for 'not enough AP to use ability'. 
+		/// Right now it doesn't display the message and the cursor remains on the enemies.
+		
 		// Confirm action
 		if (_key_confirm)
 		{
 			with (obj_battle) begin_action(cursor.active_user, cursor.active_action, cursor.active_target);
-			with (obj_menu) instance_destroy();
-			active = false;
-			confirm_delay = 0;
+			if (obj_battle.action_failed == false)
+			{
+				with (obj_menu) instance_destroy();
+				active = false;
+				confirm_delay = 0;
+			}
+			else
+			{
+				battle_text = string("Not enough AP!");
+				obj_battle.action_failed = false;
+			}
 		}
 		
 		// Cancel & return to menu
