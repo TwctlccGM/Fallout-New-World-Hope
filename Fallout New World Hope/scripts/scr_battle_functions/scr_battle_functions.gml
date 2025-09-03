@@ -19,7 +19,7 @@ function battle_change_hp(_target, _amount, _alive_dead_or_either = 0)
 	if (_alive_dead_or_either == 1) && (_target.hp > 0) _failed = true;
 	
 	var _col = c_white;
-	if (_amount > 0) _col = c_limne;
+	if (_amount > 0) _col = c_lime;
 	if (_failed)
 	{
 		_col = c_white;

@@ -29,7 +29,7 @@ global.action_library =
 		target_required : true,
 		target_enemy_by_default : true, // 0: party/self, 1: enemy
 		target_all : MODE.VARIES,
-		user_animation : "cast",
+		user_animation : "attack",
 		effect_sprite : spr_hit_ability_ph,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
@@ -49,7 +49,30 @@ global.action_library =
 			}
 			else {/*_available = false;*/ }
 		}
-	}
+	},
+	stimpak :
+	{
+		name : "Stimpak",
+		description : "{0} heals!",
+		sub_menu_val : "Abilities",
+		ap_cost : 3,
+		target_required : true,
+		target_enemy_by_default : false,
+		target_all : MODE.NEVER,
+		user_animation : "cast",
+		effect_sprite : spr_hit_ability_ph,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			if (_user.ap >= ap_cost)
+			{
+				var _heal = 100;
+				battle_change_hp(_targets[0], _heal, 0);
+				battle_change_ap(_user, -ap_cost) // Update caster's AP
+			}
+			else { }
+		}
+	},
 }
 
 enum MODE
@@ -72,7 +95,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie},
-		actions: [global.action_library.attack]
+		actions: [global.action_library.attack, global.action_library.stimpak]
 	}
 	,
 	{
