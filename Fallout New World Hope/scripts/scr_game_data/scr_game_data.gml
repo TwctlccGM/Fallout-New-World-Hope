@@ -1,3 +1,17 @@
+
+/// Inventory macros
+// Item Definitions
+#macro ITEM_NONE 0
+#macro ITEM_STIMPAK 1
+#macro ITEM_NUKA_COLA 2
+#macro ITEM_KEY 3
+#macro ITEM_PISTOL 4
+#macro ITEM_AXE 5
+// Array Constants
+#macro C_ITEM_TYPE 0
+#macro C_ITEM_SPRITE 1
+#macro C_ITEM_AMOUNT 2
+
 // Credit to Sara Spalding's video: https://www.youtube.com/watch?v=Sp623fof_Ck&list=PLPRT_JORnIurSiSB5r7UQAdzoEv-HF24L
 // Action library
 global.action_library =
@@ -20,6 +34,7 @@ global.action_library =
 			battle_change_hp(_targets[0], -_damage, 0);
 		}
 	},
+	
 	cleave :
 	{
 		name : "Cleave",
@@ -50,10 +65,11 @@ global.action_library =
 			else {/*_available = false;*/ }
 		}
 	},
+	
 	stimpak :
 	{
 		name : "Stimpak",
-		description : "{0} heals!",
+		description : "{0} uses a Stimpak!",
 		sub_menu_val : "Abilities",
 		ap_cost : 3,
 		target_required : true,
@@ -67,10 +83,32 @@ global.action_library =
 			if (_user.ap >= ap_cost)
 			{
 				var _heal = 100;
-				battle_change_hp(_targets[0], _heal, 0);
+				battle_change_hp(_targets[0], _heal, 0); // Heal target
 				battle_change_ap(_user, -ap_cost) // Update caster's AP
 			}
 			else { }
+		}
+	},
+	
+	nuka_cola :
+	{
+		name : "Nuka Cola",
+		description : "{0} uses a Nuka Cola!",
+		sub_menu_val : "Items",
+		ap_cost : 0,
+		target_required : true,
+		target_enemy_by_default : false,
+		target_all : MODE.NEVER,
+		user_animation : "cast",
+		effect_sprite : spr_hit_ability_ph,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			//if (_targets.ap >= ap_cost) // TO-DO: Change this to remove 1 'Nuka Cola' from inventory
+			//{
+				battle_change_ap(_targets[0], 5, 0) // Update target's AP
+			//}
+			//else { }
 		}
 	},
 }
@@ -95,7 +133,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie},
-		actions: [global.action_library.attack, global.action_library.stimpak]
+		actions: [global.action_library.attack, global.action_library.stimpak, global.action_library.nuka_cola]
 	}
 	,
 	{

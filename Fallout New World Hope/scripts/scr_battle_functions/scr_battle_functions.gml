@@ -39,7 +39,7 @@ function battle_change_hp(_target, _amount, _alive_dead_or_either = 0)
 function battle_change_ap(_target, _amount, _passive = 1)
 {
 	var _failed = false;
-	if ((_target.ap + _amount) > _target.ap_max) _failed = true;
+	if ((_target.ap + _amount) > _target.ap_max) { _target.ap = _target.ap_max; }
 	if ((_target.ap + _amount) < 0) _failed = true;
 	
 	var _col = c_white;
@@ -47,7 +47,7 @@ function battle_change_ap(_target, _amount, _passive = 1)
 	if (_failed)
 	{
 		_col = c_white;
-		_amount = "failed";
+		_amount = "Failed";
 	}
 	// _passive: 0 = not passive (e.g. item used), 1 = passive (no text display)
 	if (!_passive)
