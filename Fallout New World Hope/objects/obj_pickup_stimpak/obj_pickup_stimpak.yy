@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_item_stimpak",
-    "path": "sprites/spr_item_stimpak/spr_item_stimpak.yy",
+    "name": "spr_item_stimpak_new",
+    "path": "sprites/spr_item_stimpak_new/spr_item_stimpak_new.yy",
   },
   "spriteMaskId": null,
   "visible": true,

@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_item_nuka_cola",
-    "path": "sprites/spr_item_nuka_cola/spr_item_nuka_cola.yy",
+    "name": "spr_item_nuka_cola_new",
+    "path": "sprites/spr_item_nuka_cola_new/spr_item_nuka_cola_new.yy",
   },
   "spriteMaskId": null,
   "visible": true,

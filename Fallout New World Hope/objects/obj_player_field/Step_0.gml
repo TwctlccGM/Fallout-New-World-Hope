@@ -1,4 +1,5 @@
 /// @description
+if (global.pause) exit;
 
 move_x = keyboard_check(vk_right) - keyboard_check(vk_left); // Move left/right
 move_x *= move_speed; // Move horizontally based on move_speed

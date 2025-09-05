@@ -171,7 +171,25 @@ function begin_action(_user, _action, _targets)
 	//battle_text = string_ext(_action.description, [_user.name]);
 	if (!is_array(current_targets)) current_targets = [current_targets];
 	battle_wait_time_remaining = battle_wait_time_frames;
-	if (_user.ap >= _action.ap_cost)
+	
+	if (_action.is_item == true) 
+	{
+		var _type = _action.item_id;
+		var _pos = 0;
+		while (_pos < 5) // Scan array for if the item type is already in there
+		{
+			if (global.item_array[_pos, C_ITEM_TYPE] == _type) 
+			{ 
+				if (global.item_array[_pos, C_ITEM_AMOUNT] <= 0) { action_failed = true; } // Item amount is 0
+				else { global.item_array[_pos, C_ITEM_AMOUNT] -= 1; } // Reduce item amount by 1 if item is used
+				break; 
+			}
+			else { _pos += 1; }
+			if (_pos >= 5) { action_failed = true; } // Item not present in inventory
+		}
+	}
+	
+	if (_user.ap >= _action.ap_cost) && (!action_failed)// Check AP Cost
 	{
 		with (_user)
 		{
@@ -186,7 +204,7 @@ function begin_action(_user, _action, _targets)
 		battle_text = string_ext(_action.description, [_user.name]);
 		battle_state = battle_state_perform_action;
 	}
-	else { action_failed = true; }
+	else { action_failed = true; } // Cancel action
 }
 
 function battle_state_perform_action()

@@ -1,3 +1,5 @@
+// Pause
+global.pause = false;
 
 /// Inventory macros
 // Item Definitions
@@ -12,6 +14,15 @@
 #macro C_ITEM_SPRITE 1
 #macro C_ITEM_AMOUNT 2
 
+// Inventory
+global.item_array = array_create(5); // Create inventory array of arrays
+for(var _pos = 0; _pos < 5; _pos ++) // Initialise item type, sprite, and amount for each array
+{
+	global.item_array[_pos][C_ITEM_TYPE] = ITEM_NONE;
+	global.item_array[_pos][C_ITEM_SPRITE] = -1;
+	global.item_array[_pos][C_ITEM_AMOUNT] = 0;
+}
+
 // Credit to Sara Spalding's video: https://www.youtube.com/watch?v=Sp623fof_Ck&list=PLPRT_JORnIurSiSB5r7UQAdzoEv-HF24L
 // Action library
 global.action_library =
@@ -22,6 +33,7 @@ global.action_library =
 		description : "{0} attacks!",
 		sub_menu_val : -1,
 		ap_cost : 0,
+		is_item : false,
 		target_required : true,
 		target_enemy_by_default : true,
 		target_all : MODE.NEVER,
@@ -41,6 +53,7 @@ global.action_library =
 		description : "{0} hits all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 3,
+		is_item : false,
 		target_required : true,
 		target_enemy_by_default : true, // 0: party/self, 1: enemy
 		target_all : MODE.VARIES,
@@ -49,20 +62,13 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			//var _damage = irandom_range(10, 15);
-			//battle_change_hp(_targets[0], -_damage);
-			// battle_change_ap(_user, -mp_cost)
-			if (_user.ap >= ap_cost)
+			for (var _i = 0; _i < array_length(_targets); _i++)	// Hit all enemies
 			{
-				for (var _i = 0; _i < array_length(_targets); _i++)	// Hit all enemies
-				{
-					var _damage = irandom_range(15,20);	// Calculate damage
-					if (array_length(_targets) > 1) _damage = ceil(_damage * 0.75);	// Reduce damage if hitting multiple enemies
-					battle_change_hp(_targets[_i], -_damage); // Inflict damage
-				}
-				battle_change_ap(_user, -ap_cost) // Update caster's AP
+				var _damage = irandom_range(15,20);	// Calculate damage
+				if (array_length(_targets) > 1) _damage = ceil(_damage * 0.75);	// Reduce damage if hitting multiple enemies
+				battle_change_hp(_targets[_i], -_damage); // Inflict damage
 			}
-			else {/*_available = false;*/ }
+			battle_change_ap(_user, -ap_cost) // Update caster's AP
 		}
 	},
 	
@@ -70,8 +76,10 @@ global.action_library =
 	{
 		name : "Stimpak",
 		description : "{0} uses a Stimpak!",
-		sub_menu_val : "Abilities",
-		ap_cost : 3,
+		sub_menu_val : "Items",
+		ap_cost : 1,
+		is_item : true,
+		item_id : ITEM_STIMPAK,
 		target_required : true,
 		target_enemy_by_default : false,
 		target_all : MODE.NEVER,
@@ -80,13 +88,9 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			if (_user.ap >= ap_cost)
-			{
-				var _heal = 100;
-				battle_change_hp(_targets[0], _heal, 0); // Heal target
-				battle_change_ap(_user, -ap_cost) // Update caster's AP
-			}
-			else { }
+			var _heal = 100;
+			battle_change_hp(_targets[0], _heal, 0); // Heal target
+			battle_change_ap(_user, -ap_cost) // Update caster's AP
 		}
 	},
 	
@@ -94,8 +98,10 @@ global.action_library =
 	{
 		name : "Nuka Cola",
 		description : "{0} uses a Nuka Cola!",
-		sub_menu_val : "Items",
-		ap_cost : 0,
+		sub_menu_val : "Items2",
+		ap_cost : 1,
+		is_item : true,
+		item_id : ITEM_NUKA_COLA,
 		target_required : true,
 		target_enemy_by_default : false,
 		target_all : MODE.NEVER,
@@ -104,13 +110,9 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			//if (_targets.ap >= ap_cost) // TO-DO: Change this to remove 1 'Nuka Cola' from inventory
-			//{
-				battle_change_ap(_targets[0], 5, 0) // Update target's AP
-			//}
-			//else { }
+			battle_change_ap(_targets[0], 5, 0) // Update target's AP
 		}
-	},
+	}
 }
 
 enum MODE

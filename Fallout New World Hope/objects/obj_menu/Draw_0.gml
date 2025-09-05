@@ -24,7 +24,7 @@ for (l = 0; l < (visible_options_max + _desc); l++)
 		{
 			draw_set_color(c_yellow);
 		}
-		if (options [_option_to_show][3] == false) draw_set_color(c_gray);
+		if (options[_option_to_show][3] == false) draw_set_color(c_gray);
 		draw_text(x + x_margin, y + y_margin + l * height_line, _str);
 	}
 }
