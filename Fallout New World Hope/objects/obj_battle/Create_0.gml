@@ -55,7 +55,7 @@ if (file_exists("savedgame.save")) // Check if there's a save file
 	{
 		var _load_entity = array_pop(_reversed_load_data); // Take data from the save data array, then delete it from the array
 		global.party[_i].hp = _load_entity.hp; // HP
-		global.party[_i].ap = _load_entity.ap; // AP
+		//global.party[_i].ap = _load_entity.ap; // AP
 		
 		// TO-DO: Replace magic numbers here
 		party_units[_i] = instance_create_depth(x + 70 + (_i * 10), y + 68 + (_i * 15), depth - 10, obj_battle_units_player, global.party[_i]);

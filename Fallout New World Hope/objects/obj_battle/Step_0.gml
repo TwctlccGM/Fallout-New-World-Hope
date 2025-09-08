@@ -13,7 +13,7 @@ if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) =
 		{
 			party_member : party_units[_i].name,	// Name
 			hp : party_units[_i].hp,				// HP
-			ap : party_units[_i].ap,				// AP
+			//ap : party_units[_i].ap,				// AP
 		}
 		array_push(_save_data, _save_entity); // Add struct to save array
 	}
