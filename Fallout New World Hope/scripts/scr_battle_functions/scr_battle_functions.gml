@@ -11,7 +11,7 @@ function new_encounter(_enemies, _bg)
 	);
 }
 
-function battle_change_hp(_target, _amount, _alive_dead_or_either = 0)
+function battle_change_hp(_target, _amount, _outside_battle = 0, _alive_dead_or_either = 0)
 {
 	// _alive_dead_or_either: 0 = alive only, 1 = dead only, 2 = any
 	var _failed = false;
@@ -25,14 +25,18 @@ function battle_change_hp(_target, _amount, _alive_dead_or_either = 0)
 		_col = c_white;
 		_amount = "failed";
 	}
-	instance_create_depth
-	(
-		_target.x,
-		_target.y,
-		_target.depth - 1,
-		obj_battle_floating_text,
-		{font: fnt_fallout_6, col: _col, text: string(_amount)}
-	);
+	// _outside_battle:  0 = in battle (default), 1 = outside of battle
+	if (_outside_battle == 0) 
+	{
+		instance_create_depth
+		(
+			_target.x,
+			_target.y,
+			_target.depth - 1,
+			obj_battle_floating_text,
+			{font: fnt_fallout_6, col: _col, text: string(_amount)}
+		);
+	}
 	if (!_failed) _target.hp = clamp(_target.hp + _amount, 0, _target.hp_max);
 }
 

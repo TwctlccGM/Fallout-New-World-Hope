@@ -5,6 +5,8 @@ battle_state();
 var _enemies = obj_battle.enemy_units;
 if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) == false) 
 {
+	/// Old system
+	/*
 	// Save party data
 	var _save_data = array_create(0); // Make save array
 	for (var _i = 0; _i < array_length(global.party); _i++) // Add party member data to the save array
@@ -25,6 +27,12 @@ if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) =
 	buffer_delete(_buffer);
 	
 	show_debug_message("Game Saved! " + _string); // Debug message
+	*/
+	
+	for (var _i = 0; _i < array_length(global.party); _i++) // Add party member data to the save array
+	{
+		global.party[_i].hp = party_units[_i].hp;
+	}
 	
 	// End battle
 	instance_activate_all();

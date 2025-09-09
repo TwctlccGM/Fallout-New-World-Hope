@@ -40,6 +40,8 @@ for (var _i = 0; _i < array_length(enemies); _i++)
 	array_push(units, enemy_units[_i]); // Add enemy units to battle units array
 }
 
+/// Old system
+/*
 // Make party
 if (file_exists("savedgame.save")) // Check if there's a save file
 {
@@ -72,6 +74,15 @@ else
 	array_push(units, party_units[_i]);
 	}
 }
+*/
+
+// Make party
+	for (var _i = 0; _i < array_length(global.party); _i++)
+	{
+	// TO-DO: Replace magic numbers here
+	party_units[_i] = instance_create_depth(x + 70 + (_i * 10), y + 68 + (_i * 15), depth - 10, obj_battle_units_player, global.party[_i]);
+	array_push(units, party_units[_i]);
+	}
 
 // Shuffle turn order
 unit_turn_order = array_shuffle(units);
