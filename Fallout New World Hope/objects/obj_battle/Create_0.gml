@@ -33,11 +33,11 @@ cursor =
 };
 
 // Make enemies
-for (var _i = 0; _i < array_length(enemies); _i++)
+for (var i = 0; i < array_length(enemies); i++)
 {
 	// TO-DO: Replace magic numbers here
-	enemy_units[_i] = instance_create_depth(x + 250 + (_i * 10), y + 68 + (_i * 20), depth - 10, obj_battle_units_enemy, enemies[_i]);
-	array_push(units, enemy_units[_i]); // Add enemy units to battle units array
+	enemy_units[i] = instance_create_depth(x + 250 + (i * 10), y + 68 + (i * 20), depth - 10, obj_battle_units_enemy, enemies[i]);
+	array_push(units, enemy_units[i]); // Add enemy units to battle units array
 }
 
 /// Old system
@@ -53,35 +53,35 @@ if (file_exists("savedgame.save")) // Check if there's a save file
 	var _reversed_load_data = array_reverse(_load_data); // Reverse the array to assign stats in correct order
 		
 	// Edit the global.party data using saved data
-	for (var _i = 0; _i < array_length(global.party); _i++) // Loop for each party member
+	for (var i = 0; i < array_length(global.party); i++) // Loop for each party member
 	{
 		var _load_entity = array_pop(_reversed_load_data); // Take data from the save data array, then delete it from the array
-		global.party[_i].hp = _load_entity.hp; // HP
-		//global.party[_i].ap = _load_entity.ap; // AP
+		global.party[i].hp = _load_entity.hp; // HP
+		//global.party[i].ap = _load_entity.ap; // AP
 		
 		// TO-DO: Replace magic numbers here
-		party_units[_i] = instance_create_depth(x + 70 + (_i * 10), y + 68 + (_i * 15), depth - 10, obj_battle_units_player, global.party[_i]);
-		array_push(units, party_units[_i]); // Add player units to battle units array
+		party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), depth - 10, obj_battle_units_player, global.party[i]);
+		array_push(units, party_units[i]); // Add player units to battle units array
 	}
 }
 else
 {
 	// Make party
-	for (var _i = 0; _i < array_length(global.party); _i++)
+	for (var i = 0; i < array_length(global.party); i++)
 	{
 	// TO-DO: Replace magic numbers here
-	party_units[_i] = instance_create_depth(x + 70 + (_i * 10), y + 68 + (_i * 15), depth - 10, obj_battle_units_player, global.party[_i]);
-	array_push(units, party_units[_i]);
+	party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), depth - 10, obj_battle_units_player, global.party[i]);
+	array_push(units, party_units[i]);
 	}
 }
 */
 
 // Make party
-	for (var _i = 0; _i < array_length(global.party); _i++)
+	for (var i = 0; i < array_length(global.party); i++)
 	{
 	// TO-DO: Replace magic numbers here
-	party_units[_i] = instance_create_depth(x + 70 + (_i * 10), y + 68 + (_i * 15), depth - 10, obj_battle_units_player, global.party[_i]);
-	array_push(units, party_units[_i]);
+	party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), depth - 10, obj_battle_units_player, global.party[i]);
+	array_push(units, party_units[i]);
 	}
 
 // Shuffle turn order
@@ -126,9 +126,9 @@ function battle_state_select_action()
 			
 			var _action_list = _unit.actions;
 			
-			for (var _i = 0; _i < array_length(_action_list); _i++)
+			for (var i = 0; i < array_length(_action_list); i++)
 			{
-				var _action = _action_list[_i];
+				var _action = _action_list[i];
 				var _available = true; // change later for ap cost
 				var _name_and_count = _action.name; // change later for item count
 				if (_action.sub_menu_val == -1)
@@ -151,15 +151,15 @@ function battle_state_select_action()
 			
 			// Turn sub menus into an array
 			var _sub_menus_array = variable_struct_get_names(_sub_menus);
-			for (var _i = 0; _i < array_length(_sub_menus_array); _i++)
+			for (var i = 0; i < array_length(_sub_menus_array); i++)
 			{
 				// Sort submenu if needed
 				// (here)
 				
 				// Add back option at the end of each submenu
-				array_push(_sub_menus[$ _sub_menus_array[_i]], ["Back", menu_go_back, -1, true]);
+				array_push(_sub_menus[$ _sub_menus_array[i]], ["Back", menu_go_back, -1, true]);
 				// Add submenu into main menu
-				array_push(_menu_options, [_sub_menus_array[_i], sub_menu, [_sub_menus[$ _sub_menus_array[_i]]], true]);
+				array_push(_menu_options, [_sub_menus_array[i], sub_menu, [_sub_menus[$ _sub_menus_array[i]]], true]);
 			}
 				
 			menu(x + 10, y + 11, _menu_options, , 74, 60);
@@ -237,9 +237,9 @@ function battle_state_perform_action()
 			{
 				if (current_action.effect_on_target == MODE.ALWAYS) || ((current_action.effect_on_target == MODE.VARIES) && (array_length(current_targets) <= 1))
 				{
-					for (var _i = 0; _i <array_length(current_targets); _i++)
+					for (var i = 0; i <array_length(current_targets); i++)
 					{
-						instance_create_depth(current_targets[_i].x, current_targets[_i].y, current_targets[_i].depth - 1, obj_battle_effect, {sprite_index : current_action.effect_sprite});
+						instance_create_depth(current_targets[i].x, current_targets[i].y, current_targets[i].depth - 1, obj_battle_effect, {sprite_index : current_action.effect_sprite});
 					}
 				}
 				else // Play it at 0, 0

@@ -9,13 +9,13 @@ if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) =
 	/*
 	// Save party data
 	var _save_data = array_create(0); // Make save array
-	for (var _i = 0; _i < array_length(global.party); _i++) // Add party member data to the save array
+	for (var i = 0; i < array_length(global.party); i++) // Add party member data to the save array
 	{
 		var _save_entity =	// Make struct
 		{
-			party_member : party_units[_i].name,	// Name
-			hp : party_units[_i].hp,				// HP
-			//ap : party_units[_i].ap,				// AP
+			party_member : party_units[i].name,	// Name
+			hp : party_units[i].hp,				// HP
+			//ap : party_units[i].ap,				// AP
 		}
 		array_push(_save_data, _save_entity); // Add struct to save array
 	}
@@ -29,9 +29,9 @@ if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) =
 	show_debug_message("Game Saved! " + _string); // Debug message
 	*/
 	
-	for (var _i = 0; _i < array_length(global.party); _i++) // Add party member data to the save array
+	for (var i = 0; i < array_length(global.party); i++) // Add party member data to the save array
 	{
-		global.party[_i].hp = party_units[_i].hp;
+		global.party[i].hp = party_units[i].hp;
 	}
 	
 	// End battle

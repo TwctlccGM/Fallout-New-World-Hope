@@ -3,9 +3,9 @@ draw_sprite(battle_background, 0, x, y);
 
 // Draw units in depth order
 var _unit_with_current_turn = unit_turn_order[turn].id;
-for (var _i = 0; _i < array_length(unit_render_order); _i++)
+for (var i = 0; i < array_length(unit_render_order); i ++)
 {
-	with (unit_render_order[_i])
+	with (unit_render_order[i ])
 	{
 		draw_self();
 	}
@@ -41,38 +41,38 @@ draw_set_color(c_white);
 // TO-DO: Replace this system with one that can handle longer names/more enemies
 var _draw_limit = 3;
 var _drawn = 0;
-for (var _i = 0; (_i < array_length(enemy_units)) && (_drawn < _draw_limit); _i++)
+for (var i = 0; (i < array_length(enemy_units)) && (_drawn < _draw_limit); i++)
 {
-	var _char = enemy_units[_i];
+	var _char = enemy_units[i ];
 	if (_char.hp > 0)
 	{
 		_drawn++;
 		draw_set_color(c_white);
 		if (_char.id == _unit_with_current_turn) draw_set_color(c_yellow);
-		draw_text(x + COLUMN_ENEMY, y + 135 + (_i * 12), _char.name);
+		draw_text(x + COLUMN_ENEMY, y + 135 + (i * 12), _char.name);
 	}
 }
 
 // Draw party info
-for (var _i = 0; _i < array_length(party_units); _i++)
+for (var i = 0; i < array_length(party_units); i++)
 {
 	draw_set_halign(fa_left);
 	draw_set_color(c_white);
-	var _char = party_units[_i];
+	var _char = party_units[i];
 	if (_char.id == _unit_with_current_turn) draw_set_color(c_yellow);
 	if (_char.hp <= 0) draw_set_color(c_red);
-	draw_text(x + COLUMN_NAME, y + 135 + (_i * 12), _char.name);
+	draw_text(x + COLUMN_NAME, y + 135 + (i * 12), _char.name);
 	draw_set_halign(fa_right);
 	
 	draw_set_color(c_white);
 	if (_char.hp < (_char.hp_max * 0.5)) draw_set_color(c_orange);
 	if (_char.hp <= 0) draw_set_color(c_red);
-	draw_text(x + COLUMN_HP + 55, y + 135 + (_i *12), string(_char.hp) + "/" + string(_char.hp_max));
+	draw_text(x + COLUMN_HP + 55, y + 135 + (i *12), string(_char.hp) + "/" + string(_char.hp_max));
 	
 	draw_set_color(c_white);
 	if (_char.ap < (_char.ap_max * 0.5)) draw_set_color(c_orange);
 	if (_char.ap <= 0) draw_set_color(c_red);
-	draw_text(x + COLUMN_AP + 40, y + 135 + (_i *12), string(_char.ap) + "/" + string(_char.ap_max));
+	draw_text(x + COLUMN_AP + 40, y + 135 + (i *12), string(_char.ap) + "/" + string(_char.ap_max));
 	
 	draw_set_color(c_white);
 }
@@ -91,9 +91,9 @@ if (cursor.active)
 			else
 			{
 				draw_set_alpha(sin(get_timer()/50000)+1); // Multi-target and cursor flash
-				for (var _i = 0; _i < array_length(active_target); _i++)
+				for (var i = 0; i < array_length(active_target); i ++)
 				{
-					draw_sprite(spr_pointer_ph, 0, active_target[_i].x - 15, active_target[_i].y - 15);
+					draw_sprite(spr_pointer_ph, 0, active_target[i ].x - 15, active_target[i ].y - 15);
 				}
 				draw_set_alpha(1.0);
 			}
