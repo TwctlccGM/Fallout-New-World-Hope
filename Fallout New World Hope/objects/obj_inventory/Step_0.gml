@@ -21,32 +21,33 @@ if (cursor.active)
 		}
 		var _move_h = _key_right - _key_left;
 		var _move_v = _key_down - _key_up;
-		
-		//if (_move_h == -1) target_side = obj_battle.party_units;
-		//if (_move_h == 1) target_side = obj_battle.enemy_units;
-		target_side = global.item_array;
+	
+		if (_move_h == -1) target_side = obj_inventory.party;
+		if (_move_h == 1) target_side = global.item_array;
 		
 		// Move between targets
-		if (target_all == false) // Single target mode
-		{
-			if (_move_v == 1) target_index++;
-			if (_move_v == -1) target_index--;
-			
-			// Wrap
-			var _targets = array_length(target_side);
-			if (target_index < 0) target_index = _targets - 1;
-			if (target_index > (_targets - 1)) target_index = 0;
-			
-			// Identify target
-			active_target = target_side[target_index];
-		}
+		//if (array_length(global.item_array) == 1 && target_side == global.item_array) { _move_v = 0; } // One item in inventory
+		if (_move_v == 1) target_index++;
+		if (_move_v == -1) target_index--;
+		
+		// Wrap
+		var _targets = array_length(target_side);
+		if (target_index < 0) target_index = _targets - 1;
+		if (target_index > (_targets - 1)) target_index = 0;
+		
+		// Identify target
+		if (target_side == global.item_array) { active_target = target_side[target_index][target_index]; }
+		if (target_side == obj_inventory.party) { active_target = target_side[target_index]; }
 		
 		// Confirm action
 		if (_key_confirm)
 		{
-			if (target_side[target_index][C_ITEM_TYPE] == ITEM_STIMPAK)
+			if (target_side == global.item_array)
 			{
-				obj_inventory.use_stimpak(0);
+				if (target_side[target_index][C_ITEM_TYPE] == ITEM_STIMPAK)
+				{
+					obj_inventory.use_stimpak(0);
+				}
 			}
 		}
 		

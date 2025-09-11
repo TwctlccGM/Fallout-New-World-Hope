@@ -37,9 +37,9 @@ if (draw_inventory == true)
 	draw_sprite_stretched(spr_textbox_ph, 0, _items_xx, _yy, 160, 180);
 	draw_set_font(fnt_fixedsys);
 	draw_text(_items_xx + 5, _yy + 5, "ITEMS");
-	for(var _pos = 0; _pos < 5; _pos++)
+	for(var _pos = 0; _pos < array_length(global.item_array); _pos++)
     {
-		if !(global.item_array[_pos, C_ITEM_TYPE] == ITEM_NONE)
+		if (array_length(global.item_array) > 0)
         {
 			draw_sprite(global.item_array[_pos, C_ITEM_SPRITE], 0, _items_xx + 20, _yy + 40);
 			draw_text(_items_xx + 35, _yy + 30, string(global.item_array[_pos, C_ITEM_AMOUNT]));
@@ -73,8 +73,17 @@ if (cursor.active)
 		//{
 			//if (!is_array(active_target)) // Single target
 			//{
+			if (target_side = global.item_array)
+			{
 				_yy = obj_camera.y - 90;
 				draw_sprite(spr_pointer_ph, 0, _items_xx, _yy + (target_index * 25) + 25);
+			}
+			
+			if (target_side = obj_inventory.party)
+			{
+				_yy = obj_camera.y - 90;
+				draw_sprite(spr_pointer_ph, 0, _party_xx, _yy + (target_index * 50) + 25);
+			}
 			//}
 		//}
 	}

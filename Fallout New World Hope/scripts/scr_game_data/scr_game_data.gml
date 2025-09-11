@@ -15,13 +15,13 @@ global.pause = false;
 #macro C_ITEM_AMOUNT 2
 
 // Inventory
-global.item_array = array_create(5); // Create inventory array of arrays
-for(var _pos = 0; _pos < 5; _pos ++) // Initialise item type, sprite, and amount for each array
-{
-	global.item_array[_pos][C_ITEM_TYPE] = ITEM_NONE;
-	global.item_array[_pos][C_ITEM_SPRITE] = -1;
-	global.item_array[_pos][C_ITEM_AMOUNT] = 0;
-}
+global.item_array = array_create(0); // Create inventory array of arrays
+//for(var _pos = 0; _pos < 5; _pos ++) // Initialise item type, sprite, and amount for each array
+//{
+//	global.item_array[_pos][C_ITEM_TYPE] = ITEM_NONE;
+//	global.item_array[_pos][C_ITEM_SPRITE] = -1;
+//	global.item_array[_pos][C_ITEM_AMOUNT] = 0;
+//}
 
 // Credit to Sara Spalding's video: https://www.youtube.com/watch?v=Sp623fof_Ck&list=PLPRT_JORnIurSiSB5r7UQAdzoEv-HF24L
 // Action library
