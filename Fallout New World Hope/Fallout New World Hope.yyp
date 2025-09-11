@@ -84,7 +84,7 @@
     {"id":{"name":"spr_room_1","path":"sprites/spr_room_1/spr_room_1.yy",},},
     {"id":{"name":"spr_field_boom_town_ph","path":"sprites/spr_field_boom_town_ph/spr_field_boom_town_ph.yy",},},
     {"id":{"name":"spr_lobotomite","path":"sprites/spr_lobotomite/spr_lobotomite.yy",},},
-    {"id":{"name":"obj_item","path":"objects/obj_item/obj_item.yy",},},
+    {"id":{"name":"obj_pickup_item","path":"objects/obj_pickup_item/obj_pickup_item.yy",},},
     {"id":{"name":"obj_pickup_stimpak","path":"objects/obj_pickup_stimpak/obj_pickup_stimpak.yy",},},
     {"id":{"name":"obj_battle","path":"objects/obj_battle/obj_battle.yy",},},
     {"id":{"name":"fnt_fallout_6","path":"fonts/fnt_fallout_6/fnt_fallout_6.yy",},},

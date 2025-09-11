@@ -12,8 +12,8 @@
     "path": "folders/Objects/Field.yy",
   },
   "parentObjectId": {
-    "name": "obj_item",
-    "path": "objects/obj_item/obj_item.yy",
+    "name": "obj_pickup_item",
+    "path": "objects/obj_pickup_item/obj_pickup_item.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

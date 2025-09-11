@@ -59,7 +59,7 @@
     {"name":"spr_room_1","order":14,"path":"sprites/spr_room_1/spr_room_1.yy",},
     {"name":"spr_field_boom_town_ph","order":3,"path":"sprites/spr_field_boom_town_ph/spr_field_boom_town_ph.yy",},
     {"name":"spr_lobotomite","order":11,"path":"sprites/spr_lobotomite/spr_lobotomite.yy",},
-    {"name":"obj_item","order":6,"path":"objects/obj_item/obj_item.yy",},
+    {"name":"obj_pickup_item","order":6,"path":"objects/obj_pickup_item/obj_pickup_item.yy",},
     {"name":"obj_pickup_stimpak","order":8,"path":"objects/obj_pickup_stimpak/obj_pickup_stimpak.yy",},
     {"name":"fnt_fallout_6","order":3,"path":"fonts/fnt_fallout_6/fnt_fallout_6.yy",},
     {"name":"rm_field_test_x7b","order":1,"path":"rooms/rm_field_test_x7b/rm_field_test_x7b.yy",},
