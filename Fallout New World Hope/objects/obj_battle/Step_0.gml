@@ -1,6 +1,17 @@
 /// @description
 battle_state();
 
+// End battle when player characters are dead
+var _allies = obj_battle.party_units;
+if (array_any(_allies, function(_element, _index) {return _element.hp > 0; }) == false) 
+{	
+	// End battle
+	instance_activate_all();
+	//instance_destroy(creator);
+	//instance_destroy(obj_battle);
+	game_restart();
+};
+
 // End battle when enemies are dead
 var _enemies = obj_battle.enemy_units;
 if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) == false) 

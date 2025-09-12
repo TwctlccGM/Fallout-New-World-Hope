@@ -77,12 +77,16 @@ if (cursor.active)
 			{
 				_yy = obj_camera.y - 90;
 				draw_sprite(spr_pointer_ph, 0, _items_xx, _yy + (target_index * 25) + 25);
+				draw_set_color(c_white)
+				draw_rectangle(_items_xx + 10, _yy + (target_index * 25) + 30, _items_xx + 52, _yy + (target_index * 25) + 50, true)
 			}
 			
 			if (target_side = obj_inventory.party)
 			{
 				_yy = obj_camera.y - 90;
 				draw_sprite(spr_pointer_ph, 0, _party_xx, _yy + (target_index * 50) + 25);
+				draw_set_color(c_white)
+				draw_rectangle(_party_xx + 10, _yy + (target_index * 50) + 25, _party_xx + 150, _yy + (target_index * 50) + 65, true)
 			}
 			//}
 		//}

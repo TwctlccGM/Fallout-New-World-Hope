@@ -22,6 +22,7 @@ if (cursor.active)
 		var _move_h = _key_right - _key_left;
 		var _move_v = _key_down - _key_up;
 	
+		if (array_length(global.item_array) <= 0) { _move_h = -1; } // Stops error when trying to swap to empty item array
 		if (_move_h == -1) target_side = obj_inventory.party;
 		if (_move_h == 1) target_side = global.item_array;
 		
