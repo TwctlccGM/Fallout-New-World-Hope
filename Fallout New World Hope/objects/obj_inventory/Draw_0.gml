@@ -55,7 +55,7 @@ if (draw_inventory == true)
 	draw_text(_party_xx + 5, _yy + 5, "PARTY");
 	for(var _pos = 0; _pos < array_length(global.party); _pos++)
     {
-		draw_sprite(global.party[_pos].sprites.idle, 0, _party_xx + 30, _yy + 45);
+		draw_sprite(global.party[_pos].sprites.inventory, 0, _party_xx + 30, _yy + 45);
 		draw_text(_party_xx + 50, _yy + 30, "HP: " + string(global.party[_pos].hp) + "/" + string(global.party[_pos].hp_max));
 		draw_healthbar(_party_xx + 80, _yy + 45, _party_xx + 140, _yy + 46, global.party[_pos].hp, c_gray, c_red, c_green, 0, true, false);
 		_yy += 50;
@@ -76,17 +76,17 @@ if (cursor.active)
 			if (target_side = global.item_array)
 			{
 				_yy = obj_camera.y - 90;
-				draw_sprite(spr_pointer_ph, 0, _items_xx, _yy + (target_index * 25) + 25);
 				draw_set_color(c_white)
 				draw_rectangle(_items_xx + 10, _yy + (target_index * 25) + 30, _items_xx + 52, _yy + (target_index * 25) + 50, true)
+				draw_sprite(spr_pointer_ph, 0, _items_xx, _yy + (target_index * 25) + 25);
 			}
 			
 			if (target_side = obj_inventory.party)
 			{
 				_yy = obj_camera.y - 90;
-				draw_sprite(spr_pointer_ph, 0, _party_xx, _yy + (target_index * 50) + 25);
 				draw_set_color(c_white)
 				draw_rectangle(_party_xx + 10, _yy + (target_index * 50) + 25, _party_xx + 150, _yy + (target_index * 50) + 65, true)
+				draw_sprite(spr_pointer_ph, 0, _party_xx, _yy + (target_index * 50) + 25);
 			}
 			//}
 		//}

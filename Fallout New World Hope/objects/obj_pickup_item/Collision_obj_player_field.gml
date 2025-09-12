@@ -6,7 +6,7 @@ if (keyboard_check(ord("Z")))
 	var _pos = 0;
 	var _inventory_size = array_length(global.item_array);
 	var _type = item;
-	var _sprite = sprite_index;
+	var _sprite = sprite;
 
 	while (_pos < _inventory_size) // Scan array for if the item type is already in there
 	{

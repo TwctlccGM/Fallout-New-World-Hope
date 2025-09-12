@@ -3,9 +3,9 @@
   "resourceVersion": "1.0",
   "name": "spr_pointer_ph",
   "bbox_bottom": 23,
-  "bbox_left": 8,
-  "bbox_right": 23,
-  "bbox_top": 8,
+  "bbox_left": 0,
+  "bbox_right": 15,
+  "bbox_top": 11,
   "bboxMode": 0,
   "collisionKind": 1,
   "collisionTolerance": 0,
@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Menus",
+    "path": "folders/Sprites/Menus.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
