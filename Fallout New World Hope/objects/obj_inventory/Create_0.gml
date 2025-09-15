@@ -6,6 +6,7 @@ draw_set_valign(fa_bottom);
 item_pos = 0;
 item_pos_index = 0;
 
+stimpak_selected = false;
 draw_inventory = false;
 
 function use_stimpak(_target)

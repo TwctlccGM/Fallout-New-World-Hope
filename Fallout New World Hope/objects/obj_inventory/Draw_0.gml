@@ -16,6 +16,7 @@ if (keyboard_check_pressed(vk_tab)) // Toggle inventory
 {
 	if (draw_inventory == true) 
 	{ 
+		stimpak_selected = false;
 		draw_inventory = false; 
 		cursor.active =  false;
 		global.pause = false; 
