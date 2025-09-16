@@ -50,6 +50,7 @@ function sub_menu(_options)
 	// store old options in array and increase submenu level
 	options_above[sub_menu_level] = options;
 	sub_menu_level++;
+	// display submenu's options
 	options = _options;
 	hover = 0;
 }

@@ -98,7 +98,7 @@ global.action_library =
 	{
 		name : "Nuka Cola",
 		description : "{0} uses a Nuka Cola!",
-		sub_menu_val : "Items2",
+		sub_menu_val : "Items",
 		ap_cost : 1,
 		is_item : true,
 		item_id : ITEM_NUKA_COLA,
@@ -135,7 +135,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie, inventory: spr_vaultie_white },
-		actions: [global.action_library.attack, global.action_library.stimpak, global.action_library.nuka_cola]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola]
 	}
 	,
 	{
@@ -148,7 +148,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite, inventory: spr_lobotomite_white },
-		actions: [global.action_library.attack, global.action_library.cleave]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola]
 	}
 ];
 

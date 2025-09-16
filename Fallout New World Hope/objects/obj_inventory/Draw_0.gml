@@ -89,6 +89,13 @@ if (cursor.active)
 				draw_rectangle(_party_xx + 10, _yy + (target_index * 50) + 25, _party_xx + 150, _yy + (target_index * 50) + 65, true)
 				draw_sprite(spr_pointer_ph, 0, _party_xx, _yy + (target_index * 50) + 25);
 			}
+			
+			if (obj_inventory.stimpak_selected)
+			{
+				_yy = obj_camera.y - 90;
+				draw_set_color(c_white)
+				draw_sprite(spr_pointer_ph, 0, _items_xx, _yy + (stored_target_index * 50) + 25);
+			}
 			//}
 		//}
 	}

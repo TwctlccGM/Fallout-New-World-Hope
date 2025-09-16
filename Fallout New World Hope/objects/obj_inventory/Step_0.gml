@@ -76,11 +76,12 @@ if (cursor.active)
 			// Confirm action
 			if (_key_confirm)
 			{
-				if (target_side == global.item_array)
+				if (target_side == global.item_array) // Using an item
 				{
-					if (target_side[target_index][C_ITEM_TYPE] == ITEM_STIMPAK)
+					if (target_side[target_index][C_ITEM_TYPE] == ITEM_STIMPAK) // Using a stimpak
 					{
-						obj_inventory.stimpak_selected = true;
+						stored_target_index = target_index;		// Stores target index to display 'locked' pointer finger in Draw event
+						obj_inventory.stimpak_selected = true;	// Variable used in other events to activate 'using stimpak' logic
 						confirm_delay = 0;
 					}
 				}
@@ -89,7 +90,7 @@ if (cursor.active)
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
 			{
-			
+				
 			}
 		}
 	}

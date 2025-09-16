@@ -23,7 +23,7 @@ function battle_change_hp(_target, _amount, _outside_battle = 0, _alive_dead_or_
 	if (_failed)
 	{
 		_col = c_white;
-		_amount = "failed";
+		_amount = "Failed";
 	}
 	// _outside_battle:  0 = in battle (default), 1 = outside of battle
 	if (_outside_battle == 0) 

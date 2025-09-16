@@ -30,6 +30,7 @@ cursor =
 	active_action: -1,
 	target_side: -1,
 	target_index: 0,
+	stored_target_index: 0,
 	target_all: false,
 	confirm_delay: 0,
 	active: false

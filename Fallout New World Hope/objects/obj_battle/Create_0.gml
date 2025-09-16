@@ -157,7 +157,7 @@ function battle_state_select_action()
 				// (here)
 				
 				// Add back option at the end of each submenu
-				array_push(_sub_menus[$ _sub_menus_array[i]], ["Back", menu_go_back, -1, true]);
+				//array_push(_sub_menus[$ _sub_menus_array[i]], ["Back", menu_go_back, -1, true]);
 				// Add submenu into main menu
 				array_push(_menu_options, [_sub_menus_array[i], sub_menu, [_sub_menus[$ _sub_menus_array[i]]], true]);
 			}
