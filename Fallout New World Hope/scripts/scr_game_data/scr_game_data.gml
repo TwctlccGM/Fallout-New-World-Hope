@@ -163,7 +163,7 @@ global.enemies =
 		ap: 10,
 		ap_max: 10,
 		attack_power: 10,
-		sprites: { idle: spr_placeholder, attack: spr_placeholder},
+		sprites: { idle: spr_orderly, attack: spr_orderly},
 		actions: [global.action_library.attack],
 		xp: 100,
 		AI_script: function()

@@ -239,7 +239,7 @@ function battle_state_perform_action()
 				{
 					for (var i = 0; i <array_length(current_targets); i++)
 					{
-						instance_create_depth(current_targets[i].x, current_targets[i].y, current_targets[i].depth - 1, obj_battle_effect, {sprite_index : current_action.effect_sprite});
+						instance_create_depth(current_targets[i].x - 15, current_targets[i].y - 15, current_targets[i].depth - 1, obj_battle_effect, {sprite_index : current_action.effect_sprite});
 					}
 				}
 				else // Play it at 0, 0
