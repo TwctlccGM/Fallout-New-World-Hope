@@ -28,8 +28,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_cyberdog",
-    "path": "sprites/spr_cyberdog/spr_cyberdog.yy",
+    "name": "spr_cyberdog_enemy",
+    "path": "sprites/spr_cyberdog_enemy/spr_cyberdog_enemy.yy",
   },
   "spriteMaskId": null,
   "visible": true,

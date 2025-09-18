@@ -56,9 +56,9 @@ if (draw_inventory == true)
 	draw_text(_party_xx + 5, _yy + 5, "PARTY");
 	for(var _pos = 0; _pos < array_length(global.party); _pos++)
     {
-		draw_sprite(global.party[_pos].sprites.inventory, 0, _party_xx + 30, _yy + 45);
-		draw_text(_party_xx + 50, _yy + 30, "HP: " + string(global.party[_pos].hp) + "/" + string(global.party[_pos].hp_max));
-		draw_healthbar(_party_xx + 80, _yy + 45, _party_xx + 140, _yy + 46, global.party[_pos].hp, c_gray, c_red, c_green, 0, true, false);
+		draw_sprite(global.party[_pos].sprites.inventory, 0, _party_xx + 35, _yy + 45);
+		draw_text(_party_xx + 68, _yy + 30, "HP:" + string(global.party[_pos].hp) + "/" + string(global.party[_pos].hp_max));
+		draw_healthbar(_party_xx + 95, _yy + 45, _party_xx + 145, _yy + 46, global.party[_pos].hp, c_gray, c_red, c_green, 0, true, false);
 		_yy += 50;
 	}
 	

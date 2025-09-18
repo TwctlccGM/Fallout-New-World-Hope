@@ -150,6 +150,19 @@ global.party =
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite, inventory: spr_lobotomite_white },
 		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola]
 	}
+	,
+	{
+		name: "Cyberdog",
+		hp: 999,
+		hp_max: 999,
+		ap: 10,
+		ap_max: 10,
+		bet: 100,
+		bet_max: 100,
+		attack_power: 10,
+		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog, inventory: spr_cyberdog_white },
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola]
+	}
 ];
 
 // Enemy data
@@ -188,7 +201,7 @@ global.enemies =
 		ap: 10,
 		ap_max: 10,
 		attack_power: 10,
-		sprites: { idle: spr_cyberdog, attack: spr_cyberdog},
+		sprites: { idle: spr_cyberdog_enemy, attack: spr_cyberdog_enemy},
 		actions: [global.action_library.attack],
 		xp: 100,
 		AI_script: function()
