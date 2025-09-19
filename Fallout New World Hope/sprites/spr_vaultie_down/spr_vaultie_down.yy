@@ -1,11 +1,11 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_vaultie_overworld_ph",
-  "bbox_bottom": 21,
-  "bbox_left": 13,
-  "bbox_right": 18,
-  "bbox_top": 13,
+  "name": "spr_vaultie_down",
+  "bbox_bottom": 30,
+  "bbox_left": 9,
+  "bbox_right": 21,
+  "bbox_top": 2,
   "bboxMode": 2,
   "collisionKind": 1,
   "collisionTolerance": 0,
@@ -32,7 +32,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_vaultie_overworld_ph",
+    "name": "spr_vaultie_down",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"3e4343ce-43bb-4172-97bf-3f41a6509888","path":"sprites/spr_vaultie_overworld_ph/spr_vaultie_overworld_ph.yy",},},},"Disabled":false,"id":"92ab006d-196f-405a-a3a7-a3c52fb0a94b","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"3e4343ce-43bb-4172-97bf-3f41a6509888","path":"sprites/spr_vaultie_down/spr_vaultie_down.yy",},},},"Disabled":false,"id":"44aefb54-ee7d-46a5-ab70-2a65117af6d6","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

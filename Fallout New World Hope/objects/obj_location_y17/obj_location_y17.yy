@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_location_x7b",
+  "name": "obj_location_y17",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_player_overworld","path":"objects/obj_player_overworld/obj_player_overworld.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
   ],
@@ -28,8 +28,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_location_x7b",
-    "path": "sprites/spr_location_x7b/spr_location_x7b.yy",
+    "name": "spr_location_y17",
+    "path": "sprites/spr_location_y17/spr_location_y17.yy",
   },
   "spriteMaskId": null,
   "visible": false,
