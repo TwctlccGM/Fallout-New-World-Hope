@@ -5,6 +5,15 @@
 if (instance_exists(obj_player_destination))
 {
 	var dir = point_direction(x, y, obj_player_destination.x, obj_player_destination.y)
+	if place_meeting(x, y, obj_overworld_slowzone)
+	{
+		move_speed = 0.3; // Slowed speed
+	}
+	else
+	{
+		move_speed = 1;	// Default speed
+	}
+	
 	if !place_meeting(x + lengthdir_x(move_speed, dir), y + lengthdir_y(move_speed, dir), obj_collision_box)
 	{
 		x += lengthdir_x(move_speed, dir)
