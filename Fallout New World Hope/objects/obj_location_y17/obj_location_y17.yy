@@ -3,7 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_location_y17",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_player_overworld","path":"objects/obj_player_overworld/obj_player_overworld.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -11,7 +12,10 @@
     "name": "Overworld",
     "path": "folders/Objects/Overworld.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_location_default",
+    "path": "objects/obj_location_default/obj_location_default.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -28,9 +32,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_location_y17",
-    "path": "sprites/spr_location_y17/spr_location_y17.yy",
+    "name": "spr_overworld_location",
+    "path": "sprites/spr_overworld_location/spr_overworld_location.yy",
   },
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }

@@ -4,6 +4,8 @@
   "name": "obj_player_overworld",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_collision_box","path":"objects/obj_collision_box/obj_collision_box.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -31,8 +33,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_vaultie_overworld_ph",
-    "path": "sprites/spr_vaultie_overworld_ph/spr_vaultie_overworld_ph.yy",
+    "name": "spr_overworld_player",
+    "path": "sprites/spr_overworld_player/spr_overworld_player.yy",
   },
   "spriteMaskId": null,
   "visible": true,
