@@ -6,9 +6,13 @@ global.pause = false;
 #macro ITEM_NONE 0
 #macro ITEM_STIMPAK 1
 #macro ITEM_NUKA_COLA 2
-#macro ITEM_KEY 3
-#macro ITEM_PISTOL 4
-#macro ITEM_AXE 5
+#macro ITEM_DOCTORSBAG 3
+#macro ITEM_MEDX 4
+#macro ITEM_BATTLEBREW 5
+#macro ITEM_KEYCARD 6
+//#macro ITEM_PISTOL 0
+//#macro ITEM_AXE 0
+
 // Array Constants
 #macro C_ITEM_TYPE 0
 #macro C_ITEM_SPRITE 1

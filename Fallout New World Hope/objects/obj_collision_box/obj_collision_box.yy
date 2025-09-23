@@ -6,8 +6,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Field",
-    "path": "folders/Objects/Field.yy",
+    "name": "All Areas",
+    "path": "folders/Objects/All Areas.yy",
   },
   "parentObjectId": null,
   "persistent": false,

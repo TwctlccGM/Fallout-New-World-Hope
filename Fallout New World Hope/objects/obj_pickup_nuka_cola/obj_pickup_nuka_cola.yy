@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Field",
-    "path": "folders/Objects/Field.yy",
+    "name": "Items",
+    "path": "folders/Objects/Items.yy",
   },
   "parentObjectId": {
     "name": "obj_pickup_item",

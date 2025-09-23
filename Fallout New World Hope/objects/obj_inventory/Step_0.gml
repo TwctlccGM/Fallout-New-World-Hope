@@ -21,7 +21,8 @@ if (cursor.active)
 		}
 		var _move_h = _key_right - _key_left;
 		var _move_v = _key_down - _key_up;
-			
+		
+		/// Using stimpak
 		if (obj_inventory.stimpak_selected == true) // Using item (like a stimpak), player selects which party member to use it on
 		{
 			target_side = obj_inventory.party;
@@ -46,6 +47,39 @@ if (cursor.active)
 			if (_key_cancel) && (!_key_confirm)
 			{
 				obj_inventory.stimpak_selected = false;
+				
+				/// TO-DO:
+				// Add some visual feedback for when the stimpak item is deselected
+				//target_side = global.item_array;
+				//target_index = array_find_index(global.item_array);
+			}
+		}
+		
+		/// Using doctors bag
+		else if (obj_inventory.doctorsbag_selected == true) // Using item (like a stimpak), player selects which party member to use it on
+		{
+			target_side = obj_inventory.party;
+			
+			// Move between targets
+			if (_move_v == 1) target_index++;
+			if (_move_v == -1) target_index--;
+			
+			// Wrap
+			var _targets = array_length(target_side);
+			if (target_index < 0) target_index = _targets - 1;
+			if (target_index > (_targets - 1)) target_index = 0;
+			
+			// Confirm action
+			if (_key_confirm)
+			{
+				obj_inventory.use_doctorsbag(target_index);
+				//obj_inventory.stimpak_selected = false;
+			}
+		
+			// Cancel & return to menu
+			if (_key_cancel) && (!_key_confirm)
+			{
+				obj_inventory.doctorsbag_selected = false;
 				
 				/// TO-DO:
 				// Add some visual feedback for when the stimpak item is deselected
@@ -81,7 +115,13 @@ if (cursor.active)
 					if (target_side[target_index][C_ITEM_TYPE] == ITEM_STIMPAK) // Using a stimpak
 					{
 						stored_target_index = target_index;		// Stores target index to display 'locked' pointer finger in Draw event
-						obj_inventory.stimpak_selected = true;	// Variable used in other events to activate 'using stimpak' logic
+						obj_inventory.stimpak_selected = true;	// Variable used in other events to activate 'usingitem' logic
+						confirm_delay = 0;
+					}
+					if (target_side[target_index][C_ITEM_TYPE] == ITEM_DOCTORSBAG) // Using a doctors bag
+					{
+						stored_target_index = target_index;			// Stores target index to display 'locked' pointer finger in Draw event
+						obj_inventory.doctorsbag_selected = true;	// Variable used in other events to activate 'using item' logic
 						confirm_delay = 0;
 					}
 				}

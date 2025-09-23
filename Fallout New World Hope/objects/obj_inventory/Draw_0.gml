@@ -17,6 +17,7 @@ if (keyboard_check_pressed(vk_tab)) // Toggle inventory
 	if (draw_inventory == true) 
 	{ 
 		stimpak_selected = false;
+		doctorsbag_selected = false;
 		draw_inventory = false; 
 		cursor.active =  false;
 		global.pause = false; 
@@ -94,7 +95,14 @@ if (cursor.active)
 			{
 				_yy = obj_camera.y - 90;
 				draw_set_color(c_white)
-				draw_sprite(spr_pointer_ph, 0, _items_xx, _yy + (stored_target_index * 50) + 25);
+				draw_sprite(spr_pointer_ph, 0, _items_xx, stored_target_index * 25 + 25);
+			}
+			
+			if (obj_inventory.doctorsbag_selected)
+			{
+				_yy = obj_camera.y - 90;
+				draw_set_color(c_white)
+				draw_sprite(spr_pointer_ph, 0, _items_xx, stored_target_index * 25 + 25);
 			}
 			//}
 		//}
