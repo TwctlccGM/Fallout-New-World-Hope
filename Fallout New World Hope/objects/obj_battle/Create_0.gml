@@ -130,7 +130,16 @@ function battle_state_select_action()
 			{
 				var _action = _action_list[i];
 				var _available = true; // change later for ap cost
-				var _name_and_count = _action.name; // change later for item count
+				//if (_action.is_item)
+				//{
+					// Item name + count
+					//var _name_and_count = _action.name + string(global.item_array[_action.item_id][C_ITEM_AMOUNT]);	
+				//}
+				//else
+				//{
+					// Ability name
+					var _name_and_count = _action.name;
+				//}
 				if (_action.sub_menu_val == -1)
 				{
 					array_push(_menu_options, [_name_and_count, menu_select_action, [_unit, _action], _available]);
@@ -144,7 +153,7 @@ function battle_state_select_action()
 					}
 					else
 					{
-						array_push(_sub_menus[$ _action.sub_menu_val], [[_name_and_count, menu_select_action, [_unit, _action], _available]]);
+						array_push(_sub_menus[$ _action.sub_menu_val], [_name_and_count, menu_select_action, [_unit, _action], _available]);
 					}
 				}
 			}
@@ -161,7 +170,8 @@ function battle_state_select_action()
 				// Add submenu into main menu
 				array_push(_menu_options, [_sub_menus_array[i], sub_menu, [_sub_menus[$ _sub_menus_array[i]]], true]);
 			}
-				
+			
+			// Make the menu
 			menu(x + 10, y + 11, _menu_options, , 74, 60);
 		}
 		else

@@ -1,4 +1,4 @@
-// @desc Menu - makes a menu, options provided in the form [["name, function, argument], [...]]
+// @desc Menu - makes a menu, options provided in the form [["name", function, argument, boolean], [...]]
 function menu(_x, _y, _options, _description = -1, _width = undefined, _height = undefined)
 {
 	with (instance_create_depth(_x, _y, -99999, obj_menu))
