@@ -6,6 +6,7 @@ if (active)
 	if (hover > array_length(options) - 1) hover = 0;
 	if (hover < 0) hover = array_length(options) - 1;
 	
+	/// Array system
 	// Execute selected option
 	if (keyboard_check_pressed(ord("Z")))
 	{

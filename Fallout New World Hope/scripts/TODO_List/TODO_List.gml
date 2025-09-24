@@ -3,12 +3,8 @@
 
 1: Two or more actions can't be a part of the same combat submenu (e.g. can't have two abilities in the 'Abilities' menu)
 2: Items (stims and doc bags) get consumed even when they have no effect.
-3: Inventory can't scroll past the 3rd item without the following error:
-Variable Index [3] out of range [3]
- at gml_Object_obj_inventory_Step_0 (line 107) -                      if (target_side == global.item_array) { active_target = target_side[target_index][target_index]; }
-############################################################################################
-gml_Object_obj_inventory_Step_0 (line 107)
-
+3: Turn repeated code (e.g. item pickups) into a function for easier usage and reading.
+4: Items used in battle that have not yet been added to the inventory array crash the game.
 
 /// FEATURES TO IMPLEMENT
 

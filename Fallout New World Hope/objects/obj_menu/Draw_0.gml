@@ -8,6 +8,7 @@ draw_set_valign(fa_top);
 var _desc = (description != -1);
 var _scroll_push = max(0, hover - (visible_options_max - 1));
 
+/// Array system
 for (var i = 0; i < (visible_options_max + _desc); i++)
 {
 	if (i >= array_length(options)) break;

@@ -104,7 +104,7 @@ if (cursor.active)
 			if (target_index > (_targets - 1)) target_index = 0;
 		
 			// Identify target
-			if (target_side == global.item_array) { active_target = target_side[target_index][target_index]; }
+			if (target_side == global.item_array) { active_target = target_side[target_index]; }
 			if (target_side == obj_inventory.party) { active_target = target_side[target_index]; }
 		
 			// Confirm action

@@ -6,7 +6,9 @@
     {"name":"Notes","order":13,"path":"folders/Notes.yy",},
     {"name":"Objects","order":9,"path":"folders/Objects.yy",},
     {"name":"All Areas","order":3,"path":"folders/Objects/All Areas.yy",},
+    {"name":"Enemies","order":5,"path":"folders/Objects/Enemies.yy",},
     {"name":"Field","order":1,"path":"folders/Objects/Field.yy",},
+    {"name":"Items","order":4,"path":"folders/Objects/Items.yy",},
     {"name":"Overworld","order":2,"path":"folders/Objects/Overworld.yy",},
     {"name":"Particle Systems","order":15,"path":"folders/Particle Systems.yy",},
     {"name":"Paths","order":4,"path":"folders/Paths.yy",},
@@ -25,8 +27,6 @@
     {"name":"Overworld","order":7,"path":"folders/Sprites/Overworld.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"Items","order":4,"path":"folders/Objects/Items.yy",},
-    {"name":"Enemies","order":5,"path":"folders/Objects/Enemies.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_item_stimpak_white","order":3,"path":"sprites/spr_item_stimpak_white/spr_item_stimpak_white.yy",},

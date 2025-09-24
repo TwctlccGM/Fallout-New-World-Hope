@@ -20,14 +20,18 @@ if (keyboard_check(ord("Z")))
 	}
 	if (_pos >= _inventory_size) // If item is not present, add it to the array
 	{
-		global.item_array[_pos][C_ITEM_TYPE] = _type;
-		global.item_array[_pos][C_ITEM_SPRITE] = _sprite;
-		global.item_array[_pos][C_ITEM_AMOUNT] = 1;
+		var _new_item = array_create(3); // Create inner array
+		_new_item[C_ITEM_TYPE] = _type;
+		_new_item[C_ITEM_SPRITE] = _sprite;
+		_new_item[C_ITEM_AMOUNT] = 1;
+		array_push(global.item_array, _new_item);
 		instance_destroy();
 	}
 }
 
-
+//global.item_array[_pos][C_ITEM_TYPE] = _type;
+		//global.item_array[_pos][C_ITEM_SPRITE] = _sprite;
+		//global.item_array[_pos][C_ITEM_AMOUNT] = 1;
 
 
 
