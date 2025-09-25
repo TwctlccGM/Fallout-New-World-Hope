@@ -129,29 +129,41 @@ function battle_state_select_action()
 			for (var i = 0; i < array_length(_action_list); i++)
 			{
 				var _action = _action_list[i];
-				var _available = true; // change later for ap cost
-				//if (_action.is_item)
-				//{
-					// Item name + count
-					//var _name_and_count = _action.name + string(global.item_array[_action.item_id][C_ITEM_AMOUNT]);	
-				//}
-				//else
-				//{
-					// Ability name
-					var _name_and_count = _action.name;
-				//}
+				var _name_and_count = _action.name;
+				var _available = true;
+						
+				// Make items unavailable if there are none in inventory
+				if (_action.is_item)
+				{
+					if (global.item_array[_action.item_id][C_ITEM_AMOUNT] <= 0)
+					{
+						_available = false;
+					}
+				}
+				
+				// Make abilities unavailable if the user doesn't have enough AP
+				if (_action.sub_menu_val == "Abilities")
+				{
+					if (_unit.ap < _action.ap_cost)
+					{
+						_available = false;
+					}
+				}
+
+				// Action has no submenu (e.g. 'Attack')
 				if (_action.sub_menu_val == -1)
 				{
 					array_push(_menu_options, [_name_and_count, menu_select_action, [_unit, _action], _available]);
 				}
 				else
 				{
-					// Create or add to a submenu
+					// Create a submenu
 					if (is_undefined(_sub_menus[$ _action.sub_menu_val]))
 					{
 						variable_struct_set(_sub_menus, _action.sub_menu_val, [[_name_and_count, menu_select_action, [_unit, _action], _available]]);
 					}
 					else
+					// Add to existing submenu
 					{
 						array_push(_sub_menus[$ _action.sub_menu_val], [_name_and_count, menu_select_action, [_unit, _action], _available]);
 					}
@@ -199,6 +211,11 @@ function begin_action(_user, _action, _targets)
 		var _pos = 0;
 		while (_pos < 5) // Scan array for if the item type is already in there
 		{
+			if (array_length(global.item_array) <= 0)
+			{
+				action_failed = true;
+				break;
+			}
 			if (global.item_array[_pos, C_ITEM_TYPE] == _type) 
 			{ 
 				if (global.item_array[_pos, C_ITEM_AMOUNT] <= 0) { action_failed = true; } // Item amount is 0

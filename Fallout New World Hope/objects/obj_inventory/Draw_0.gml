@@ -43,7 +43,7 @@ if (draw_inventory == true)
     {
 		if (array_length(global.item_array) > 0)
         {
-			draw_sprite(global.item_array[_pos, C_ITEM_SPRITE], 0, _items_xx + 20, _yy + 40);
+			draw_sprite(global.item_array[_pos, C_ITEM_INVENTORY_SPRITE], 0, _items_xx + 20, _yy + 40);
 			draw_text(_items_xx + 35, _yy + 30, string(global.item_array[_pos, C_ITEM_AMOUNT]));
         }
 		_yy += 25;

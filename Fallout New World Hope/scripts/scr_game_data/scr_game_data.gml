@@ -3,29 +3,31 @@ global.pause = false;
 
 /// Inventory macros
 // Item Definitions
-#macro ITEM_NONE 0
-#macro ITEM_STIMPAK 1
-#macro ITEM_NUKA_COLA 2
-#macro ITEM_DOCTORSBAG 3
-#macro ITEM_MEDX 4
-#macro ITEM_BATTLEBREW 5
-#macro ITEM_KEYCARD 6
+#macro ITEM_STIMPAK 0
+#macro ITEM_NUKA_COLA 1
+#macro ITEM_DOCTORSBAG 2
+#macro ITEM_MEDX 3
+#macro ITEM_BATTLEBREW 4
+#macro ITEM_KEYCARD 5
 //#macro ITEM_PISTOL 0
 //#macro ITEM_AXE 0
 
 // Array Constants
 #macro C_ITEM_TYPE 0
 #macro C_ITEM_SPRITE 1
-#macro C_ITEM_AMOUNT 2
+#macro C_ITEM_INVENTORY_SPRITE 2
+#macro C_ITEM_AMOUNT 3
 
 // Inventory
-global.item_array = array_create(0); // Create inventory array of arrays
-//for(var _pos = 0; _pos < 5; _pos ++) // Initialise item type, sprite, and amount for each array
-//{
-//	global.item_array[_pos][C_ITEM_TYPE] = ITEM_NONE;
-//	global.item_array[_pos][C_ITEM_SPRITE] = -1;
-//	global.item_array[_pos][C_ITEM_AMOUNT] = 0;
-//}
+global.item_array = array_create(6); // Create empty array of arrays
+
+//										Item Name			Item Sprite				Item Inventory Sprite		Item Amount
+global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		0];
+global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	0];
+global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	0];
+global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		0];
+global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0];
+global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];
 
 // Credit to Sara Spalding's video: https://www.youtube.com/watch?v=Sp623fof_Ck&list=PLPRT_JORnIurSiSB5r7UQAdzoEv-HF24L
 // Action library

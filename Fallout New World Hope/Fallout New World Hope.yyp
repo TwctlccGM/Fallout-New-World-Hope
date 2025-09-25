@@ -52,6 +52,7 @@
     {"id":{"name":"obj_cyberdog","path":"objects/obj_cyberdog/obj_cyberdog.yy",},},
     {"id":{"name":"fnt_fixedsys","path":"fonts/fnt_fixedsys/fnt_fixedsys.yy",},},
     {"id":{"name":"scr_battle_functions","path":"scripts/scr_battle_functions/scr_battle_functions.yy",},},
+    {"id":{"name":"scr_item_functions","path":"scripts/scr_item_functions/scr_item_functions.yy",},},
     {"id":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},},
     {"id":{"name":"spr_battle_background_ph","path":"sprites/spr_battle_background_ph/spr_battle_background_ph.yy",},},
     {"id":{"name":"spr_cyberdog","path":"sprites/spr_cyberdog/spr_cyberdog.yy",},},
