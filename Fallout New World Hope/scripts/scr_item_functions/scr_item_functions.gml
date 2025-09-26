@@ -30,3 +30,33 @@ function pickup_item(_item_name)
 	global.item_array[item][C_ITEM_AMOUNT] += 1;
 	instance_destroy();
 }
+
+/// Use item function
+function use_item(_item, _target)
+{
+	if (global.item_array[_item][C_ITEM_AMOUNT] > 0)
+	{ 
+		var _heal = 0;
+		switch (_item) 
+		{
+			case (ITEM_STIMPAK):
+				_heal = 50;
+				battle_change_hp(global.party[_target], _heal, 1, 0); // Heal target
+				break;
+			case (ITEM_DOCTORSBAG):
+				_heal = 100;
+				battle_change_hp(global.party[_target], _heal, 1, 1); // Heal target
+				break;
+		}
+		
+		global.item_array[_item][C_ITEM_AMOUNT] -= 1; // Remove item
+		// Find inventory index
+		for(var _pos = 0; _pos < array_length(global.inventory_array); _pos++)
+	    {
+			if (global.inventory_array[_pos][C_ITEM_TYPE] == global.item_array[_item][C_ITEM_TYPE])
+	        {
+				global.inventory_array[_pos][C_ITEM_AMOUNT] -= 1; // Remove item
+			}
+		}
+	}
+}

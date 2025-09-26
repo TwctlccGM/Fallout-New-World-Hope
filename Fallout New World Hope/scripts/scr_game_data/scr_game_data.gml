@@ -18,16 +18,30 @@ global.pause = false;
 #macro C_ITEM_INVENTORY_SPRITE 2
 #macro C_ITEM_AMOUNT 3
 
-// Inventory
-global.item_array = array_create(6); // Create empty array of arrays
+// Items (the array that's used to keep track of items and item usage)
+global.item_array = array_create(6);
 
-//										Item Name			Item Sprite				Item Inventory Sprite		Item Amount
+//										Name				Sprite					Inventory Sprite			Amount
 global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		0];
 global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	0];
 global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	0];
 global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		0];
 global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0];
 global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];
+
+// Inventory display
+global.inventory_array = array_create(0);
+// The inventory array uses the item's 'position' (where it visually appears in the menu) as its first index.
+// This makes it easier to change how its displayed, but harder to manipulate the values.
+// Representation below.
+
+/*										Item Name			Item Sprite				Item Inventory Sprite		Item Amount
+global.item_array[position]			=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		0];
+global.item_array[position]			=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	0];
+global.item_array[position]			=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	0];
+global.item_array[position]			=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		0];
+global.item_array[position]			=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0];
+global.item_array[position]			=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];*/
 
 // Credit to Sara Spalding's video: https://www.youtube.com/watch?v=Sp623fof_Ck&list=PLPRT_JORnIurSiSB5r7UQAdzoEv-HF24L
 // Action library

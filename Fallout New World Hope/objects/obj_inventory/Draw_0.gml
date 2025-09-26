@@ -14,7 +14,7 @@ var _yy = obj_camera.y - 90;
 
 if (keyboard_check_pressed(vk_tab)) // Toggle inventory
 {
-	if (draw_inventory == true) 
+	if (draw_inventory == true) // Deactivate inventory
 	{ 
 		stimpak_selected = false;
 		doctorsbag_selected = false;
@@ -22,11 +22,27 @@ if (keyboard_check_pressed(vk_tab)) // Toggle inventory
 		cursor.active =  false;
 		global.pause = false; 
 	}
-	else if (draw_inventory == false) 
+	else if (draw_inventory == false) // Activate inventory
 	{ 
+		stimpak_selected = false;
+		doctorsbag_selected = false;
 		draw_inventory = true; 
 		cursor.active =  true;
 		global.pause = true; 
+		
+		array_delete(global.inventory_array, 0, array_length(global.inventory_array));
+		var _i = 0;
+		for(var _pos = 0; _pos < array_length(global.item_array); _pos++)
+	    {
+			if (global.item_array[_pos][C_ITEM_AMOUNT] > 0)
+	        {
+				global.inventory_array[_i][C_ITEM_TYPE]				= global.item_array[_pos][C_ITEM_TYPE];
+				global.inventory_array[_i][C_ITEM_INVENTORY_SPRITE] = global.item_array[_pos][C_ITEM_INVENTORY_SPRITE];
+				global.inventory_array[_i][C_ITEM_AMOUNT]			= global.item_array[_pos][C_ITEM_AMOUNT];
+				_i++;
+	        }
+			// _yy += 25;
+		}
 	}
 }
 
@@ -39,14 +55,15 @@ if (draw_inventory == true)
 	draw_sprite_stretched(spr_textbox_ph, 0, _items_xx, _yy, 160, 180);
 	draw_set_font(fnt_fixedsys);
 	draw_text(_items_xx + 5, _yy + 5, "ITEMS");
-	for(var _pos = 0; _pos < array_length(global.item_array); _pos++)
+	for(var _pos = 0; _pos < array_length(global.inventory_array); _pos++)
     {
-		if (array_length(global.item_array) > 0)
-        {
-			draw_sprite(global.item_array[_pos, C_ITEM_INVENTORY_SPRITE], 0, _items_xx + 20, _yy + 40);
-			draw_text(_items_xx + 35, _yy + 30, string(global.item_array[_pos, C_ITEM_AMOUNT]));
-        }
-		_yy += 25;
+		//if (global.item_array[_pos, C_ITEM_AMOUNT] > 0)
+        //{
+			draw_sprite(global.inventory_array[_pos, C_ITEM_INVENTORY_SPRITE], 0, _items_xx + 20, _yy + 40);
+			draw_text(_items_xx + 35, _yy + 30, string(global.inventory_array[_pos, C_ITEM_AMOUNT]));
+			_yy += 25;
+        //}
+		// _yy += 25;
 	}
 	
 	/// Draw party info tab
@@ -75,7 +92,7 @@ if (cursor.active)
 		//{
 			//if (!is_array(active_target)) // Single target
 			//{
-			if (target_side = global.item_array)
+			if (target_side = global.inventory_array)
 			{
 				_yy = obj_camera.y - 90;
 				draw_set_color(c_white)

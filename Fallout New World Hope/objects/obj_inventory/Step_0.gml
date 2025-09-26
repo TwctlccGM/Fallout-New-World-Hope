@@ -39,19 +39,13 @@ if (cursor.active)
 			// Confirm action
 			if (_key_confirm)
 			{
-				obj_inventory.use_stimpak(target_index);
-				//obj_inventory.stimpak_selected = false;
+				use_item(ITEM_STIMPAK, target_index);
 			}
 		
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
 			{
 				obj_inventory.stimpak_selected = false;
-				
-				/// TO-DO:
-				// Add some visual feedback for when the stimpak item is deselected
-				//target_side = global.item_array;
-				//target_index = array_find_index(global.item_array);
 			}
 		}
 		
@@ -72,26 +66,20 @@ if (cursor.active)
 			// Confirm action
 			if (_key_confirm)
 			{
-				obj_inventory.use_doctorsbag(target_index);
-				//obj_inventory.stimpak_selected = false;
+				use_item(ITEM_DOCTORSBAG, target_index);
 			}
 		
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
 			{
 				obj_inventory.doctorsbag_selected = false;
-				
-				/// TO-DO:
-				// Add some visual feedback for when the stimpak item is deselected
-				//target_side = global.item_array;
-				//target_index = array_find_index(global.item_array);
 			}
 		}
 		else
 		{
-			if (array_length(global.item_array) <= 0) { _move_h = -1; } // Stops error when trying to swap to empty item array
+			if (array_length(global.inventory_array) <= 0) { _move_h = -1; } // Stops error when trying to swap to empty item array
 			if (_move_h == -1) target_side = obj_inventory.party;
-			if (_move_h == 1) target_side = global.item_array;
+			if (_move_h == 1) target_side = global.inventory_array;
 		
 			// Move between targets
 			//if (array_length(global.item_array) == 1 && target_side == global.item_array) { _move_v = 0; } // One item in inventory
@@ -104,13 +92,13 @@ if (cursor.active)
 			if (target_index > (_targets - 1)) target_index = 0;
 		
 			// Identify target
-			if (target_side == global.item_array) { active_target = target_side[target_index]; }
+			if (target_side == global.inventory_array) { active_target = target_side[target_index]; }
 			if (target_side == obj_inventory.party) { active_target = target_side[target_index]; }
 		
 			// Confirm action
 			if (_key_confirm)
 			{
-				if (target_side == global.item_array) // Using an item
+				if (target_side == global.inventory_array) // Using an item
 				{
 					if (target_side[target_index][C_ITEM_TYPE] == ITEM_STIMPAK) // Using a stimpak
 					{

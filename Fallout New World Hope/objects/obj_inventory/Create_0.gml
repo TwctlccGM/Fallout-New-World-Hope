@@ -10,28 +10,6 @@ stimpak_selected = false;
 doctorsbag_selected = false;
 draw_inventory = false;
 
-/// Stimpak function
-function use_stimpak(_target)
-{
-	if (global.item_array[ITEM_STIMPAK][C_ITEM_AMOUNT] > 0)
-	{ 
-		var _heal = 100;
-		battle_change_hp(global.party[_target], _heal, 1, 0); // Heal target
-		global.item_array[ITEM_STIMPAK][C_ITEM_AMOUNT] -= 1; // Remove stim
-	}
-}
-
-/// Doctors Bag function
-function use_doctorsbag(_target)
-{
-	if (global.item_array[ITEM_DOCTORSBAG][C_ITEM_AMOUNT] > 0)
-	{ 
-		var _heal = 100;
-		battle_change_hp(global.party[_target], _heal, 1, 1); // Heal target
-		global.item_array[ITEM_DOCTORSBAG][C_ITEM_AMOUNT] -= 1; // Remove bag
-	}
-}
-
 // Make targeting cursor
 cursor = 
 {
