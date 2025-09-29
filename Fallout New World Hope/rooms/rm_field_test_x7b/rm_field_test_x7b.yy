@@ -30,6 +30,7 @@
     {"name":"inst_32AF7F71","path":"rooms/rm_field_test_x7b/rm_field_test_x7b.yy",},
     {"name":"inst_35A4F8DE","path":"rooms/rm_field_test_x7b/rm_field_test_x7b.yy",},
     {"name":"inst_4A12330A","path":"rooms/rm_field_test_x7b/rm_field_test_x7b.yy",},
+    {"name":"inst_4D040E5D","path":"rooms/rm_field_test_x7b/rm_field_test_x7b.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -59,6 +60,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_65FEA484","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_collision_box","path":"objects/obj_collision_box/obj_collision_box.yy",},"properties":[],"rotation":0.0,"scaleX":0.7622247,"scaleY":0.75000006,"x":124.195595,"y":130.40588,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_32AF7F71","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-32.0,"y":0.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_35A4F8DE","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_manager","path":"objects/obj_manager/obj_manager.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-32.0,"y":-32.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_4D040E5D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_traumaharness","path":"objects/obj_traumaharness/obj_traumaharness.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":48.0,"y":51.000156,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Background","animationFPS":30.0,"animationSpeedType":0,"colour":4294967295,"depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":{"name":"spr_field_boom_town_ph","path":"sprites/spr_field_boom_town_ph/spr_field_boom_town_ph.yy",},"stretch":true,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
