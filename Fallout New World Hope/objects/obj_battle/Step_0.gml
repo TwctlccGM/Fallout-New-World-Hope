@@ -40,7 +40,8 @@ if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) =
 	show_debug_message("Game Saved! " + _string); // Debug message
 	*/
 	
-	for (var i = 0; i < array_length(global.party); i++) // Add party member data to the save array
+	// Save party's stats to the global party array
+	for (var i = 0; i < array_length(global.party); i++)
 	{
 		global.party[i].hp = party_units[i].hp;
 	}

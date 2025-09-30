@@ -47,6 +47,7 @@ global.item_array[position]			=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keyc
 // Action library
 global.action_library =
 {
+	/// Basic attack
 	attack :
 	{
 		name : "Attack",
@@ -67,6 +68,7 @@ global.action_library =
 		}
 	},
 	
+	/// Abilities
 	cleave :
 	{
 		name : "Cleave",
@@ -92,6 +94,7 @@ global.action_library =
 		}
 	},
 	
+	/// Items
 	stimpak :
 	{
 		name : "Stimpak",
@@ -132,6 +135,36 @@ global.action_library =
 		{
 			battle_change_ap(_targets[0], 5, 0) // Update target's AP
 		}
+	},
+	
+	/// Run away
+	flee :
+	{
+		name : "Flee",
+		description : "{0} attacks!",
+		sub_menu_val : -1,
+		ap_cost : 0,
+		is_item : false,
+		target_required : false,
+		target_enemy_by_default : false,
+		target_all : MODE.NEVER,
+		user_animation : "dodge",
+		effect_sprite : spr_hit_ability_ph,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			with (obj_battle) 
+			{
+				for (var i = 0; i < array_length(global.party); i++)
+				{
+					global.party[i].hp = party_units[i].hp;
+				}
+				instance_activate_all();
+				//instance_destroy(creator);
+				//instance_destroy(obj_battle);
+				game_restart();
+			}
+		}
 	}
 }
 
@@ -155,7 +188,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie_down, inventory: spr_vaultie_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.flee]
 	}
 	,
 	{
@@ -168,7 +201,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_down, inventory: spr_lobotomite_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.flee]
 	}
 	,
 	{
@@ -181,7 +214,7 @@ global.party =
 		bet_max: 100,
 		attack_power: 10,
 		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog, inventory: spr_cyberdog_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.flee]
 	}
 ];
 
