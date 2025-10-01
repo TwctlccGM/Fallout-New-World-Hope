@@ -59,7 +59,7 @@ global.action_library =
 		target_enemy_by_default : true,
 		target_all : MODE.NEVER,
 		user_animation : "attack",
-		effect_sprite : spr_hit_ph,
+		effect_sprite : spr_effect_hit_basic,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
@@ -81,7 +81,7 @@ global.action_library =
 		target_enemy_by_default : true, // 0: party/self, 1: enemy
 		target_all : MODE.VARIES,
 		user_animation : "attack",
-		effect_sprite : spr_hit_ability_ph,
+		effect_sprite : spr_effect_hit_ability,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
@@ -108,7 +108,7 @@ global.action_library =
 		target_enemy_by_default : false,
 		target_all : MODE.NEVER,
 		user_animation : "cast",
-		effect_sprite : spr_hit_ability_ph,
+		effect_sprite : spr_effect_restore_HP,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
@@ -130,7 +130,7 @@ global.action_library =
 		target_enemy_by_default : false,
 		target_all : MODE.NEVER,
 		user_animation : "cast",
-		effect_sprite : spr_hit_ability_ph,
+		effect_sprite : spr_effect_restore_AP,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
@@ -150,7 +150,7 @@ global.action_library =
 		target_enemy_by_default : false,
 		target_all : MODE.NEVER,
 		user_animation : "cast",
-		effect_sprite : spr_hit_ability_ph,
+		effect_sprite : spr_effect_damageboost,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
@@ -173,7 +173,7 @@ global.action_library =
 		target_enemy_by_default : false,
 		target_all : MODE.NEVER,
 		user_animation : "dodge",
-		effect_sprite : spr_hit_ability_ph,
+		effect_sprite : spr_none,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
@@ -213,7 +213,7 @@ global.party =
 		attack_value: 10,
 		armour_value: 0,
 		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie_down, inventory: spr_vaultie_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.flee]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew] // global.action_library.flee
 	}
 	,
 	{
@@ -227,12 +227,12 @@ global.party =
 		attack_value: 20,
 		armour_value: 5,
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_down, inventory: spr_lobotomite_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.flee]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew] // global.action_library.flee
 	}
 	,
 	{
 		name: "Cyberdog",
-		hp: 999,
+		hp: 9,
 		hp_max: 999,
 		ap: 10,
 		ap_max: 10,
@@ -241,7 +241,7 @@ global.party =
 		attack_value: 15,
 		armour_value: 5,
 		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog, inventory: spr_cyberdog_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.flee]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew] // global.action_library.flee
 	}
 ];
 

@@ -22,7 +22,7 @@ function battle_change_hp(_target, _amount, _outside_battle = 0, _alive_dead_or_
 	if (_amount > 0) _col = c_lime;
 	if (_failed)
 	{
-		_col = c_white;
+		_col = c_gray;
 		_amount = "Failed";
 	}
 	// _outside_battle:  0 = in battle (default), 1 = outside of battle
@@ -47,10 +47,10 @@ function battle_change_ap(_target, _amount, _passive = 1)
 	if ((_target.ap + _amount) < 0) _failed = true;
 	
 	var _col = c_white;
-	if (_amount > 0) _col = c_lime;
+	if (_amount > 0) _col = c_aqua;
 	if (_failed)
 	{
-		_col = c_white;
+		_col = c_gray;
 		_amount = "Failed";
 	}
 	// _passive: 0 = not passive (e.g. item used), 1 = passive (no text display)

@@ -29,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_hit_ph",
-    "path": "sprites/spr_hit_ph/spr_hit_ph.yy",
+    "name": "spr_none",
+    "path": "sprites/spr_none/spr_none.yy",
   },
   "spriteMaskId": null,
   "visible": true,
