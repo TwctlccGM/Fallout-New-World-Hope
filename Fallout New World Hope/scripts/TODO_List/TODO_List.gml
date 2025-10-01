@@ -10,7 +10,6 @@
 - Ability to add/remove party members in-game.
 - Keys/Keycards to unlock doors.
 - Dialogue system.
-- More items (Battle Brew, Med-X, Keycards)
 - BET system in combat
 
 */

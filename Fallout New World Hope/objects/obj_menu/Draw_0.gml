@@ -39,5 +39,9 @@ for (var i = 0; i < (visible_options_max + _desc); i++)
 draw_sprite(spr_pointer_ph, 0, x + OPTIONS_COLUMN + 11, y + OPTIONS_ROW + 10 + ((hover - _scroll_push) * height_line));
 if (visible_options_max < array_length(options)) && (hover < array_length(options) - 1)
 {
-	draw_sprite(spr_downarrow_ph, 0, x + OPTIONS_COLUMN + 75, y + OPTIONS_ROW + 45);
+	draw_sprite(spr_arrow_down_ph, 0, x + OPTIONS_COLUMN + 75, y + OPTIONS_ROW + 45);
+}
+if (3 < array_length(options)) && (hover >= array_length(options) - 1)
+{
+	draw_sprite(spr_arrow_up_ph, 0, x + OPTIONS_COLUMN + 75, y + OPTIONS_ROW + 45);
 }

@@ -4,8 +4,8 @@ global.pause = false;
 /// Inventory macros
 // Item Definitions
 #macro ITEM_STIMPAK 0
-#macro ITEM_NUKA_COLA 1
-#macro ITEM_DOCTORSBAG 2
+#macro ITEM_DOCTORSBAG 1
+#macro ITEM_NUKA_COLA 2
 #macro ITEM_MEDX 3
 #macro ITEM_BATTLEBREW 4
 #macro ITEM_KEYCARD 5
@@ -23,8 +23,8 @@ global.item_array = array_create(6);
 
 //										Name				Sprite					Inventory Sprite			Amount
 global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		0];
-global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	0];
 global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	0];
+global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	0];
 global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		0];
 global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0];
 global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];
@@ -150,14 +150,31 @@ global.action_library =
 		target_enemy_by_default : false,
 		target_all : MODE.NEVER,
 		user_animation : "cast",
-		effect_sprite : spr_effect_damageboost,
+		effect_sprite : spr_effect_buff_damage,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			// TODO: Replace with a dedicated Battle Brew function later
-			_targets[0].attack_value = _targets[0].attack_value * 1.5;
-			_targets[0].armour_value = _targets[0].armour_value + 5;
-			
+			_targets[0].attack_value = _targets[0].attack_value + 10;
+		}
+	},
+	
+	med_x :
+	{
+		name : "Med-X",
+		description : "{0} uses a Med-X!",
+		sub_menu_val : "Items",
+		ap_cost : 0,
+		is_item : true,
+		item_id : ITEM_MEDX,
+		target_required : true,
+		target_enemy_by_default : false,
+		target_all : MODE.NEVER,
+		user_animation : "cast",
+		effect_sprite : spr_effect_buff_armour,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			_targets[0].armour_value = _targets[0].armour_value + 10;
 		}
 	},
 	
@@ -213,7 +230,7 @@ global.party =
 		attack_value: 10,
 		armour_value: 0,
 		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie_down, inventory: spr_vaultie_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew] // global.action_library.flee
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
 	}
 	,
 	{
@@ -227,7 +244,7 @@ global.party =
 		attack_value: 20,
 		armour_value: 5,
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_down, inventory: spr_lobotomite_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew] // global.action_library.flee
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
 	}
 	,
 	{
@@ -241,7 +258,7 @@ global.party =
 		attack_value: 15,
 		armour_value: 5,
 		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog, inventory: spr_cyberdog_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew] // global.action_library.flee
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
 	}
 ];
 
