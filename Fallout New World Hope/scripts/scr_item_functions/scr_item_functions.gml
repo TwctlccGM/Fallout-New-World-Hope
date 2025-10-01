@@ -47,6 +47,10 @@ function use_item(_item, _target)
 				_heal = 100;
 				battle_change_hp(global.party[_target], _heal, 1, 1); // Heal target
 				break;
+			//case (ITEM_BATTLEBREW):
+			//	_target.attack_value = _target.attack_value * 1.5;
+			//	_target.armour_value = _target.armour_value + 5;
+			//	break;
 		}
 		
 		global.item_array[_item][C_ITEM_AMOUNT] -= 1; // Remove item

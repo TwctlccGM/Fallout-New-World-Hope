@@ -63,7 +63,8 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _damage = ceil(_user.attack_power + random_range(-_user.attack_power * 0.25, _user.attack_power * 0.25));
+			var _damage = floor(_user.attack_value - _targets[0].armour_value);
+			if (_damage < 0) { _damage = 0; }; // Cap lowest damage at '0', otherwise it'll heal the ene
 			battle_change_hp(_targets[0], -_damage, 0);
 		}
 	},
@@ -84,11 +85,11 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			for (var _i = 0; _i < array_length(_targets); _i++)	// Hit all enemies
+			for (var i = 0; i < array_length(_targets); i++)	// Hit all enemies
 			{
-				var _damage = irandom_range(15,20);	// Calculate damage
-				if (array_length(_targets) > 1) _damage = ceil(_damage * 0.75);	// Reduce damage if hitting multiple enemies
-				battle_change_hp(_targets[_i], -_damage); // Inflict damage
+				var _damage = floor((_user.attack_value * 1.5) - _targets[i].armour_value);	// Calculate damage
+				if (_damage < 0) { _damage = 0; }; // Cap lowest damage at '0', otherwise it'll heal the ene
+				battle_change_hp(_targets[i], -_damage); // Inflict damage
 			}
 			battle_change_ap(_user, -ap_cost) // Update caster's AP
 		}
@@ -111,7 +112,7 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _heal = 100;
+			var _heal = 50;
 			battle_change_hp(_targets[0], _heal, 0); // Heal target
 			battle_change_ap(_user, -ap_cost) // Update caster's AP
 		}
@@ -122,7 +123,7 @@ global.action_library =
 		name : "Nuka Cola",
 		description : "{0} uses a Nuka Cola!",
 		sub_menu_val : "Items",
-		ap_cost : 1,
+		ap_cost : 0,
 		is_item : true,
 		item_id : ITEM_NUKA_COLA,
 		target_required : true,
@@ -134,6 +135,29 @@ global.action_library =
 		func : function(_user, _targets)
 		{
 			battle_change_ap(_targets[0], 5, 0) // Update target's AP
+		}
+	},
+	
+	battle_brew :
+	{
+		name : "Battle Brew",
+		description : "{0} uses a Battle Brew!",
+		sub_menu_val : "Items",
+		ap_cost : 0,
+		is_item : true,
+		item_id : ITEM_BATTLEBREW,
+		target_required : true,
+		target_enemy_by_default : false,
+		target_all : MODE.NEVER,
+		user_animation : "cast",
+		effect_sprite : spr_hit_ability_ph,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			// TODO: Replace with a dedicated Battle Brew function later
+			_targets[0].attack_value = _targets[0].attack_value * 1.5;
+			_targets[0].armour_value = _targets[0].armour_value + 5;
+			
 		}
 	},
 	
@@ -186,9 +210,10 @@ global.party =
 		ap_max: 10,
 		bet: 100,
 		bet_max: 100,
-		attack_power: 10,
+		attack_value: 10,
+		armour_value: 0,
 		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie_down, inventory: spr_vaultie_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.flee]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.flee]
 	}
 	,
 	{
@@ -199,9 +224,10 @@ global.party =
 		ap_max: 10,
 		bet: 100,
 		bet_max: 100,
-		attack_power: 10,
+		attack_value: 20,
+		armour_value: 5,
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_down, inventory: spr_lobotomite_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.flee]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.flee]
 	}
 	,
 	{
@@ -212,9 +238,10 @@ global.party =
 		ap_max: 10,
 		bet: 100,
 		bet_max: 100,
-		attack_power: 10,
+		attack_value: 15,
+		armour_value: 5,
 		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog, inventory: spr_cyberdog_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.flee]
+		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.flee]
 	}
 ];
 
@@ -228,7 +255,8 @@ global.enemies =
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
-		attack_power: 10,
+		attack_value: 10,
+		armour_value: 5,
 		sprites: { idle: spr_orderly, attack: spr_orderly},
 		actions: [global.action_library.attack],
 		xp: 100,
@@ -253,7 +281,8 @@ global.enemies =
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
-		attack_power: 10,
+		attack_value: 10,
+		armour_value: 0,
 		sprites: { idle: spr_cyberdog_enemy, attack: spr_cyberdog_enemy},
 		actions: [global.action_library.attack],
 		xp: 100,
@@ -278,7 +307,8 @@ global.enemies =
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
-		attack_power: 10,
+		attack_value: 20,
+		armour_value: 5,
 		sprites: { idle: spr_turret_ceiling, attack: spr_turret_ceiling},
 		actions: [global.action_library.attack],
 		xp: 100,
@@ -303,7 +333,8 @@ global.enemies =
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
-		attack_power: 10,
+		attack_value: 10,
+		armour_value: 5,
 		sprites: { idle: spr_traumaharness, attack: spr_traumaharness},
 		actions: [global.action_library.attack],
 		xp: 100,
