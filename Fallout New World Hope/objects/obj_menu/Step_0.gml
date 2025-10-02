@@ -9,6 +9,7 @@ if (active)
 	/// Array system
 	// Execute selected option
 	if (keyboard_check_pressed(ord("Z")))
+	//if (keyboard_check_pressed(vk_right))
 	{
 		if (array_length(options[hover]) > 1) && (options[hover][3] == true)
 		{
@@ -21,6 +22,7 @@ if (active)
 	}
 	
 	if (keyboard_check_pressed(ord("X")))
+	//if (keyboard_check_pressed(vk_left))
 	{
 		if (sub_menu_level > 0) menu_go_back();
 	}

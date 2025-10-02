@@ -28,8 +28,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_orderly",
-    "path": "sprites/spr_orderly/spr_orderly.yy",
+    "name": "spr_orderly_field",
+    "path": "sprites/spr_orderly_field/spr_orderly_field.yy",
   },
   "spriteMaskId": null,
   "visible": true,

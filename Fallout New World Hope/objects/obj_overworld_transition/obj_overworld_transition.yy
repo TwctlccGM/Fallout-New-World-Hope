@@ -4,6 +4,7 @@
   "name": "obj_overworld_transition",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_player_field","path":"objects/obj_player_field/obj_player_field.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -28,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_textbox_ph",
-    "path": "sprites/spr_textbox_ph/spr_textbox_ph.yy",
+    "name": "spr_textbox_orange",
+    "path": "sprites/spr_textbox_orange/spr_textbox_orange.yy",
   },
   "spriteMaskId": null,
   "visible": true,

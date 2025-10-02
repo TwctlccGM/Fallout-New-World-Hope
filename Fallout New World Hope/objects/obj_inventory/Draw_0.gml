@@ -52,7 +52,7 @@ if (draw_inventory == true)
 	/// Draw inventory tab
 	_yy = obj_camera.y - 90;
 	
-	draw_sprite_stretched(spr_textbox_ph, 0, _items_xx, _yy, 160, 180);
+	draw_sprite_stretched(global.ui_textbox, 0, _items_xx, _yy, 160, 180);
 	draw_set_font(fnt_fixedsys);
 	draw_text(_items_xx + 5, _yy + 5, "ITEMS");
 	for(var _pos = 0; _pos < array_length(global.inventory_array); _pos++)
@@ -69,7 +69,7 @@ if (draw_inventory == true)
 	/// Draw party info tab
 	_yy = obj_camera.y - 90;
 	
-	draw_sprite_stretched(spr_textbox_ph, 0, _party_xx, _yy, 160, 180);
+	draw_sprite_stretched(global.ui_textbox, 0, _party_xx, _yy, 160, 180);
 	draw_set_font(fnt_fixedsys);
 	draw_text(_party_xx + 5, _yy + 5, "PARTY");
 	for(var _pos = 0; _pos < array_length(global.party); _pos++)
@@ -96,7 +96,7 @@ if (cursor.active)
 			_yy = obj_camera.y - 90;
 			draw_set_color(c_white)
 			draw_rectangle(_items_xx + 10, _yy + (target_index * 25) + 30, _items_xx + 52, _yy + (target_index * 25) + 50, true)
-			draw_sprite(spr_pointer_ph, 0, _items_xx + _x_offset, _yy + (target_index * 25) + _y_offset);
+			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (target_index * 25) + _y_offset);
 		}
 		
 		if (target_side = obj_inventory.party)
@@ -104,21 +104,21 @@ if (cursor.active)
 			_yy = obj_camera.y - 90;
 			draw_set_color(c_white)
 			draw_rectangle(_party_xx + 10, _yy + (target_index * 50) + 25, _party_xx + 150, _yy + (target_index * 50) + 65, true)
-			draw_sprite(spr_pointer_ph, 0, _party_xx + _x_offset, _yy + (target_index * 50) + _y_offset);
+			draw_sprite(global.ui_pointer, 0, _party_xx + _x_offset, _yy + (target_index * 50) + _y_offset);
 		}
 		
 		if (obj_inventory.stimpak_selected)
 		{
 			_yy = obj_camera.y - 90;
 			draw_set_color(c_white)
-			draw_sprite(spr_pointer_ph, 0, _items_xx + _x_offset, stored_target_index * 25 + _y_offset);
+			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, stored_target_index * 25 + _y_offset);
 		}
 		
 		if (obj_inventory.doctorsbag_selected)
 		{
 			_yy = obj_camera.y - 90;
 			draw_set_color(c_white)
-			draw_sprite(spr_pointer_ph, 0, _items_xx + _x_offset, stored_target_index * 25 + _y_offset);
+			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, stored_target_index * 25 + _y_offset);
 		}
 	}
 }

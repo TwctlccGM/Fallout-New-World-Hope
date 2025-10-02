@@ -9,7 +9,7 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
 // Draw menu box
-draw_sprite_stretched(spr_textbox_ph, 0, x + OPTIONS_COLUMN - 6, y + OPTIONS_ROW, 95, 56);
+draw_sprite_stretched(global.ui_textbox, 0, x + OPTIONS_COLUMN, y + OPTIONS_ROW, 102, 56);
 
 var _desc = (description != -1);
 var _scroll_push = max(0, hover - (visible_options_max - 1));
@@ -36,12 +36,22 @@ for (var i = 0; i < (visible_options_max + _desc); i++)
 	}
 }
 
-draw_sprite(spr_pointer_ph, 0, x + OPTIONS_COLUMN + 11, y + OPTIONS_ROW + 10 + ((hover - _scroll_push) * height_line));
+// Draw pointer and optional up/down/left/right arrows
+draw_sprite(global.ui_pointer, 0, x + OPTIONS_COLUMN + 11, y + OPTIONS_ROW + 10 + ((hover - _scroll_push) * height_line));
+
+if (3 < array_length(options)) && (hover >= visible_options_max)
+{
+	draw_sprite(global.ui_arrow_up, 0, x + OPTIONS_COLUMN + 45, y + OPTIONS_ROW + 43);
+}
 if (visible_options_max < array_length(options)) && (hover < array_length(options) - 1)
 {
-	draw_sprite(spr_arrow_down_ph, 0, x + OPTIONS_COLUMN + 75, y + OPTIONS_ROW + 45);
+	draw_sprite(global.ui_arrow_down, 0, x + OPTIONS_COLUMN + 45, y + OPTIONS_ROW + 47);
 }
-if (3 < array_length(options)) && (hover >= array_length(options) - 1)
+if (sub_menu_level > 0)
 {
-	draw_sprite(spr_arrow_up_ph, 0, x + OPTIONS_COLUMN + 75, y + OPTIONS_ROW + 45);
+	draw_sprite(global.ui_arrow_left, 0, x + OPTIONS_COLUMN + 6, y + OPTIONS_ROW + 44);	
+}
+if (sub_menu_level <= 0 && (hover != 0))
+{
+	draw_sprite(global.ui_arrow_right, 0, x + OPTIONS_COLUMN + 93, y + OPTIONS_ROW + 44);	
 }

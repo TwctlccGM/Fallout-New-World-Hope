@@ -44,7 +44,7 @@ global.item_array[position]			=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keyc
 
 /// Action library
 // Rules:
-// 1: Attack names can only be 11 characters long (otherwise it doesn't fit into the box)
+// 1: Attack names can only be 13 characters long (otherwise it doesn't fit into the box)
 global.action_library =
 {
 	/// Basic attack
@@ -70,9 +70,9 @@ global.action_library =
 	},
 	
 	/// Abilities
-	aimed_shot :
+	targeted_shot :
 	{
-		name : "Aimed Shot",
+		name : "Targeted Shot",
 		description : "{0} finds a weak point!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -298,7 +298,19 @@ global.party =
 		attack_value: 10,
 		armour_value: 0,
 		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie_down, inventory: spr_vaultie_white },
-		actions: [global.action_library.attack, global.action_library.aimed_shot, global.action_library.stimpak, global.action_library.doctors_bag, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
+		actions: [
+		// Basic attack
+		global.action_library.attack, 
+		// Abilities
+		global.action_library.targeted_shot, 
+		// Items
+		global.action_library.stimpak, 
+		global.action_library.doctors_bag, 
+		global.action_library.nuka_cola, 
+		global.action_library.battle_brew, 
+		global.action_library.med_x
+		// global.action_library.flee
+		]
 	}
 	,
 	{
@@ -312,7 +324,19 @@ global.party =
 		attack_value: 20,
 		armour_value: 5,
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_down, inventory: spr_lobotomite_white },
-		actions: [global.action_library.attack, global.action_library.axe_cleave, global.action_library.stimpak, global.action_library.doctors_bag, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
+		actions: [
+		// Basic attack
+		global.action_library.attack, 
+		// Abilities
+		global.action_library.axe_cleave, 
+		// Items
+		global.action_library.stimpak, 
+		global.action_library.doctors_bag, 
+		global.action_library.nuka_cola, 
+		global.action_library.battle_brew, 
+		global.action_library.med_x
+		// global.action_library.flee
+		]
 	}
 	,
 	{
@@ -325,8 +349,20 @@ global.party =
 		bet_max: 100,
 		attack_value: 15,
 		armour_value: 5,
-		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog, inventory: spr_cyberdog_white },
-		actions: [global.action_library.attack, global.action_library.sonic_bark, global.action_library.stimpak, global.action_library.doctors_bag, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
+		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog_down, inventory: spr_cyberdog_white },
+		actions: [
+		// Basic attack
+		global.action_library.attack, 
+		// Abilities
+		global.action_library.sonic_bark, 
+		// Items
+		global.action_library.stimpak, 
+		global.action_library.doctors_bag, 
+		global.action_library.nuka_cola, 
+		global.action_library.battle_brew, 
+		global.action_library.med_x
+		// global.action_library.flee
+		]
 	}
 ];
 
@@ -437,3 +473,12 @@ global.enemies =
 		}
 	}
 }
+
+/// UI Colour
+/// TODO: Could probably remake this system using a shader instead, but this'll work for now
+global.ui_textbox		=	spr_textbox_orange;
+global.ui_pointer		=	spr_pointer_orange;
+global.ui_arrow_up		=	spr_arrow_up_orange;
+global.ui_arrow_down	=	spr_arrow_down_orange;
+global.ui_arrow_left	=	spr_arrow_left_orange;
+global.ui_arrow_right	=	spr_arrow_right_orange;

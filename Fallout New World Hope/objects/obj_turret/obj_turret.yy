@@ -28,8 +28,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_turret_ceiling",
-    "path": "sprites/spr_turret_ceiling/spr_turret_ceiling.yy",
+    "name": "spr_turret_ceiling_field",
+    "path": "sprites/spr_turret_ceiling_field/spr_turret_ceiling_field.yy",
   },
   "spriteMaskId": null,
   "visible": true,
