@@ -22,20 +22,19 @@ global.pause = false;
 global.item_array = array_create(6);
 
 //										Name				Sprite					Inventory Sprite			Amount
-global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		0];
-global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	0];
-global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	0];
-global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		0];
-global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0];
-global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];
+global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5];
+global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5];
+global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5];
+global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5];
+global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5];
+global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		5];
 
 // Inventory display
 global.inventory_array = array_create(0);
 // The inventory array uses the item's 'position' (where it visually appears in the menu) as its first index.
 // This makes it easier to change how its displayed, but harder to manipulate the values.
 // Representation below.
-
-/*										Item Name			Item Sprite				Item Inventory Sprite		Item Amount
+/*										Name				Sprite					Inventory Sprite			Amount
 global.item_array[position]			=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		0];
 global.item_array[position]			=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	0];
 global.item_array[position]			=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	0];
@@ -43,8 +42,9 @@ global.item_array[position]			=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_whi
 global.item_array[position]			=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0];
 global.item_array[position]			=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];*/
 
-// Credit to Sara Spalding's video: https://www.youtube.com/watch?v=Sp623fof_Ck&list=PLPRT_JORnIurSiSB5r7UQAdzoEv-HF24L
-// Action library
+/// Action library
+// Rules:
+// 1: Attack names can only be 11 characters long (otherwise it doesn't fit into the box)
 global.action_library =
 {
 	/// Basic attack
@@ -63,35 +63,84 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _damage = floor(_user.attack_value - _targets[0].armour_value);
-			if (_damage < 0) { _damage = 0; }; // Cap lowest damage at '0', otherwise it'll heal the ene
-			battle_change_hp(_targets[0], -_damage, 0);
+			var _damage = floor(_user.attack_value - _targets[0].armour_value);		// Calculate damage
+			if (_damage <= 0) { _damage = 1; };										// Cap lowest damage at '1'
+			battle_change_hp(_targets[0], -_damage, 0);								// Inflict damage
 		}
 	},
 	
 	/// Abilities
-	cleave :
+	aimed_shot :
 	{
-		name : "Cleave",
-		description : "{0} hits all enemies!",
+		name : "Aimed Shot",
+		description : "{0} finds a weak point!",
 		sub_menu_val : "Abilities",
-		ap_cost : 3,
+		ap_cost : 5,
 		is_item : false,
 		target_required : true,
-		target_enemy_by_default : true, // 0: party/self, 1: enemy
+		target_enemy_by_default : true,
+		target_all : MODE.NEVER,
+		user_animation : "attack",
+		effect_sprite : spr_effect_debuff_blue_anim,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			var _damage = floor(_user.attack_value * 2);				// Calculate damage
+			if (_damage <= 0) { _damage = 1; };							// Cap lowest damage at '1'
+			battle_change_hp(_targets[0], -_damage);					// Inflict damage
+			_targets[0].armour_value = _targets[0].armour_value - 5;	// Reduce target's armour value
+			battle_change_ap(_user, -ap_cost)							// Update user's AP
+		}
+	},
+	
+	axe_cleave :
+	{
+		name : "Axe Cleave",
+		description : "{0} hits all enemies!",
+		sub_menu_val : "Abilities",
+		ap_cost : 5,
+		is_item : false,
+		target_required : true,
+		target_enemy_by_default : true,
 		target_all : MODE.VARIES,
 		user_animation : "attack",
 		effect_sprite : spr_effect_hit_ability,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			for (var i = 0; i < array_length(_targets); i++)	// Hit all enemies
+			for (var i = 0; i < array_length(_targets); i++)								// Hit all enemies
 			{
 				var _damage = floor((_user.attack_value * 1.5) - _targets[i].armour_value);	// Calculate damage
-				if (_damage < 0) { _damage = 0; }; // Cap lowest damage at '0', otherwise it'll heal the ene
-				battle_change_hp(_targets[i], -_damage); // Inflict damage
+				if (_damage <= 0) { _damage = 1; };											// Cap lowest damage at '1'
+				battle_change_hp(_targets[i], -_damage);									// Inflict damage
 			}
-			battle_change_ap(_user, -ap_cost) // Update caster's AP
+			battle_change_ap(_user, -ap_cost)												// Update user's AP
+		}
+	},
+	
+	sonic_bark :
+	{
+		name : "Sonic Bark",
+		description : "{0} weakens all enemies!",
+		sub_menu_val : "Abilities",
+		ap_cost : 5,
+		is_item : false,
+		target_required : true,
+		target_enemy_by_default : true,
+		target_all : MODE.VARIES,
+		user_animation : "attack",
+		effect_sprite : spr_effect_debuff_red_anim,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			for (var i = 0; i < array_length(_targets); i++)								// Hit all enemies
+			{
+				var _damage = floor((_user.attack_value * 0.5) - _targets[i].armour_value);	// Calculate damage
+				if (_damage <= 0) { _damage = 1; };											// Cap lowest damage at '1'
+				battle_change_hp(_targets[i], -_damage);									// Inflict damage
+				_targets[i].attack_value = _targets[i].attack_value - 5;					// Reduce target's attack value
+			}
+			battle_change_ap(_user, -ap_cost)												// Update caster's AP
 		}
 	},
 	
@@ -113,8 +162,28 @@ global.action_library =
 		func : function(_user, _targets)
 		{
 			var _heal = 50;
-			battle_change_hp(_targets[0], _heal, 0); // Heal target
-			battle_change_ap(_user, -ap_cost) // Update caster's AP
+			battle_change_hp(_targets[0], _heal, 0, 0);		// Heal target
+		}
+	},
+	
+	doctors_bag :
+	{
+		name : "Doc Bag",
+		description : "{0} uses a Doc Bag!",
+		sub_menu_val : "Items",
+		ap_cost : 0,
+		is_item : true,
+		item_id : ITEM_DOCTORSBAG,
+		target_required : true,
+		target_enemy_by_default : false,
+		target_all : MODE.NEVER,
+		user_animation : "cast",
+		effect_sprite : spr_effect_restore_HP,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			var _heal = 100;
+			battle_change_hp(_targets[0], _heal, 0, 1);		// Resurrect target
 		}
 	},
 	
@@ -134,7 +203,7 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			battle_change_ap(_targets[0], 5, 0) // Update target's AP
+			battle_change_ap(_targets[0], 5, 0);	// Refill target's AP
 		}
 	},
 	
@@ -154,7 +223,7 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			_targets[0].attack_value = _targets[0].attack_value + 10;
+			_targets[0].attack_value = _targets[0].attack_value + 10;	// Increase target's attack value
 		}
 	},
 	
@@ -174,7 +243,7 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			_targets[0].armour_value = _targets[0].armour_value + 10;
+			_targets[0].armour_value = _targets[0].armour_value + 10;	// Increase target's armour value
 		}
 	},
 	
@@ -182,7 +251,7 @@ global.action_library =
 	flee :
 	{
 		name : "Flee",
-		description : "{0} attacks!",
+		description : "{0} flees!",
 		sub_menu_val : -1,
 		ap_cost : 0,
 		is_item : false,
@@ -194,6 +263,7 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
+			/// This function restarts the game to end the battle. TODO: Make this better.
 			with (obj_battle) 
 			{
 				for (var i = 0; i < array_length(global.party); i++)
@@ -201,8 +271,6 @@ global.action_library =
 					global.party[i].hp = party_units[i].hp;
 				}
 				instance_activate_all();
-				//instance_destroy(creator);
-				//instance_destroy(obj_battle);
 				game_restart();
 			}
 		}
@@ -230,7 +298,7 @@ global.party =
 		attack_value: 10,
 		armour_value: 0,
 		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie_down, inventory: spr_vaultie_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
+		actions: [global.action_library.attack, global.action_library.aimed_shot, global.action_library.stimpak, global.action_library.doctors_bag, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
 	}
 	,
 	{
@@ -244,13 +312,13 @@ global.party =
 		attack_value: 20,
 		armour_value: 5,
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_down, inventory: spr_lobotomite_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
+		actions: [global.action_library.attack, global.action_library.axe_cleave, global.action_library.stimpak, global.action_library.doctors_bag, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
 	}
 	,
 	{
 		name: "Cyberdog",
-		hp: 9,
-		hp_max: 999,
+		hp: 0,
+		hp_max: 108,
 		ap: 10,
 		ap_max: 10,
 		bet: 100,
@@ -258,7 +326,7 @@ global.party =
 		attack_value: 15,
 		armour_value: 5,
 		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog, inventory: spr_cyberdog_white },
-		actions: [global.action_library.attack, global.action_library.cleave, global.action_library.stimpak, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
+		actions: [global.action_library.attack, global.action_library.sonic_bark, global.action_library.stimpak, global.action_library.doctors_bag, global.action_library.nuka_cola, global.action_library.battle_brew, global.action_library.med_x] // global.action_library.flee
 	}
 ];
 
@@ -268,7 +336,7 @@ global.enemies =
 	orderly_mk1:
 	{
 		name: "Orderly",
-		hp: 30,
+		hp: 50,
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
