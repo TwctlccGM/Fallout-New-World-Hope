@@ -55,6 +55,7 @@
     {"name":"inst_7A850514","path":"rooms/rm_field_test_y17/rm_field_test_y17.yy",},
     {"name":"inst_2A26603F","path":"rooms/rm_field_test_y17/rm_field_test_y17.yy",},
     {"name":"inst_7F780084","path":"rooms/rm_field_test_y17/rm_field_test_y17.yy",},
+    {"name":"inst_F168B56","path":"rooms/rm_field_test_y17/rm_field_test_y17.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -111,6 +112,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_7A850514","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_pickup_medx","path":"objects/obj_pickup_medx/obj_pickup_medx.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":112.0,"y":48.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_2A26603F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_pickup_medx","path":"objects/obj_pickup_medx/obj_pickup_medx.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":128.0,"y":48.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_7F780084","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_pickup_medx","path":"objects/obj_pickup_medx/obj_pickup_medx.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":144.0,"y":48.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_F168B56","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_cyberdog_field","path":"objects/obj_cyberdog_field/obj_cyberdog_field.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":192.0,"y":64.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRAssetLayer","resourceVersion":"1.0","name":"Assets_1","assets":[
         {"resourceType":"GMRSpriteGraphic","resourceVersion":"1.0","name":"graphic_3DCE9BEA","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"spr_lobotomite","path":"sprites/spr_lobotomite/spr_lobotomite.yy",},"x":-64.0,"y":32.0,},

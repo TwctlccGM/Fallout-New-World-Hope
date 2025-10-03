@@ -1,4 +1,48 @@
 /// @description
+// Toggle inventory
+if (keyboard_check_pressed(vk_tab))
+{
+	if (draw_inventory == true) // Deactivate inventory
+	{ 
+		stimpak_selected = false;
+		doctorsbag_selected = false;
+		draw_inventory = false; 
+		cursor.active =  false;
+		global.pause = false; 
+	}
+	else if (draw_inventory == false) // Activate inventory
+	{ 
+		party = [];
+		// Make party
+		for (var i = 0; i < array_length(global.party); i++)
+		{
+			// TO-DO: Replace magic numbers here
+			party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), depth + 10, obj_battle_units_player, global.party[i]);
+			array_push(party, party_units[i]);
+		}
+
+		stimpak_selected = false;
+		doctorsbag_selected = false;
+		draw_inventory = true; 
+		cursor.active =  true;
+		global.pause = true; 
+		
+		array_delete(global.inventory_array, 0, array_length(global.inventory_array));
+		var _i = 0;
+		for(var _pos = 0; _pos < array_length(global.item_array); _pos++)
+	    {
+			if (global.item_array[_pos][C_ITEM_AMOUNT] > 0)
+	        {
+				global.inventory_array[_i][C_ITEM_TYPE]				= global.item_array[_pos][C_ITEM_TYPE];
+				global.inventory_array[_i][C_ITEM_INVENTORY_SPRITE] = global.item_array[_pos][C_ITEM_INVENTORY_SPRITE];
+				global.inventory_array[_i][C_ITEM_AMOUNT]			= global.item_array[_pos][C_ITEM_AMOUNT];
+				_i++;
+	        }
+			// _yy += 25;
+		}
+	}
+}
+
 // Cursor control
 if (cursor.active)
 {

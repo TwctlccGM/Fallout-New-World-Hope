@@ -133,14 +133,14 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			for (var i = 0; i < array_length(_targets); i++)								// Hit all enemies
+			for (var i = 0; i < array_length(_targets); i++)				// Hit all enemies
 			{
-				var _damage = floor((_user.attack_value * 0.5) - _targets[i].armour_value);	// Calculate damage
-				if (_damage <= 0) { _damage = 1; };											// Cap lowest damage at '1'
-				battle_change_hp(_targets[i], -_damage);									// Inflict damage
-				_targets[i].attack_value = _targets[i].attack_value - 5;					// Reduce target's attack value
+				var _damage = floor((_user.attack_value * 0.5));			// Calculate damage
+				if (_damage <= 0) { _damage = 1; };							// Cap lowest damage at '1'
+				battle_change_hp(_targets[i], -_damage);					// Inflict damage
+				_targets[i].attack_value = _targets[i].attack_value - 5;	// Reduce target's attack value
 			}
-			battle_change_ap(_user, -ap_cost)												// Update caster's AP
+			battle_change_ap(_user, -ap_cost)								// Update caster's AP
 		}
 	},
 	
@@ -284,8 +284,9 @@ enum MODE
 	VARIES = 2,
 }
 
-// Party data
-global.party =
+/// Party data
+// 'party_data' is all of the possible party members data
+global.party_data =
 [
 	{
 		name: "Vaultie",
@@ -365,6 +366,13 @@ global.party =
 		]
 	}
 ];
+
+#macro PARTY_VAULTIE 0
+#macro PARTY_LOBOTOMITE 1
+#macro PARTY_CYBERDOG 2
+
+// 'party' is the current player party
+global.party = [global.party_data[0], global.party_data[1]];
 
 // Enemy data
 global.enemies =

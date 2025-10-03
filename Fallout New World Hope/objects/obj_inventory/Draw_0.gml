@@ -12,40 +12,6 @@ var _items_xx = obj_camera.x;
 var _party_xx = obj_camera.x - 160;
 var _yy = obj_camera.y - 90;
 
-if (keyboard_check_pressed(vk_tab)) // Toggle inventory
-{
-	if (draw_inventory == true) // Deactivate inventory
-	{ 
-		stimpak_selected = false;
-		doctorsbag_selected = false;
-		draw_inventory = false; 
-		cursor.active =  false;
-		global.pause = false; 
-	}
-	else if (draw_inventory == false) // Activate inventory
-	{ 
-		stimpak_selected = false;
-		doctorsbag_selected = false;
-		draw_inventory = true; 
-		cursor.active =  true;
-		global.pause = true; 
-		
-		array_delete(global.inventory_array, 0, array_length(global.inventory_array));
-		var _i = 0;
-		for(var _pos = 0; _pos < array_length(global.item_array); _pos++)
-	    {
-			if (global.item_array[_pos][C_ITEM_AMOUNT] > 0)
-	        {
-				global.inventory_array[_i][C_ITEM_TYPE]				= global.item_array[_pos][C_ITEM_TYPE];
-				global.inventory_array[_i][C_ITEM_INVENTORY_SPRITE] = global.item_array[_pos][C_ITEM_INVENTORY_SPRITE];
-				global.inventory_array[_i][C_ITEM_AMOUNT]			= global.item_array[_pos][C_ITEM_AMOUNT];
-				_i++;
-	        }
-			// _yy += 25;
-		}
-	}
-}
-
 // Draw the inventory
 if (draw_inventory == true) 
 { 

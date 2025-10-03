@@ -23,12 +23,3 @@ cursor =
 	confirm_delay: 0,
 	active: false
 };
-
-party = [];
-// Make party
-for (var i = 0; i < array_length(global.party); i++)
-{
-	// TO-DO: Replace magic numbers here
-	party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), depth + 10, obj_battle_units_player, global.party[i]);
-	array_push(party, party_units[i]);
-}
