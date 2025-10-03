@@ -129,7 +129,7 @@
     {"name":"spr_effect_debuff_blue","order":8,"path":"sprites/spr_effect_debuff_blue/spr_effect_debuff_blue.yy",},
     {"name":"spr_lobotomite_white","order":3,"path":"sprites/spr_lobotomite_white/spr_lobotomite_white.yy",},
     {"name":"spr_pointer_green","order":2,"path":"sprites/spr_pointer_green/spr_pointer_green.yy",},
-    {"name":"TODO_List","order":4,"path":"scripts/TODO_List/TODO_List.yy",},
+    {"name":"NOTES","order":4,"path":"scripts/NOTES/NOTES.yy",},
     {"name":"obj_pickup_medx","order":4,"path":"objects/obj_pickup_medx/obj_pickup_medx.yy",},
     {"name":"rm_field_test_x7b","order":1,"path":"rooms/rm_field_test_x7b/rm_field_test_x7b.yy",},
   ],

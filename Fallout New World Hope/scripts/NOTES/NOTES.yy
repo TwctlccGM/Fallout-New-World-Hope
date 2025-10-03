@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "TODO_List",
+  "name": "NOTES",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

@@ -9,7 +9,12 @@ if (place_meeting(x, y, obj_player_field))
 		{
 			if (door == other.interactable)
 			{
-				instance_destroy(self); // Door opens
+				if (global.item_array[ITEM_KEYCARD][C_ITEM_AMOUNT] > 0)
+				{
+					global.item_array[ITEM_KEYCARD][C_ITEM_AMOUNT] -= 1;
+					instance_destroy(self); // Door opens
+				}
+				// No key, door doesn't open
 			}
 		}
 	}

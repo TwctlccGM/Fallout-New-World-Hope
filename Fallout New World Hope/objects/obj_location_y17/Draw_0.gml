@@ -8,7 +8,7 @@ draw_text(x - 15, y - 20, "Y-17");	// Text
 
 if (place_meeting(x, y, obj_player_overworld))
 {
-	draw_sprite_stretched(spr_textbox_ph, 0, x - 40, y + 15, 80, 30);
+	draw_sprite_stretched(global.ui_textbox, 0, x - 40, y + 15, 80, 30);
 	draw_text(x - 35, y + 20, "Press 'Z'");	// Text
 }
 
