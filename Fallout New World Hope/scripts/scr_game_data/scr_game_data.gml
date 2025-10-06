@@ -54,6 +54,7 @@ global.action_library =
 		description : "{0} attacks!",
 		sub_menu_val : -1,
 		ap_cost : 0,
+		bet_cost : 0,
 		is_item : false,
 		target_required : true,
 		target_enemy_by_default : true,
@@ -76,6 +77,7 @@ global.action_library =
 		description : "{0} finds a weak point!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
+		bet_cost : 0,
 		is_item : false,
 		target_required : true,
 		target_enemy_by_default : true,
@@ -99,10 +101,11 @@ global.action_library =
 		description : "{0} hits all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
+		bet_cost : 0,
 		is_item : false,
 		target_required : true,
 		target_enemy_by_default : true,
-		target_all : MODE.VARIES,
+		target_all : MODE.ALWAYS,
 		user_animation : "attack",
 		effect_sprite : spr_effect_hit_ability,
 		effect_on_target : MODE.ALWAYS,
@@ -124,10 +127,11 @@ global.action_library =
 		description : "{0} weakens all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
+		bet_cost : 0,
 		is_item : false,
 		target_required : true,
 		target_enemy_by_default : true,
-		target_all : MODE.VARIES,
+		target_all : MODE.ALWAYS,
 		user_animation : "attack",
 		effect_sprite : spr_effect_debuff_red_anim,
 		effect_on_target : MODE.ALWAYS,
@@ -144,13 +148,41 @@ global.action_library =
 		}
 	},
 	
+	/// Bet
+	bottlecap_mine :
+	{
+		name : "Cap Mine   (25)",
+		description : "{0} throws an explosive!",
+		sub_menu_val : "Bet",
+		ap_cost : 0,
+		bet_cost : 25,
+		is_item : false,
+		target_required : true,
+		target_enemy_by_default : true,
+		target_all : MODE.ALWAYS,
+		user_animation : "attack",
+		effect_sprite : spr_effect_hit_ability,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			for (var i = 0; i < array_length(_targets); i++)				// Hit all enemies
+			{
+				var _damage = floor(_user.attack_value * 5);				// Calculate damage
+				if (_damage <= 0) { _damage = 1; };							// Cap lowest damage at '1'
+				battle_change_hp(_targets[i], -_damage);					// Inflict damage
+			}
+			battle_change_bet(_user, -bet_cost)								// Update user's BET
+		}
+	},
+	
 	/// Items
 	stimpak :
 	{
 		name : "Stimpak",
 		description : "{0} uses a Stimpak!",
 		sub_menu_val : "Items",
-		ap_cost : 1,
+		ap_cost : 0,
+		bet_cost : 0,
 		is_item : true,
 		item_id : ITEM_STIMPAK,
 		target_required : true,
@@ -172,6 +204,7 @@ global.action_library =
 		description : "{0} uses a Doc Bag!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
+		bet_cost : 0,
 		is_item : true,
 		item_id : ITEM_DOCTORSBAG,
 		target_required : true,
@@ -193,6 +226,7 @@ global.action_library =
 		description : "{0} uses a Nuka Cola!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
+		bet_cost : 0,
 		is_item : true,
 		item_id : ITEM_NUKA_COLA,
 		target_required : true,
@@ -213,6 +247,7 @@ global.action_library =
 		description : "{0} uses a Battle Brew!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
+		bet_cost : 0,
 		is_item : true,
 		item_id : ITEM_BATTLEBREW,
 		target_required : true,
@@ -233,6 +268,7 @@ global.action_library =
 		description : "{0} uses a Med-X!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
+		bet_cost : 0,
 		is_item : true,
 		item_id : ITEM_MEDX,
 		target_required : true,
@@ -254,6 +290,7 @@ global.action_library =
 		description : "{0} flees!",
 		sub_menu_val : -1,
 		ap_cost : 0,
+		bet_cost : 0,
 		is_item : false,
 		target_required : false,
 		target_enemy_by_default : false,
@@ -304,6 +341,8 @@ global.party_data =
 		global.action_library.attack, 
 		// Abilities
 		global.action_library.targeted_shot, 
+		// Bet
+		global.action_library.bottlecap_mine, 
 		// Items
 		global.action_library.stimpak, 
 		global.action_library.doctors_bag, 
@@ -384,6 +423,8 @@ global.enemies =
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
+		bet: 0,
+		bet_max: 0,
 		attack_value: 10,
 		armour_value: 5,
 		sprites: { idle: spr_orderly, attack: spr_orderly},
@@ -410,6 +451,8 @@ global.enemies =
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
+		bet: 0,
+		bet_max: 0,
 		attack_value: 10,
 		armour_value: 0,
 		sprites: { idle: spr_cyberdog_enemy, attack: spr_cyberdog_enemy},
@@ -436,6 +479,8 @@ global.enemies =
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
+		bet: 0,
+		bet_max: 0,
 		attack_value: 20,
 		armour_value: 5,
 		sprites: { idle: spr_turret_ceiling, attack: spr_turret_ceiling},
@@ -462,6 +507,8 @@ global.enemies =
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
+		bet: 0,
+		bet_max: 0,
 		attack_value: 10,
 		armour_value: 5,
 		sprites: { idle: spr_traumaharness, attack: spr_traumaharness},

@@ -67,3 +67,11 @@ function battle_change_ap(_target, _amount, _passive = 1)
 	}
 	if (!_failed) _target.ap = clamp(_target.ap + _amount, 0, _target.ap_max);
 }
+
+function battle_change_bet(_target, _amount, _passive = 1)
+{
+	var _failed = false;
+	if ((_target.bet + _amount) > _target.bet_max) { _target.bet = _target.bet_max; }
+	if ((_target.bet + _amount) < 0) _failed = true;
+	if (!_failed) _target.bet = clamp(_target.bet + _amount, 0, _target.bet_max);
+}

@@ -44,6 +44,7 @@ if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) =
 	for (var i = 0; i < array_length(global.party); i++)
 	{
 		global.party[i].hp = party_units[i].hp;
+		global.party[i].bet = party_units[i].bet;
 	}
 	
 	// End battle

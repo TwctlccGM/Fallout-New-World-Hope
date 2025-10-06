@@ -87,8 +87,8 @@ for (var i = 0; i < array_length(party_units); i++)
 	draw_set_color(c_white);
 	//if (_char.ap < (_char.ap_max * 0.5)) draw_set_color(c_orange);
 	//if (_char.ap <= 0) draw_set_color(c_red);
-	draw_text(x + COLUMN_BET + 25, y + 132 + (i * 13), "100"); // TO-DO: Replace '100's with BET value when BET system is made
-	draw_healthbar(x + COLUMN_BET, y + 146 + (i * 13), x + COLUMN_BET + 25, y + 146 + (i * 13), _char.bet, c_gray, c_gray, c_red, 0, true, false);
+	draw_text(x + COLUMN_BET + 25, y + 132 + (i * 13), string(_char.bet)); // TO-DO: Replace '100's with BET value when BET system is made
+	draw_healthbar(x + COLUMN_BET, y + 146 + (i * 13), x + COLUMN_BET + 25, y + 146 + (i * 13), (_char.bet / _char.bet_max) * 100, c_gray, c_gray, c_red, 0, true, false);
 	
 	draw_set_color(c_white);
 }

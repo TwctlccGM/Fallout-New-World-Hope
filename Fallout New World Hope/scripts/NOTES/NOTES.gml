@@ -6,7 +6,8 @@
 	- Items not in player's inventory appear in battle (but at least they are greyed out and unusable)
 	- Fix up battle menu a bit (make options appear in order: Attack -> Abilities -> Items -> Flee)
 	- Pointer in inventory menu sometimes goes up too far when selecting an item (idk what triggers this to start happening)
-
+	- Make abilities/bets greyed out and unselectable when not enough AP/BET to use them (atm they are 'failed' in obj_battle Create event)
+	
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT

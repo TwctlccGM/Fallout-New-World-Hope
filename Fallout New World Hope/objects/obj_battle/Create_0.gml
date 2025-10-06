@@ -79,7 +79,6 @@ else
 // Make party
 for (var i = 0; i < array_length(global.party); i++)
 {
-// TO-DO: Replace magic numbers here
 party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), depth - 10, obj_battle_units_player, global.party[i]);
 array_push(units, party_units[i]);
 }
@@ -229,18 +228,21 @@ function begin_action(_user, _action, _targets)
 	
 	if (_user.ap >= _action.ap_cost) && (!action_failed)// Check AP Cost
 	{
-		with (_user)
+		if (_user.bet >= _action.bet_cost) && (!action_failed)// Check BET Cost
 		{
-			acting = true;
-			// Play user animation if it is defined for that action, and that user
-			if (!is_undefined(_action[$ "user_animation"])) && (!is_undefined(_user.sprites[$ _action.user_animation]))
+			with (_user)
 			{
-				sprite_index = sprites[$ _action.user_animation];
-				image_index = 0;
+				acting = true;
+				// Play user animation if it is defined for that action, and that user
+				if (!is_undefined(_action[$ "user_animation"])) && (!is_undefined(_user.sprites[$ _action.user_animation]))
+				{
+					sprite_index = sprites[$ _action.user_animation];
+					image_index = 0;
+				}
 			}
+			battle_text = string_ext(_action.description, [_user.name]);
+			battle_state = battle_state_perform_action;
 		}
-		battle_text = string_ext(_action.description, [_user.name]);
-		battle_state = battle_state_perform_action;
 	}
 	else { action_failed = true; } // Cancel action
 }
