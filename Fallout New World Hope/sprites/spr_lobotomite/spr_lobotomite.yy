@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "Characters",
-    "path": "folders/Sprites/Characters.yy",
+    "name": "Lobotomite",
+    "path": "folders/Sprites/Characters/Lobotomite.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

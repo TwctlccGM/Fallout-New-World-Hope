@@ -27,7 +27,7 @@ global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_
 global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5];
 global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5];
 global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5];
-global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		1];
+global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		5];
 
 // Inventory display
 global.inventory_array = array_create(0);
@@ -335,7 +335,7 @@ global.party_data =
 		bet_max: 100,
 		attack_value: 10,
 		armour_value: 0,
-		sprites: { idle: spr_vaultie, attack: spr_vaultie, dodge: spr_vaultie, down: spr_vaultie_down, inventory: spr_vaultie_white },
+		sprites: { idle: spr_vaultie_battle, attack: spr_vaultie_battle, dodge: spr_vaultie_battle, down: spr_vaultie_downed, inventory: spr_vaultie_white },
 		actions: [
 		// Basic attack
 		global.action_library.attack, 
@@ -363,7 +363,7 @@ global.party_data =
 		bet_max: 100,
 		attack_value: 20,
 		armour_value: 5,
-		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_down, inventory: spr_lobotomite_white },
+		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_downed, inventory: spr_lobotomite_white },
 		actions: [
 		// Basic attack
 		global.action_library.attack, 
@@ -389,7 +389,7 @@ global.party_data =
 		bet_max: 100,
 		attack_value: 15,
 		armour_value: 5,
-		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog_down, inventory: spr_cyberdog_white },
+		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog_downed, inventory: spr_cyberdog_white },
 		actions: [
 		// Basic attack
 		global.action_library.attack, 

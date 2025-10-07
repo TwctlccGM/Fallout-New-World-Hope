@@ -6,6 +6,8 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":82,"eventType":9,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":90,"eventType":9,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -30,9 +32,12 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_vaultie",
-    "path": "sprites/spr_vaultie/spr_vaultie.yy",
+    "name": "spr_vaultie_field_front",
+    "path": "sprites/spr_vaultie_field_front/spr_vaultie_field_front.yy",
   },
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_vaultie_field_front",
+    "path": "sprites/spr_vaultie_field_front/spr_vaultie_field_front.yy",
+  },
   "visible": true,
 }

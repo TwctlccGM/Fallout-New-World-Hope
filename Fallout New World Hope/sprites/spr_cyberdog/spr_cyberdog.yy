@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "Characters",
-    "path": "folders/Sprites/Characters.yy",
+    "name": "Cyberdog",
+    "path": "folders/Sprites/Characters/Cyberdog.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
