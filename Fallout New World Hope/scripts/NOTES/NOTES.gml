@@ -7,6 +7,7 @@
 	- Fix up battle menu a bit (make options appear in order: Attack -> Abilities -> Items -> Flee)
 	- Pointer in inventory menu sometimes goes up too far when selecting an item (idk what triggers this to start happening)
 	- Make abilities/bets greyed out and unselectable when not enough AP/BET to use them (atm they are 'failed' in obj_battle Create event)
+	- INteract box appears in overworld
 	
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -16,6 +17,7 @@
 		Make individual keycards (e.g. X-8 keycard to open X-8 door)
 	- Dialogue system.
 	- BET system in combat.
+	- Make SPECIAL stats influence their respective stuff (e.g. make INT influence item effectiveness)
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)
 		Auto-Stim		(auto heals when below 50% health)

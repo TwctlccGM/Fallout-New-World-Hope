@@ -326,7 +326,17 @@ enum MODE
 global.party_data =
 [
 	{
+		// Name
 		name: "Vaultie",
+		// SPECIAL
+		strength: 3,		// Power of melee attacks
+		perception: 6,		// Power of ranged attacks
+		endurance: 3,		// Additional armour value
+		charisma: 6,		// BET rate (and OOC bartering)
+		intelligence: 7,	// Item effectiveness
+		agility: 6,			// Turn order and AP rate per turn
+		luck: 9,			// Crit rate
+		// Stats
 		hp: 108,
 		hp_max: 108,
 		ap: 10,
@@ -335,7 +345,15 @@ global.party_data =
 		bet_max: 100,
 		attack_value: 10,
 		armour_value: 0,
-		sprites: { idle: spr_vaultie_battle, attack: spr_vaultie_battle, dodge: spr_vaultie_battle, down: spr_vaultie_downed, inventory: spr_vaultie_white },
+		// Sprites
+		sprites: { 
+			idle: spr_vaultie_battle, 
+			attack: spr_vaultie_battle, 
+			dodge: spr_vaultie_battle, 
+			down: spr_vaultie_downed, 
+			inventory: spr_vaultie_white 
+		},
+		// Actions
 		actions: [
 		// Basic attack
 		global.action_library.attack, 
@@ -354,7 +372,17 @@ global.party_data =
 	}
 	,
 	{
+		// Name
 		name: "Lobotomite",
+		// SPECIAL
+		strength: 9,		// Power of melee attacks
+		perception: 4,		// Power of ranged attacks
+		endurance: 9,		// Additional armour value
+		charisma: 3,		// BET rate (and OOC bartering)
+		intelligence: 3,	// Item effectiveness
+		agility: 9,			// Turn order and AP rate per turn
+		luck: 3,			// Crit rate
+		// Stats
 		hp: 108,
 		hp_max: 108,
 		ap: 10,
@@ -363,7 +391,9 @@ global.party_data =
 		bet_max: 100,
 		attack_value: 20,
 		armour_value: 5,
+		// Sprites
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_downed, inventory: spr_lobotomite_white },
+		// Actions
 		actions: [
 		// Basic attack
 		global.action_library.attack, 
@@ -380,7 +410,17 @@ global.party_data =
 	}
 	,
 	{
+		// Name
 		name: "Cyberdog",
+		// SPECIAL
+		strength: 7,		// Power of melee attacks
+		perception: 7,		// Power of ranged attacks
+		endurance: 7,		// Additional armour value
+		charisma: 4,		// BET rate (and OOC bartering)
+		intelligence: 2,	// Item effectiveness
+		agility: 8,			// Turn order and AP rate per turn
+		luck: 5,			// Crit rate
+		// Stats
 		hp: 0,
 		hp_max: 108,
 		ap: 10,
@@ -389,7 +429,9 @@ global.party_data =
 		bet_max: 100,
 		attack_value: 15,
 		armour_value: 5,
+		// Sprites
 		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog_downed, inventory: spr_cyberdog_white },
+		// Actions
 		actions: [
 		// Basic attack
 		global.action_library.attack, 
@@ -537,3 +579,22 @@ global.ui_arrow_up		=	spr_arrow_up_orange;
 global.ui_arrow_down	=	spr_arrow_down_orange;
 global.ui_arrow_left	=	spr_arrow_left_orange;
 global.ui_arrow_right	=	spr_arrow_right_orange;
+
+/*
+/// Misc stuff
+
+// Skills
+		skill_Barter: 100,
+		skill_Energy_Weapons: 100,
+		skill_Explosives: 100,
+		skill_Guns: 100,
+		skill_Lockpick: 100,
+		skill_Medicine: 100,
+		skill_Melee_Weapons: 100,
+		skill_Repair: 100,
+		skill_Science: 100,
+		skill_Sneak: 100,
+		skill_Speech: 100,
+		skill_Survival: 100,
+		skill_Unarmed: 100,
+*/
