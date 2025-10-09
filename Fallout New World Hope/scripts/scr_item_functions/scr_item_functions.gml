@@ -40,12 +40,12 @@ function use_item(_item, _target)
 		switch (_item) 
 		{
 			case (ITEM_STIMPAK):
-				_heal = 50;
-				battle_change_hp(global.party[_target], _heal, 1, 0); // Heal target
+				_heal = global.party[0].intelligence * 10; // Scales off Vaultie's INT
+				battle_change_hp(global.party[_target], _heal, 2, 1, 0); // Heal target
 				break;
 			case (ITEM_DOCTORSBAG):
-				_heal = 100;
-				battle_change_hp(global.party[_target], _heal, 1, 1); // Heal target
+				_heal = global.party[0].intelligence * 10; // Scales off Vaultie's INT
+				battle_change_hp(global.party[_target], _heal, 2, 1, 1); // Heal target
 				break;
 			//case (ITEM_BATTLEBREW):
 			//	_target.attack_value = _target.attack_value * 1.5;

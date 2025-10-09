@@ -48,6 +48,13 @@ Changing UI colour:
 	The UI colour is set manually at the bottom of scr_game_data. Cannot be changed in-game atm.
 	Should change this system to use a shader so that there's no need for repeat sprites and so many global UI variables (just one global UI colour shader variable).
 
+Damage/Defense calculation:
+	Damage calculation starts with the user's STR/PER for damage.
+		This then get multiplied by an 'attack_mult' value.
+			'attack_mult' is made up of various factors (e.g. equipped weapon, buffs/debuffs).
+	Defense calculation starts with the target's END for defense.
+		This then gets multiplied by a 'defense_mult' value.
+			'defense_mult' is made up of various factors (e.g. equipped armour, buffs/debuffs).
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */

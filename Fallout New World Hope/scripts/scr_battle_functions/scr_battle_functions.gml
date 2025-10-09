@@ -11,21 +11,25 @@ function new_encounter(_enemies, _bg)
 	);
 }
 
-function battle_change_hp(_target, _amount, _outside_battle = 0, _alive_dead_or_either = 0)
+function battle_change_hp(_target, _amount, _notcrit_crit_heal, _outside_battle = 0, _alive_dead_or_either = 0)
 {
-	// _alive_dead_or_either: 0 = alive only, 1 = dead only, 2 = any
+	/// _notcrit_crit_heal:		0 = not crit,	1 = is crit,	2 = healing
+	/// _alive_dead_or_either:	0 = alive only, 1 = dead only,	2 = any
+	/// _outside_battle:		0 = in battle,	1 = outside
+	
+	// Damage/Heal fail conditions
 	var _failed = false;
 	if (_alive_dead_or_either == 0) && (_target.hp <= 0) _failed = true;
 	if (_alive_dead_or_either == 1) && (_target.hp > 0) _failed = true;
-	
-	var _col = c_white;
-	if (_amount > 0) _col = c_lime;
-	if (_failed)
-	{
-		_col = c_gray;
-		_amount = "Failed";
-	}
-	// _outside_battle:  0 = in battle (default), 1 = outside of battle
+
+	// Text colour
+	var _col = c_white;									  // Default
+	if		(_notcrit_crit_heal = 0)  { _col = c_white;	} // Not Crit
+	else if (_notcrit_crit_heal = 1)  { _col = c_red;	} // Crit
+	else if (_notcrit_crit_heal = 2)  { _col = c_lime;	} // Heal
+	if (_failed) { _amount = "Failed";  _col = c_gray;  } // Failed
+
+	// Battle text
 	if (_outside_battle == 0) 
 	{
 		instance_create_depth
@@ -37,6 +41,8 @@ function battle_change_hp(_target, _amount, _outside_battle = 0, _alive_dead_or_
 			{font: fnt_fallout_6, col: _col, text: string(_amount)}
 		);
 	}
+	
+	// Apply damage/healing
 	if (!_failed) _target.hp = clamp(_target.hp + _amount, 0, _target.hp_max);
 }
 

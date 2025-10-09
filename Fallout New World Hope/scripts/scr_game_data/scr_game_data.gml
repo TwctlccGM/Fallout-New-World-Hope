@@ -64,9 +64,26 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _damage = floor(_user.attack_value - _targets[0].armour_value);		// Calculate damage
-			if (_damage <= 0) { _damage = 1; };										// Cap lowest damage at '1'
-			battle_change_hp(_targets[0], -_damage, 0);								// Inflict damage
+			var _attack_power =											// Calculate user's attack power
+			max(_user.strength, _user.perception);						//	User's highest damaging stat (STR/PER)
+			
+			var _crit = 0;												// Calculate if it's a critical hit
+			if ((floor(random_range(0, 100)) <= _user.luck))			//	 User's LCK / 100
+			{ _crit = 1; };
+			
+			var _damage = 0;											// Calculate damage dealt to target
+			if (_crit == 0) {											//	If Normal hit
+				_damage =
+				floor((_attack_power * _user.attack_mult)				//		User attack (STR/PER)
+				- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
+			}
+			if (_crit == 1) {											//	 If Critical hit
+				_damage =
+				floor((_attack_power * _user.attack_mult * 2)			//		User attack (STR/PER)
+				- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
+			}
+			if (_damage <= 0) { _damage = 1; };							// Cap lowest damage at '1'
+			battle_change_hp(_targets[0], -_damage, _crit, 0);			// Inflict damage on target
 		}
 	},
 	
@@ -74,7 +91,7 @@ global.action_library =
 	targeted_shot :
 	{
 		name : "Targeted Shot",
-		description : "{0} finds a weak point!",
+		description : "{0} exposes a weak point!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
 		bet_cost : 0,
@@ -87,11 +104,25 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _damage = floor(_user.attack_value * 2);				// Calculate damage
-			if (_damage <= 0) { _damage = 1; };							// Cap lowest damage at '1'
-			battle_change_hp(_targets[0], -_damage);					// Inflict damage
-			_targets[0].armour_value = _targets[0].armour_value - 5;	// Reduce target's armour value
-			battle_change_ap(_user, -ap_cost)							// Update user's AP
+			var _crit = 0;													// Calculate if it's a critical hit
+			if ((floor(random_range(0, 100)) <= _user.luck))				//	 User's LCK / 100
+			{ _crit = 1; };
+			
+			var _damage = 0;												// Calculate damage dealt to target
+			if (_crit == 0) {												//	If Normal hit
+				_damage =
+				floor((_user.perception * _user.attack_mult)				//		User attack (PER)
+					- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
+			}
+			if (_crit == 1) {												//	If Critical hit
+				_damage =
+				floor((_user.perception * _user.attack_mult * 2)			//		User attack (PER)
+					- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
+			}
+			if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
+			battle_change_hp(_targets[0], -_damage, _crit, 0);				// Inflict damage on target
+			_targets[0].defense_mult -= 0.5;								// Reduce target's defense
+			battle_change_ap(_user, -ap_cost)								// Update user's AP
 		}
 	},
 	
@@ -110,14 +141,28 @@ global.action_library =
 		effect_sprite : spr_effect_hit_ability,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
-		{
-			for (var i = 0; i < array_length(_targets); i++)								// Hit all enemies
+		{	
+			var _crit = 0;														// Calculate if it's a critical hit
+			if ((floor(random_range(0, 100)) <= _user.luck))					//	 User's LCK / 100
+			{ _crit = 1; };
+
+			for (var i = 0; i < array_length(_targets); i++)					// Hit all enemies
 			{
-				var _damage = floor((_user.attack_value * 1.5) - _targets[i].armour_value);	// Calculate damage
-				if (_damage <= 0) { _damage = 1; };											// Cap lowest damage at '1'
-				battle_change_hp(_targets[i], -_damage);									// Inflict damage
+				var _damage = 0;												// Calculate damage dealt to target
+				if (_crit == 0) {												//	If Normal hit
+					_damage =
+					floor((_user.strength * _user.attack_mult)					//		User attack (STR)
+						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
+				}
+				if (_crit == 1) {												//	If Critical hit
+					_damage =
+					floor((_user.strength * _user.attack_mult * 2)				//		User attack (STR)
+						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
+				}
+				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
+				battle_change_hp(_targets[i], -_damage, _crit, 0);				// Inflict damage on target
 			}
-			battle_change_ap(_user, -ap_cost)												// Update user's AP
+			battle_change_ap(_user, -ap_cost)									// Update user's AP
 		}
 	},
 	
@@ -136,15 +181,29 @@ global.action_library =
 		effect_sprite : spr_effect_debuff_red_anim,
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
-		{
-			for (var i = 0; i < array_length(_targets); i++)				// Hit all enemies
+		{			
+			var _crit = 0;														// Calculate if it's a critical hit
+			if ((floor(random_range(0, 100)) <= _user.luck))					//	User's LCK / 100
+			{ _crit = 1; };
+
+			for (var i = 0; i < array_length(_targets); i++)					// Hit all enemies
 			{
-				var _damage = floor((_user.attack_value * 0.5));			// Calculate damage
-				if (_damage <= 0) { _damage = 1; };							// Cap lowest damage at '1'
-				battle_change_hp(_targets[i], -_damage);					// Inflict damage
-				_targets[i].attack_value = _targets[i].attack_value - 5;	// Reduce target's attack value
+				var _damage = 0;												// Calculate damage dealt to target
+				if (_crit == 0) {												//	If Normal hit
+					_damage =
+					floor((_user.perception * _user.attack_mult)				//		User attack (PER)
+						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
+				}
+				if (_crit == 1) {												//	If Critical hit
+					_damage =
+					floor((_user.perception * _user.attack_mult * 2)			//		User attack (PER)
+						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
+				}
+				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
+				battle_change_hp(_targets[i], -_damage, _crit, 0);				// Inflict damage on target
+				_targets[i].attack_mult -= 0.5;									// Reduce target's attack value
 			}
-			battle_change_ap(_user, -ap_cost)								// Update caster's AP
+			battle_change_ap(_user, -ap_cost)									// Update user's AP
 		}
 	},
 	
@@ -165,13 +224,28 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			for (var i = 0; i < array_length(_targets); i++)				// Hit all enemies
+			var _crit = 0;														// Calculate if it's a critical hit
+			if ((floor(random_range(0, 100)) <= _user.luck))					//	User's LCK / 100
+			{ _crit = 1; };
+
+			for (var i = 0; i < array_length(_targets); i++)					// Hit all enemies
 			{
-				var _damage = floor(_user.attack_value * 5);				// Calculate damage
-				if (_damage <= 0) { _damage = 1; };							// Cap lowest damage at '1'
-				battle_change_hp(_targets[i], -_damage);					// Inflict damage
+				var _damage = 0;												// Calculate damage dealt to target
+				if (_crit == 0) {												//	If Normal hit
+					_damage =
+					floor((_user.intelligence * _user.attack_mult)				//		User attack (INT)
+						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
+				}
+				if (_crit == 1) {												//	If Critical hit
+					_damage =
+					floor((_user.intelligence * _user.attack_mult * 2)			//		User attack (INT)
+						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
+				}
+				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
+				battle_change_hp(_targets[i], -_damage, _crit, 0);				// Inflict damage on target
+				_targets[i].attack_mult -= 0.5;									// Reduce target's attack value
 			}
-			battle_change_bet(_user, -bet_cost)								// Update user's BET
+			battle_change_bet(_user, -bet_cost)									// Update user's BET
 		}
 	},
 	
@@ -193,8 +267,8 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _heal = 50;
-			battle_change_hp(_targets[0], _heal, 0, 0);		// Heal target
+			var _heal = (_user.intelligence * 10);			// Calculate heal
+			battle_change_hp(_targets[0], _heal, 2, 0, 0);	// Heal target
 		}
 	},
 	
@@ -215,8 +289,8 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _heal = 100;
-			battle_change_hp(_targets[0], _heal, 0, 1);		// Resurrect target
+			var _heal = (_user.intelligence * 10);			// Calculate heal
+			battle_change_hp(_targets[0], _heal, 2, 0, 1);	// Resurrect target
 		}
 	},
 	
@@ -237,7 +311,8 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			battle_change_ap(_targets[0], 5, 0);	// Refill target's AP
+			var _heal = (_user.intelligence);		 // Calculate AP restored
+			battle_change_ap(_targets[0], _heal, 0); // Restore target's AP
 		}
 	},
 	
@@ -258,7 +333,7 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			_targets[0].attack_value = _targets[0].attack_value + 10;	// Increase target's attack value
+			_targets[0].attack_mult += (_user.intelligence / 10); // Increase target's attack value
 		}
 	},
 	
@@ -279,7 +354,7 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			_targets[0].armour_value = _targets[0].armour_value + 10;	// Increase target's armour value
+			_targets[0].defense_mult += (_user.intelligence / 10); // Increase target's armour value
 		}
 	},
 	
@@ -331,11 +406,11 @@ global.party_data =
 		// SPECIAL
 		strength: 3,		// Power of melee attacks
 		perception: 6,		// Power of ranged attacks
-		endurance: 3,		// Additional armour value
+		endurance: 3,		// Base defense value
 		charisma: 6,		// BET rate (and OOC bartering)
 		intelligence: 7,	// Item effectiveness
 		agility: 6,			// Turn order and AP rate per turn
-		luck: 9,			// Crit rate
+		luck: 100,			// Crit rate
 		// Stats
 		hp: 108,
 		hp_max: 108,
@@ -343,8 +418,8 @@ global.party_data =
 		ap_max: 10,
 		bet: 100,
 		bet_max: 100,
-		attack_value: 10,
-		armour_value: 0,
+		attack_mult: 1,
+		defense_mult: 1,
 		// Sprites
 		sprites: { 
 			idle: spr_vaultie_battle, 
@@ -377,7 +452,7 @@ global.party_data =
 		// SPECIAL
 		strength: 9,		// Power of melee attacks
 		perception: 4,		// Power of ranged attacks
-		endurance: 9,		// Additional armour value
+		endurance: 9,		// Base defense value
 		charisma: 3,		// BET rate (and OOC bartering)
 		intelligence: 3,	// Item effectiveness
 		agility: 9,			// Turn order and AP rate per turn
@@ -389,8 +464,8 @@ global.party_data =
 		ap_max: 10,
 		bet: 100,
 		bet_max: 100,
-		attack_value: 20,
-		armour_value: 5,
+		attack_mult: 1,
+		defense_mult: 1,
 		// Sprites
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_downed, inventory: spr_lobotomite_white },
 		// Actions
@@ -415,7 +490,7 @@ global.party_data =
 		// SPECIAL
 		strength: 7,		// Power of melee attacks
 		perception: 7,		// Power of ranged attacks
-		endurance: 7,		// Additional armour value
+		endurance: 7,		// Base defense value
 		charisma: 4,		// BET rate (and OOC bartering)
 		intelligence: 2,	// Item effectiveness
 		agility: 8,			// Turn order and AP rate per turn
@@ -427,8 +502,8 @@ global.party_data =
 		ap_max: 10,
 		bet: 100,
 		bet_max: 100,
-		attack_value: 15,
-		armour_value: 5,
+		attack_mult: 1,
+		defense_mult: 1,
 		// Sprites
 		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog_downed, inventory: spr_cyberdog_white },
 		// Actions
@@ -460,16 +535,28 @@ global.enemies =
 {
 	orderly_mk1:
 	{
+		// Name
 		name: "Orderly",
+		// SPECIAL
+		strength: 5,		// Power of melee attacks
+		perception: 5,		// Power of ranged attacks
+		endurance: 5,		// Base defense value
+		charisma: 5,		// N/A
+		intelligence: 5,	// Item effectiveness
+		agility: 5,			// Turn order and AP rate per turn
+		luck: 5,			// Crit rate
+		// Stats
 		hp: 50,
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
 		bet: 0,
 		bet_max: 0,
-		attack_value: 10,
-		armour_value: 5,
+		attack_mult: 1,
+		defense_mult: 1,
+		// Sprites
 		sprites: { idle: spr_orderly, attack: spr_orderly},
+		// Actions
 		actions: [global.action_library.attack],
 		xp: 100,
 		AI_script: function()
@@ -488,16 +575,28 @@ global.enemies =
 	,
 	cyberdog_police:
 	{
+		// Name
 		name: "P.CybDog",
+		// SPECIAL
+		strength: 5,		// Power of melee attacks
+		perception: 5,		// Power of ranged attacks
+		endurance: 5,		// Base defense value
+		charisma: 5,		// N/A
+		intelligence: 5,	// Item effectiveness
+		agility: 5,			// Turn order and AP rate per turn
+		luck: 5,			// Crit rate
+		// Stats
 		hp: 30,
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
 		bet: 0,
 		bet_max: 0,
-		attack_value: 10,
-		armour_value: 0,
+		attack_mult: 1,
+		defense_mult: 1,
+		// Sprites
 		sprites: { idle: spr_cyberdog_enemy, attack: spr_cyberdog_enemy},
+		// Actions
 		actions: [global.action_library.attack],
 		xp: 100,
 		AI_script: function()
@@ -516,16 +615,28 @@ global.enemies =
 	,
 	turret_ceiling:
 	{
+		// Name
 		name: "Turret",
-		hp: 30,
-		hp_max: 30,
+		// SPECIAL
+		strength: 5,		// Power of melee attacks
+		perception: 5,		// Power of ranged attacks
+		endurance: 5,		// Base defense value
+		charisma: 5,		// N/A
+		intelligence: 5,	// Item effectiveness
+		agility: 5,			// Turn order and AP rate per turn
+		luck: 5,			// Crit rate
+		// Stats
+		hp: 3000,
+		hp_max: 3000,
 		ap: 10,
 		ap_max: 10,
 		bet: 0,
 		bet_max: 0,
-		attack_value: 20,
-		armour_value: 5,
+		attack_mult: 1,
+		defense_mult: 1,
+		// Sprites
 		sprites: { idle: spr_turret_ceiling, attack: spr_turret_ceiling},
+		// Actions
 		actions: [global.action_library.attack],
 		xp: 100,
 		AI_script: function()
@@ -544,16 +655,28 @@ global.enemies =
 	,
 	trauma_harness:
 	{
+		// Name
 		name: "Harness",
+		// SPECIAL
+		strength: 5,		// Power of melee attacks
+		perception: 5,		// Power of ranged attacks
+		endurance: 5,		// Base defense value
+		charisma: 5,		// N/A
+		intelligence: 5,	// Item effectiveness
+		agility: 5,			// Turn order and AP rate per turn
+		luck: 5,			// Crit rate
+		// Stats
 		hp: 30,
 		hp_max: 30,
 		ap: 10,
 		ap_max: 10,
 		bet: 0,
 		bet_max: 0,
-		attack_value: 10,
-		armour_value: 5,
+		attack_mult: 1,
+		defense_mult: 1,
+		// Sprites
 		sprites: { idle: spr_traumaharness, attack: spr_traumaharness},
+		// Actions
 		actions: [global.action_library.attack],
 		xp: 100,
 		AI_script: function()
