@@ -46,9 +46,19 @@ function battle_change_hp(_target, _amount, _notcrit_crit_heal, _outside_battle 
 	if (!_failed) _target.hp = clamp(_target.hp + _amount, 0, _target.hp_max);
 }
 
-function battle_change_ap(_target, _amount, _passive = 1)
+function battle_change_ap(_target, _use_agility = 0, _amount = 0, _display_text = 0)
 {
+	// _use_agility:	0 = use a raw value (_amount), 1 = use _target's agility stat
+	// _amount:			Default int value of 0
+	// _display_text:	0 = no text (e.g. ability used), 1 = show text (e.g. item used)
+	
 	var _failed = false;
+	if (_use_agility = 1)
+	{
+		// Agility formula below results in:	| 0 = 0 AP | 1-3 = 1 AP | 4-6 = 2 AP | 7-9 = 3 AP | 10 = 4 AP |
+		_amount = floor((_target.agility + 2) / 3);
+	}
+	
 	if ((_target.ap + _amount) > _target.ap_max) { _target.ap = _target.ap_max; }
 	if ((_target.ap + _amount) < 0) _failed = true;
 	
@@ -59,8 +69,8 @@ function battle_change_ap(_target, _amount, _passive = 1)
 		_col = c_gray;
 		_amount = "Failed";
 	}
-	// _passive: 0 = not passive (e.g. item used), 1 = passive (no text display)
-	if (!_passive)
+
+	if (_display_text)
 	{
 		instance_create_depth
 		(

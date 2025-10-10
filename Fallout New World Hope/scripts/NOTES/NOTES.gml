@@ -7,17 +7,21 @@
 	- Fix up battle menu a bit (make options appear in order: Attack -> Abilities -> Items -> Flee)
 	- Pointer in inventory menu sometimes goes up too far when selecting an item (idk what triggers this to start happening)
 	- Make abilities/bets greyed out and unselectable when not enough AP/BET to use them (atm they are 'failed' in obj_battle Create event)
-	- INteract box appears in overworld
+	- Interact box appears in overworld
 	
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT
 
+	- Battle text box shows description of hovered action
 	- Keys/Keycards to unlock doors.
 		Make individual keycards (e.g. X-8 keycard to open X-8 door)
 	- Dialogue system.
-	- BET system in combat.
-	- Make SPECIAL stats influence their respective stuff (e.g. make INT influence item effectiveness)
+	- BET system in combat (make BET increase based on damage dealt/taken)
+	- Make SPECIAL stats influence their respective stuff
+		Make turn order and AP per turn determined by AGI.
+		Make BET gain per damage dealt/taken determined by CHA.
+		Also remember to implement barter system later on and have prices be affected by CHA.
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)
 		Auto-Stim		(auto heals when below 50% health)

@@ -122,7 +122,7 @@ global.action_library =
 			if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
 			battle_change_hp(_targets[0], -_damage, _crit, 0);				// Inflict damage on target
 			_targets[0].defense_mult -= 0.5;								// Reduce target's defense
-			battle_change_ap(_user, -ap_cost)								// Update user's AP
+			battle_change_ap(_user, 0, -ap_cost, 0);						// Update user's AP
 		}
 	},
 	
@@ -162,7 +162,7 @@ global.action_library =
 				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
 				battle_change_hp(_targets[i], -_damage, _crit, 0);				// Inflict damage on target
 			}
-			battle_change_ap(_user, -ap_cost)									// Update user's AP
+			battle_change_ap(_user, 0, -ap_cost, 0);							// Update user's AP
 		}
 	},
 	
@@ -203,7 +203,7 @@ global.action_library =
 				battle_change_hp(_targets[i], -_damage, _crit, 0);				// Inflict damage on target
 				_targets[i].attack_mult -= 0.5;									// Reduce target's attack value
 			}
-			battle_change_ap(_user, -ap_cost)									// Update user's AP
+			battle_change_ap(_user, 0, -ap_cost, 0);							// Update user's AP
 		}
 	},
 	
@@ -311,8 +311,8 @@ global.action_library =
 		effect_on_target : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _heal = (_user.intelligence);		 // Calculate AP restored
-			battle_change_ap(_targets[0], _heal, 0); // Restore target's AP
+			var _heal = (_user.intelligence);		// Calculate AP restored
+			battle_change_ap(_user, 0, _heal, 1);	// Restore target's AP
 		}
 	},
 	
@@ -409,7 +409,7 @@ global.party_data =
 		endurance: 3,		// Base defense value
 		charisma: 6,		// BET rate (and OOC bartering)
 		intelligence: 7,	// Item effectiveness
-		agility: 6,			// Turn order and AP rate per turn
+		agility: 6,			// Turn order and AP rate per turn (0 = 0 AP,  1-3 = 1 AP,  4-6 = 2 AP,  7-9 = 3 AP, 10 = 4 AP)
 		luck: 100,			// Crit rate
 		// Stats
 		hp: 108,

@@ -83,8 +83,9 @@ party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), dep
 array_push(units, party_units[i]);
 }
 
-// Shuffle turn order
-unit_turn_order = array_shuffle(units);
+// Turn order (based on Agility stat)
+array_sort(units, function(_a, _b) { return _b.agility - _a.agility; });
+unit_turn_order = units;
 
 // Get render order
 // This function uses the y position of units to determine their 'depth'
@@ -117,7 +118,7 @@ function battle_state_select_action()
 		// If unit is player controlled:
 		if (_unit.object_index == obj_battle_units_player)
 		{
-			battle_change_ap(_unit, 1, 1); // Restore 1 AP each turn
+			battle_change_ap(_unit, 1, 0, 0); // Restore AP each turn
 			
 			// Compile the action menu
 			var _menu_options = [];
