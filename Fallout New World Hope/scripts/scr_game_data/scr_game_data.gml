@@ -245,7 +245,7 @@ global.action_library =
 				battle_change_hp(_targets[i], -_damage, _crit, 0);				// Inflict damage on target
 				_targets[i].attack_mult -= 0.5;									// Reduce target's attack value
 			}
-			battle_change_bet(_user, -bet_cost)									// Update user's BET
+			battle_change_bet(_user, -bet_cost, false);							// Update user's BET
 		}
 	},
 	
@@ -403,6 +403,7 @@ global.party_data =
 	{
 		// Name
 		name: "Vaultie",
+		is_player_unit: true,
 		// SPECIAL
 		strength: 3,		// Power of melee attacks
 		perception: 6,		// Power of ranged attacks
@@ -416,7 +417,7 @@ global.party_data =
 		hp_max: 108,
 		ap: 10,
 		ap_max: 10,
-		bet: 100,
+		bet: 50,
 		bet_max: 100,
 		attack_mult: 1,
 		defense_mult: 1,
@@ -449,6 +450,7 @@ global.party_data =
 	{
 		// Name
 		name: "Lobotomite",
+		is_player_unit: true,
 		// SPECIAL
 		strength: 9,		// Power of melee attacks
 		perception: 4,		// Power of ranged attacks
@@ -462,7 +464,7 @@ global.party_data =
 		hp_max: 108,
 		ap: 10,
 		ap_max: 10,
-		bet: 100,
+		bet: 0,
 		bet_max: 100,
 		attack_mult: 1,
 		defense_mult: 1,
@@ -487,6 +489,7 @@ global.party_data =
 	{
 		// Name
 		name: "Cyberdog",
+		is_player_unit: true,
 		// SPECIAL
 		strength: 7,		// Power of melee attacks
 		perception: 7,		// Power of ranged attacks
@@ -500,7 +503,7 @@ global.party_data =
 		hp_max: 108,
 		ap: 10,
 		ap_max: 10,
-		bet: 100,
+		bet: 0,
 		bet_max: 100,
 		attack_mult: 1,
 		defense_mult: 1,
@@ -537,6 +540,7 @@ global.enemies =
 	{
 		// Name
 		name: "Orderly",
+		is_player_unit: false,
 		// SPECIAL
 		strength: 5,		// Power of melee attacks
 		perception: 5,		// Power of ranged attacks
@@ -577,6 +581,7 @@ global.enemies =
 	{
 		// Name
 		name: "P.CybDog",
+		is_player_unit: false,
 		// SPECIAL
 		strength: 5,		// Power of melee attacks
 		perception: 5,		// Power of ranged attacks
@@ -617,6 +622,7 @@ global.enemies =
 	{
 		// Name
 		name: "Turret",
+		is_player_unit: false,
 		// SPECIAL
 		strength: 5,		// Power of melee attacks
 		perception: 5,		// Power of ranged attacks
@@ -657,6 +663,7 @@ global.enemies =
 	{
 		// Name
 		name: "Harness",
+		is_player_unit: false,
 		// SPECIAL
 		strength: 5,		// Power of melee attacks
 		perception: 5,		// Power of ranged attacks

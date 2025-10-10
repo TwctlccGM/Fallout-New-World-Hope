@@ -44,6 +44,12 @@ function battle_change_hp(_target, _amount, _notcrit_crit_heal, _outside_battle 
 	
 	// Apply damage/healing
 	if (!_failed) _target.hp = clamp(_target.hp + _amount, 0, _target.hp_max);
+	
+	// Increase BET if player unit takes damage
+	if ((_target.is_player_unit) && (_amount < 0))
+	{
+		battle_change_bet(_target, _amount, true);
+	}
 }
 
 function battle_change_ap(_target, _use_agility = 0, _amount = 0, _display_text = 0)
@@ -84,10 +90,24 @@ function battle_change_ap(_target, _use_agility = 0, _amount = 0, _display_text 
 	if (!_failed) _target.ap = clamp(_target.ap + _amount, 0, _target.ap_max);
 }
 
-function battle_change_bet(_target, _amount, _passive = 1)
+function battle_change_bet(_target, _amount, _is_damage = true)
 {
 	var _failed = false;
-	if ((_target.bet + _amount) > _target.bet_max) { _target.bet = _target.bet_max; }
-	if ((_target.bet + _amount) < 0) _failed = true;
-	if (!_failed) _target.bet = clamp(_target.bet + _amount, 0, _target.bet_max);
+	var _bet_amount = _amount;
+	// If it's not damage taken, it's directly reducing BET amount (e.g. after using a BET attack) so it doesn't need the formula
+	if (_is_damage)
+	{
+		/// BET amount formula:
+		//   _bet_amount = clamp(floor((floor((abs(DMG) * 300) / HP_max) * (CHA / 10))), 1, 100); 
+		//
+		/// BET amount key:
+		//	 abs(DMG) =  Damage taken in HP
+		//	 HP_max	  =  Character's max HP
+		//	 CHA	  =  Character's Charisma stat
+		_bet_amount = clamp(floor((floor((abs(_amount) * 300) / _target.hp_max ) * (_target.charisma / 10))), 1, 100); 
+	}
+	
+	if ((_target.bet + _bet_amount) > _target.bet_max) { _target.bet = _target.bet_max; }
+	if ((_target.bet + _bet_amount) < 0) _failed = true;
+	if (!_failed) _target.bet = clamp(_target.bet + _bet_amount, 0, _target.bet_max);
 }
