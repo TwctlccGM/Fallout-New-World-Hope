@@ -14,11 +14,12 @@ var _min = 0;
 if (response_selected > _max) response_selected = _min;
 if (response_selected < _min) response_selected = _max;
 
-if (keyboard_check_pressed(vk_space))
+if (keyboard_check_pressed(ord("Z")))
 {
 	var _message_length = string_length(text_message);
 	if (text_progress >= _message_length) // Shown the whole message
 	{
+		obj_player_field.state = PLAYER_STATE_ACTIVE;
 		instance_destroy(); // Remove message
 	}
 	else

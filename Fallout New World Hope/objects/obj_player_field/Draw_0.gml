@@ -1,7 +1,10 @@
 /// @description
 draw_self();
-if (keyboard_check(ord("Z")))
+if (state == PLAYER_STATE_LOCKED) exit;
+
+if (keyboard_check_pressed(ord("Z")) && delay < 0)
 {
+	delay = 2;
 	var _xx = x + lengthdir_x(10, direction);
 	var _yy = y + lengthdir_y(10, direction);
 	var _size = 5;

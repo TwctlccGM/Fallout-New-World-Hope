@@ -17,7 +17,7 @@ background = 0;
 responses = ["Test response", "test response two"];
 response_selected = 0;
 
-
+obj_player_field.state = PLAYER_STATE_LOCKED;
 
 
 

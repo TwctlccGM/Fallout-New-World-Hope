@@ -1,4 +1,9 @@
 /// @description
+#macro PLAYER_STATE_ACTIVE 0
+#macro PLAYER_STATE_LOCKED 1
+
+state = PLAYER_STATE_ACTIVE;
+delay = 2;
 
 move_x = 0;				// Movement (horizontal)
 move_y = 0;				// Movement (vertical)
