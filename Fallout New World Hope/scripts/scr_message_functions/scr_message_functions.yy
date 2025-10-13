@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "NOTES",
+  "name": "scr_message_functions",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

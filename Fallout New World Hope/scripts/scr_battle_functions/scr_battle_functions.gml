@@ -94,7 +94,7 @@ function battle_change_bet(_target, _amount, _is_damage = true)
 {
 	var _failed = false;
 	var _bet_amount = _amount;
-	// If it's not damage taken, it's directly reducing BET amount (e.g. after using a BET attack) so it doesn't need the formula
+	// If it's not damage taken, it's directly affecting BET amount (e.g. after using a BET attack) so it doesn't need the formula
 	if (_is_damage)
 	{
 		/// BET amount formula:

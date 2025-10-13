@@ -1,3 +1,8 @@
+// Resolution
+#macro RESOLUTION_W 320
+#macro RESOLUTION_H 180
+//surface_resize(application_surface, RESOLUTION_W, RESOLUTION_H);
+
 // Pause
 global.pause = false;
 
