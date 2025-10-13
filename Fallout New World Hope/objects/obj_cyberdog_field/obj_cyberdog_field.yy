@@ -7,12 +7,17 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_NPC","path":"objects/par_entity/par_entity.yy",},"value":"True",},
+  ],
   "parent": {
     "name": "Field",
     "path": "folders/Objects/Field.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "par_entity",
+    "path": "objects/par_entity/par_entity.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

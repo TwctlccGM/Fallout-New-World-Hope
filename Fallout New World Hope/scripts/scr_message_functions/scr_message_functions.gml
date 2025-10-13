@@ -36,3 +36,24 @@ function nineslice_box_stretched(sprite, x1, y1, x2, y2){
 	// Bottom edge
 	draw_sprite_part_ext(argument0, _index, _size, _size * 2, 1, _size, _x1 + _size, _y1 + _h - (_size), _w - (_size * 2), 1, c_white, 1);
 }
+
+function new_text_box(){
+	var _obj = obj_text;
+	// if (instance_exists(obj_text)) _obj = obj_text_queued; else _obj = obj_text;
+	with (instance_create_layer(0, 0, "Instances_Menus", _obj))
+	{
+		text_message = argument[0];
+		//if (instance_exists(other)) origin_instance = other.id else origin_instance = noone;
+		//if (argument_count > 1) background = argument[1]; else background = 1;
+	}
+	
+	/*with (obj_player_field)
+	{
+		if (state != player_state_locked)
+		
+		{	
+			last_state = state;
+			state = player_state_locked;
+		}
+	}*/
+}

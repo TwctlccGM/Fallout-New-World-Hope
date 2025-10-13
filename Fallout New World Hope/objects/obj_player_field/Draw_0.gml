@@ -5,12 +5,12 @@ if (keyboard_check(ord("Z")))
 	var _xx = x + lengthdir_x(10, direction);
 	var _yy = y + lengthdir_y(10, direction);
 	var _size = 5;
-	var _activate = collision_rectangle( // Create a rectangle to check for an object (door)
+	var _activate = collision_rectangle( // Create a rectangle to check for an entity
 		_xx - _size,
 		_yy - _size,
 		_xx + _size,
 		_yy + _size,
-		obj_door,
+		par_entity,
 		false,
 		true
 	);
@@ -23,14 +23,29 @@ if (keyboard_check(ord("Z")))
 		true
 	);
 
-	if (_activate) // If an object (door) is found...
+	if (_activate) // If an entity is found...
 	{
-		if (global.item_array[ITEM_KEYCARD][C_ITEM_AMOUNT] > 0)
+		if (_activate.entity_NPC)
 		{
-			global.item_array[ITEM_KEYCARD][C_ITEM_AMOUNT] -= 1;
-			instance_destroy(_activate); // Door opens
+			with (_activate)
+			{
+				// Activate the entity
+				script_execute_ext(_activate.entity_activate_script, _activate.entity_activate_args);
+			}
 		}
-		// No key, door doesn't open
+		/*if (_activate.object_index == obj_cyberdog_field)
+		{
+			instance_destroy(_activate);
+		} 
+		else if (_activate.object_index == obj_door)
+		{
+			if (global.item_array[ITEM_KEYCARD][C_ITEM_AMOUNT] > 0)
+			{
+				global.item_array[ITEM_KEYCARD][C_ITEM_AMOUNT] -= 1;
+				instance_destroy(_activate); // Door opens
+			}
+			// No key, door doesn't open
+		}*/
 	}	
 }
 

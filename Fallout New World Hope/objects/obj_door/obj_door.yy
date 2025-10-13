@@ -4,14 +4,16 @@
   "name": "obj_door",
   "eventList": [],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_NPC","path":"objects/par_entity/par_entity.yy",},"value":"True",},
+  ],
   "parent": {
     "name": "Field",
     "path": "folders/Objects/Field.yy",
   },
   "parentObjectId": {
-    "name": "obj_collision_box",
-    "path": "objects/obj_collision_box/obj_collision_box.yy",
+    "name": "par_entity",
+    "path": "objects/par_entity/par_entity.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

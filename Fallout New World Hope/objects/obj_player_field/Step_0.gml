@@ -29,5 +29,5 @@ else if (move_y < 0)	// Moving up
 	sprite_index = spr_vaultie_field_back;
 }
 
-move_and_collide(move_x, move_y, obj_collision_box, 16, 0, 0, move_speed, move_speed);
+move_and_collide(move_x, move_y, par_entity, 16, 0, 0, move_speed, move_speed);
 

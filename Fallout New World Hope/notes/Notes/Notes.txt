@@ -16,6 +16,9 @@
 	- Keys/Keycards to unlock doors.
 		Make individual keycards (e.g. X-8 keycard to open X-8 door)
 	- Dialogue system.
+		Freeze player when textbox is active (player state machine)
+		Allow queueing textboxes
+		Allow selecting options (execute code upon selection)
 	- Implement barter system later on and have prices be affected by CHA.
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)
@@ -54,5 +57,13 @@ Damage/Defense calculation:
 	Defense calculation starts with the target's END for defense.
 		This then gets multiplied by a 'defense_mult' value.
 			'defense_mult' is made up of various factors (e.g. equipped armour, buffs/debuffs).
+			
+Creating text boxes/dialogue:
+	Objects that have 'par_entity' as their parent object are considered 'entities'.
+	Entities start with the variables: 
+		'entity_activate_script' (tells the object what to do when activated via player collision)
+		'entity_activate_args' (supplies the arguments to be used by the script)
+	To give an entity a textbox, give it the 'new_text_box' script and give it a string as the argument.
+	At the moment, the 'responses' are dummy responses created in 'obj_text' - this system should be expanded upon.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -14,11 +14,19 @@ var _xx = obj_camera.x - 160;
 var _yy = obj_camera.y;
 draw_sprite_stretched(global.ui_textbox, background, _xx, _yy, 320, 90);
 var _print = string_copy(text_message, 1, text_progress);
+
+if (responses[0] != -1) && (text_progress >= string_length(text_message))
+{
+	for (var i = 0; i < array_length(responses); i++)
+	{
+		_print += "\n";	
+		if (i == response_selected) _print += "> ";
+		_print += responses[i];
+		if (i == response_selected) _print += " <";
+	}
+}
+
 draw_text(_xx + 10, _yy + 5, _print);
-
-
-
-
 
 
 
