@@ -17,8 +17,13 @@ if (response_selected < _min) response_selected = _max;
 if (keyboard_check_pressed(ord("Z")))
 {
 	var _message_length = string_length(text_message);
-	if (text_progress >= _message_length) // Shown the whole message
+	if (text_progress >= _message_length) // Already shown the whole message
 	{
+		if (responses[0] != -1)
+		{
+			with (origin_instance) dialogue_responses(other.response_scripts[other.response_selected]);
+		}
+		
 		if (instance_exists(obj_text_queued))
 		{
 			with (obj_text_queued) ticket--;	

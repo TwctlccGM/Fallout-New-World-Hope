@@ -7,6 +7,7 @@
 	- Pointer in inventory menu sometimes goes up too far when selecting an item (idk what triggers this to start happening)
 	- Make abilities/bets greyed out and unselectable when not enough AP/BET to use them (atm they are 'failed' in obj_battle Create event)
 	- Interact box appears in overworld
+	- Move interact code OUT of player's Draw event
 	
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -15,8 +16,6 @@
 	- Battle text box shows description of hovered action
 	- Keys/Keycards to unlock doors.
 		Make individual keycards (e.g. X-8 keycard to open X-8 door)
-	- Dialogue system.
-		Allow selecting options (execute code upon selection)
 	- Implement barter system later on and have prices be affected by CHA.
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)
@@ -62,6 +61,10 @@ Creating text boxes/dialogue:
 		'entity_activate_script' (tells the object what to do when activated via player collision)
 		'entity_activate_args' (supplies the arguments to be used by the script)
 	To give an entity a textbox, give it the 'new_text_box' script and give it a string as the argument.
-	At the moment, the 'responses' are dummy responses created in 'obj_text' - this system should be expanded upon.
+		Example: ["Bark!", 1, ["1:Response A", "2:Response B"] ]
+	Dialogue is managed via a function in 'scr_dialogue'.
+		Each 'case' is the number at the beginning of a response string (e.g."1:Response A").
+		Cases can execute code and/or ask for further responses.
+			Example: case 2: new_text_box("You gave response B!\nAny further response?", 1, ["3:Yes", "0:No"]); break;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
