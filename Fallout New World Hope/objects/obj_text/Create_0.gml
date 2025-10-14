@@ -11,8 +11,8 @@ x2_target = RESOLUTION_W;
 lerp_progress = 0; // 'lerp' = Linear Interpolation Rate Progress (for the textbox going from a line to a box)
 text_progress = 0;
 
-text_message = "Default message text";
-background = 0;
+//text_message = "Default message text";
+//background = 0;
 
 responses = ["Test response", "test response two"];
 response_selected = 0;

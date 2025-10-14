@@ -96,6 +96,7 @@
     {"name":"spr_arrow_up_blue","order":1,"path":"sprites/spr_arrow_up_blue/spr_arrow_up_blue.yy",},
     {"name":"obj_player_destination","order":4,"path":"objects/obj_player_destination/obj_player_destination.yy",},
     {"name":"spr_vaultie_white","order":6,"path":"sprites/spr_vaultie_white/spr_vaultie_white.yy",},
+    {"name":"obj_text_queued","order":6,"path":"objects/obj_text_queued/obj_text_queued.yy",},
     {"name":"obj_battle_units_player","order":2,"path":"objects/obj_battle_units_player/obj_battle_units_player.yy",},
     {"name":"obj_battle_effect","order":4,"path":"objects/obj_battle_effect/obj_battle_effect.yy",},
     {"name":"spr_arrow_up_orange","order":1,"path":"sprites/spr_arrow_up_orange/spr_arrow_up_orange.yy",},

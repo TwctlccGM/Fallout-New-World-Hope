@@ -19,7 +19,14 @@ if (keyboard_check_pressed(ord("Z")))
 	var _message_length = string_length(text_message);
 	if (text_progress >= _message_length) // Shown the whole message
 	{
-		obj_player_field.state = PLAYER_STATE_ACTIVE;
+		if (instance_exists(obj_text_queued))
+		{
+			with (obj_text_queued) ticket--;	
+		}
+		else
+		{
+			with (obj_player_field) state = last_state;	
+		}
 		instance_destroy(); // Remove message
 	}
 	else

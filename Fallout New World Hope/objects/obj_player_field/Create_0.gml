@@ -3,6 +3,7 @@
 #macro PLAYER_STATE_LOCKED 1
 
 state = PLAYER_STATE_ACTIVE;
+last_state = state;
 delay = 2;
 
 move_x = 0;				// Movement (horizontal)

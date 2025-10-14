@@ -16,7 +16,6 @@
 	- Keys/Keycards to unlock doors.
 		Make individual keycards (e.g. X-8 keycard to open X-8 door)
 	- Dialogue system.
-		Allow queueing textboxes
 		Allow selecting options (execute code upon selection)
 	- Implement barter system later on and have prices be affected by CHA.
 	- More items (don't add all of these, just pick what's best)

@@ -127,6 +127,7 @@
     {"id":{"name":"obj_player_destination","path":"objects/obj_player_destination/obj_player_destination.yy",},},
     {"id":{"name":"spr_vaultie_white","path":"sprites/spr_vaultie_white/spr_vaultie_white.yy",},},
     {"id":{"name":"rm_overworld","path":"rooms/rm_overworld/rm_overworld.yy",},},
+    {"id":{"name":"obj_text_queued","path":"objects/obj_text_queued/obj_text_queued.yy",},},
     {"id":{"name":"obj_battle_units_player","path":"objects/obj_battle_units_player/obj_battle_units_player.yy",},},
     {"id":{"name":"obj_battle_effect","path":"objects/obj_battle_effect/obj_battle_effect.yy",},},
     {"id":{"name":"spr_arrow_up_orange","path":"sprites/spr_arrow_up_orange/spr_arrow_up_orange.yy",},},
