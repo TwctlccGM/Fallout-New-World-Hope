@@ -25,12 +25,6 @@
 	}
 }*/
 
-function pickup_item(_item_name)
-{
-	global.item_array[item][C_ITEM_AMOUNT] += 1;
-	instance_destroy();
-}
-
 /// Use item function
 function use_item(_item, _target)
 {

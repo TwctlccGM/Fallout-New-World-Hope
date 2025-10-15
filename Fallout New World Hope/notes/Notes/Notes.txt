@@ -7,8 +7,9 @@
 	- Pointer in inventory menu sometimes goes up too far when selecting an item (idk what triggers this to start happening)
 	- Make abilities/bets greyed out and unselectable when not enough AP/BET to use them (atm they are 'failed' in obj_battle Create event)
 	- Interact box appears in overworld
-	- Move interact code OUT of player's Draw event
-	
+	- Move interact code OUT of player's Draw event (and adjust it so that the interact box is positioned correctly)
+	- Rearrange some code (e.g. put key input events like opening the inventory into the player object for consistent keybinds)
+	- Keycard item pickup isn't working for some reason
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT
@@ -30,7 +31,7 @@
 		Steady			(Improved accuracy)
 			Implement accuracy system first
 		Antivenom		(Cures cazador/nightstalker poison)
-		
+	- Entity collision (e.g. doors, dog, but NOT items)
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -66,5 +67,8 @@ Creating text boxes/dialogue:
 		Each 'case' is the number at the beginning of a response string (e.g."1:Response A").
 		Cases can execute code and/or ask for further responses.
 			Example: case 2: new_text_box("You gave response B!\nAny further response?", 1, ["3:Yes", "0:No"]); break;
+
+Collision:
+	It's tile-based now. Uses the 'tiles_collision' tileset.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

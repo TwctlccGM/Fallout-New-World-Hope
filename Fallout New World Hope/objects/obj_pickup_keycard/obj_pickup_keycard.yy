@@ -2,9 +2,7 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_pickup_keycard",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-  ],
+  "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
@@ -12,8 +10,8 @@
     "path": "folders/Objects/Items.yy",
   },
   "parentObjectId": {
-    "name": "obj_pickup_item",
-    "path": "objects/obj_pickup_item/obj_pickup_item.yy",
+    "name": "par_pickup_item",
+    "path": "objects/par_pickup_item/par_pickup_item.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

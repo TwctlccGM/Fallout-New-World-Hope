@@ -1,15 +1,17 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_cyberdog_field",
+  "name": "par_pickup_item",
   "eventList": [],
   "managed": true,
   "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_activate_script","path":"objects/par_entity/par_entity.yy",},"value":"pickup_item",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_interactable","path":"objects/par_entity/par_entity.yy",},"value":"True",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_activate_args","path":"objects/par_entity/par_entity.yy",},"value":"[ITEM_KEYCARD, 1]",},
   ],
   "parent": {
-    "name": "Field",
-    "path": "folders/Objects/Field.yy",
+    "name": "Items",
+    "path": "folders/Objects/Items.yy",
   },
   "parentObjectId": {
     "name": "par_entity",
@@ -30,10 +32,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "spr_cyberdog",
-    "path": "sprites/spr_cyberdog/spr_cyberdog.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }

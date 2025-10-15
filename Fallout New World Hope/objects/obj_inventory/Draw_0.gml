@@ -7,6 +7,7 @@
 draw_set_font(fnt_monofonto);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
+draw_set_color(c_white);
 
 var _items_xx = obj_camera.x;
 var _party_xx = obj_camera.x - 160;

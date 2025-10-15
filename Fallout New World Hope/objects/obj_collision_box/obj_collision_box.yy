@@ -4,7 +4,9 @@
   "name": "obj_collision_box",
   "eventList": [],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_collision","path":"objects/par_entity/par_entity.yy",},"value":"True",},
+  ],
   "parent": {
     "name": "All Areas",
     "path": "folders/Objects/All Areas.yy",

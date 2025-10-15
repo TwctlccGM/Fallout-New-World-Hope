@@ -1,10 +1,20 @@
-function open_door(_key, _id) {
+function open_door(_key) {
 	// @arg key
-	// @arg id
 	
 	if (global.item_array[_key][C_ITEM_AMOUNT] > 0)
 	{
 		global.item_array[_key][C_ITEM_AMOUNT] -= 1;
-		instance_destroy(_id); // Door opens
+		instance_destroy(); // Door opens
+	}
+}
+
+function pickup_item(_item, _quantity) {
+	// @arg item
+	// @arg quantity
+	
+	if (global.item_array[_item][C_ITEM_AMOUNT] > 0)
+	{
+		global.item_array[_item][C_ITEM_AMOUNT] += _quantity;
+		instance_destroy(); // Item goes into inventory
 	}
 }
