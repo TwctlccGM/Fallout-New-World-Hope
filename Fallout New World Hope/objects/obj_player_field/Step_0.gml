@@ -1,5 +1,6 @@
 /// @description
 delay--;
+depth = -bbox_bottom;
 if (global.pause) exit;
 if (state == PLAYER_STATE_LOCKED) exit;
 

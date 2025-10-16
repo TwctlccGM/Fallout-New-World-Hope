@@ -32,9 +32,9 @@
     {"name":"Orange","order":8,"path":"folders/Sprites/Menus/Orange.yy",},
     {"name":"Overworld","order":7,"path":"folders/Sprites/Overworld.yy",},
     {"name":"Placeholders","order":11,"path":"folders/Sprites/Placeholders.yy",},
+    {"name":"Tiles","order":12,"path":"folders/Sprites/Tiles.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"Tiles","order":12,"path":"folders/Sprites/Tiles.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_item_stimpak_white","order":3,"path":"sprites/spr_item_stimpak_white/spr_item_stimpak_white.yy",},

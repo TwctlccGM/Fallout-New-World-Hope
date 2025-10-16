@@ -1,7 +1,7 @@
 /// @description
 if (!global.pause)
 {
-	//depth = -bbox_bottom;
+	depth = -bbox_bottom;
 }
 
 

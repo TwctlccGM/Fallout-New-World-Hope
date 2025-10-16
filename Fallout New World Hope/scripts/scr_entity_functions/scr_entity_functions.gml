@@ -11,10 +11,7 @@ function open_door(_key) {
 function pickup_item(_item, _quantity) {
 	// @arg item
 	// @arg quantity
-	
-	if (global.item_array[_item][C_ITEM_AMOUNT] > 0)
-	{
-		global.item_array[_item][C_ITEM_AMOUNT] += _quantity;
-		instance_destroy(); // Item goes into inventory
-	}
+
+	global.item_array[_item][C_ITEM_AMOUNT] += _quantity;
+	instance_destroy(); // Item goes into inventory
 }

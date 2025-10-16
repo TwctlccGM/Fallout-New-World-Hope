@@ -4,7 +4,9 @@
   "name": "obj_pickup_keycard",
   "eventList": [],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_activate_args","path":"objects/par_entity/par_entity.yy",},"value":"[ITEM_KEYCARD, 1]",},
+  ],
   "parent": {
     "name": "Items",
     "path": "folders/Objects/Items.yy",

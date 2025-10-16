@@ -5,6 +5,8 @@ y1 = RESOLUTION_H / 2;
 x2 = RESOLUTION_W / 2 + 200;
 y2 = RESOLUTION_H / 2;
 
+depth = -99999
+
 x1_target = 0;
 x2_target = RESOLUTION_W;
 

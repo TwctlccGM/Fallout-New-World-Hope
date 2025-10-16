@@ -31,9 +31,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_placeholder",
-    "path": "sprites/spr_placeholder/spr_placeholder.yy",
+    "name": "spr_placeholder_3",
+    "path": "sprites/spr_placeholder_3/spr_placeholder_3.yy",
   },
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }
