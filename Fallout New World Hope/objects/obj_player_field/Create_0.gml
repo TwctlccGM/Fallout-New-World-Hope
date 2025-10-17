@@ -8,7 +8,7 @@ delay = 1;
 
 speed_walk = 2;
 
-collision_map = layer_tilemap_get_id(layer_get_id("Collision"));
+collision_map = layer_tilemap_get_id(layer_get_id("Tiles_Collision"));
 
 /*
 move_x = 0;				// Movement (horizontal)

@@ -13,10 +13,7 @@
     "name": "Overworld",
     "path": "folders/Objects/Overworld.yy",
   },
-  "parentObjectId": {
-    "name": "obj_player_field",
-    "path": "objects/obj_player_field/obj_player_field.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

@@ -73,6 +73,13 @@ Creating text boxes/dialogue:
 			Example: case 2: new_text_box("You gave response B!\nAny further response?", 1, ["3:Yes", "0:No"]); break;
 
 Collision:
-	It's tile-based now. Uses the 'tiles_collision' tileset.
+	Tile-based collision:
+		Uses the 'tiles_collision' tileset. 
+		The 'collision_map' variable is set to the 'Tiles_Collision' layer so every room must have the layer named exactly that.
+	Entity-based collision:
+		Child objects of the 'par_entity' parent object must have the 'entity_collision' variable ticked to true to have collision.
+		Diagonal collision doesn't work properly with the new collision system. For places that require diagonal collision (e.g. Overworld), use the old 'move_and_collide' system instead.
+			Keep in mind that the old system doesn't allow for entity/tile collisions. Perhaps there's someway to allow entity/tile collisions while using 'move_and_collide'?
+			
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
