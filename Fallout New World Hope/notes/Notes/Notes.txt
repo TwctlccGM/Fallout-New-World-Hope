@@ -18,7 +18,6 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT
 
-	- Battle text box shows description of hovered action
 	- Keys/Keycards to unlock doors.
 		Make individual keycards (e.g. X-8 keycard to open X-8 door)
 	- Implement barter system later on and have prices be affected by CHA.
@@ -35,7 +34,6 @@
 		Steady			(Improved accuracy)
 			Implement accuracy system first
 		Antivenom		(Cures cazador/nightstalker poison)
-	- Entity collision (e.g. doors, dog, but NOT items)
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

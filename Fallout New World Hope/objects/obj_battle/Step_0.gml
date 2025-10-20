@@ -121,6 +121,7 @@ if (cursor.active)
 		/// Right now it doesn't display the message and the cursor remains on the enemies.
 		
 		// Confirm action
+		obj_battle.battle_text = string(obj_battle.cursor.active_action.description_new);
 		if (_key_confirm)
 		{
 			with (obj_battle) begin_action(cursor.active_user, cursor.active_action, cursor.active_target);
@@ -140,6 +141,7 @@ if (cursor.active)
 		// Cancel & return to menu
 		if (_key_cancel) && (!_key_confirm)
 		{
+			obj_battle.battle_text = "";
 			with (obj_menu) active = true;
 			active = false;
 			confirm_delay = 0;

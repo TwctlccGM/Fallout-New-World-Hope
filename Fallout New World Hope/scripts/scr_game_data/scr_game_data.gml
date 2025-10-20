@@ -57,6 +57,7 @@ global.action_library =
 	attack :
 	{
 		name : "Attack",
+		description_new : "Single-target damage",
 		description : "{0} attacks!",
 		sub_menu_val : -1,
 		ap_cost : 0,
@@ -97,6 +98,7 @@ global.action_library =
 	targeted_shot :
 	{
 		name : "Targeted Shot",
+		description_new : "Reduces enemy defense",
 		description : "{0} exposes a weak point!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -135,6 +137,7 @@ global.action_library =
 	axe_cleave :
 	{
 		name : "Axe Cleave",
+		description_new : "Hits all enemies",
 		description : "{0} hits all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -175,6 +178,7 @@ global.action_library =
 	sonic_bark :
 	{
 		name : "Sonic Bark",
+		description_new : "Reduce all enemies' attack power",
 		description : "{0} weakens all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -217,6 +221,7 @@ global.action_library =
 	bottlecap_mine :
 	{
 		name : "Cap Mine   (25)",
+		description_new : "Hits all enemies",
 		description : "{0} throws an explosive!",
 		sub_menu_val : "Bet",
 		ap_cost : 0,
@@ -249,7 +254,6 @@ global.action_library =
 				}
 				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
 				battle_change_hp(_targets[i], -_damage, _crit, 0);				// Inflict damage on target
-				_targets[i].attack_mult -= 0.5;									// Reduce target's attack value
 			}
 			battle_change_bet(_user, -bet_cost, false);							// Update user's BET
 		}
@@ -259,6 +263,7 @@ global.action_library =
 	stimpak :
 	{
 		name : "Stimpak",
+		description_new : "Heals an ally",
 		description : "{0} uses a Stimpak!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -281,6 +286,7 @@ global.action_library =
 	doctors_bag :
 	{
 		name : "Doc Bag",
+		description_new : "Revives an ally",
 		description : "{0} uses a Doc Bag!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -303,6 +309,7 @@ global.action_library =
 	nuka_cola :
 	{
 		name : "Nuka Cola",
+		description_new : "Restores AP to an ally",
 		description : "{0} uses a Nuka Cola!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -325,6 +332,7 @@ global.action_library =
 	battle_brew :
 	{
 		name : "Battle Brew",
+		description_new : "Increases an ally's attack",
 		description : "{0} uses a Battle Brew!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -346,6 +354,7 @@ global.action_library =
 	med_x :
 	{
 		name : "Med-X",
+		description_new : "Increases an ally's defense",
 		description : "{0} uses a Med-X!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -368,6 +377,7 @@ global.action_library =
 	flee :
 	{
 		name : "Flee",
+		description_new : "Escape from battle",
 		description : "{0} flees!",
 		sub_menu_val : -1,
 		ap_cost : 0,
