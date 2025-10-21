@@ -44,20 +44,6 @@ draw_set_font(fnt_fixedsys);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
-// TO-DO: Replace this system with one that can handle longer names/more enemies
-/*var _draw_limit = 3;
-var _drawn = 0;
-for (var i = 0; (i < array_length(enemy_units)) && (_drawn < _draw_limit); i++)
-{
-	var _char = enemy_units[i ];
-	if (_char.hp > 0)
-	{
-		_drawn++;
-		draw_set_color(c_white);
-		if (_char.id == _unit_with_current_turn) draw_set_color(c_yellow);
-		draw_text(x + COLUMN_ENEMY, y + 135 + (i * 12), _char.name);
-	}
-}*/
 
 // Draw party info
 for (var i = 0; i < array_length(party_units); i++)
@@ -117,12 +103,21 @@ if (cursor.active)
 	}
 }
 
+draw_sprite_stretched(global.ui_textbox, 0, x, y, RESOLUTION_W, 25);
+
 // Draw battle text
 if (battle_text != "")
 {
+	/*
 	var _w = string_width(battle_text) + 20;
 	draw_sprite_stretched(global.ui_textbox, 0, x + 160 - (_w * 0.5), y + 5, _w, 25);
 	draw_set_halign(fa_center);
 	draw_set_color(c_white);
 	draw_text(x + 160, y + 10, battle_text);
+	*/
+	
+	//draw_sprite_stretched(global.ui_textbox, 0, x, y, RESOLUTION_W, 25);
+	draw_set_halign(fa_center);
+	draw_set_color(c_white);
+	draw_text(x + 160, y + 4, battle_text);
 }

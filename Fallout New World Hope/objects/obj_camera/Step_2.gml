@@ -7,9 +7,13 @@ if (instance_exists(follow))
 	y_to = follow.y; // Go to 'follow' (player) y co-ordinate.
 }
 
-// Camera smoothing (Bigger division number = Slower camera movement)
-x += (x_to - x) / 25; 
-y += (y_to - y) / 25;
+// MODE 1: Camera smoothing (Bigger division number = Slower camera movement)
+//x += (x_to - x) / 25; 
+//y += (y_to - y) / 25;
+
+// MODE 2: Always be on the target
+x = x_to; 
+y = y_to;
 
 // Clamping (so camera doesn't go past room borders)
 x = clamp(x, view_width_half, room_width - view_width_half);

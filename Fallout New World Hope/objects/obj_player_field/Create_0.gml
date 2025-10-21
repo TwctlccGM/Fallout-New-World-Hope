@@ -6,6 +6,8 @@ state = PLAYER_STATE_ACTIVE;
 last_state = state;
 delay = 1;
 
+direction = 270;
+
 speed_walk = 2;
 
 collision_map = layer_tilemap_get_id(layer_get_id("Tiles_Collision"));
