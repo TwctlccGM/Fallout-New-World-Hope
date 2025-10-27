@@ -6,30 +6,48 @@ if (state == PLAYER_STATE_LOCKED) exit;
 if (key_activate && delay < 0)
 {
 	delay = 1;
-	var _length = 32, _width = 6;
+	var _length = 16, _width = 6;
 
 	// Start at player position
 	var _start_x = x;
 	var _start_y = y;
 
-	// Directional vertical offset
+	// Directional offset based on sprite
 	var _offset_y = 0;
-	if (direction == 0 || direction == 180)		// Right/Left
+	var _dir = 0;
+
+	switch (sprite_index)
 	{
-		_length = 16;
-		_offset_y = 8;
+	    case spr_vaultie_field_right:
+	        _dir = 0;
+	        _offset_y = 8;
+	        break;
+
+	    case spr_vaultie_field_left:
+	        _dir = 180;
+	        _offset_y = 8;
+	        break;
+
+	    case spr_vaultie_field_back: 
+	        _dir = 90;
+	        _offset_y = 0;
+	        break;
+
+	    case spr_vaultie_field_front:
+	        _dir = 270;
+	        _offset_y = 6;
+	        break;
 	}
-	else if (direction == 90)	_offset_y = 12;	// Up
-	else if (direction == 270)	_offset_y = -8;	// Down
+
 	_start_y += _offset_y;
 
 	// End position
-	var _end_x = _start_x + lengthdir_x(_length, direction);
-	var _end_y = _start_y + lengthdir_y(_length, direction);
+	var _end_x = _start_x + lengthdir_x(_length, _dir);
+	var _end_y = _start_y + lengthdir_y(_length, _dir);
 
-	// Rectangle corners (for equal width in all directions)
-	var perp_x = dcos(direction + 90) * _width;
-	var perp_y = dsin(direction + 90) * _width;
+	// Rectangle corners (equal width in all directions)
+	var perp_x = dcos(_dir + 90) * _width;
+	var perp_y = dsin(_dir + 90) * _width;
 
 	var rect_x1 = _start_x - perp_x;
 	var rect_y1 = _start_y - perp_y;
