@@ -84,7 +84,7 @@
     {"id":{"name":"spr_item_medx","path":"sprites/spr_item_medx/spr_item_medx.yy",},},
     {"id":{"name":"obj_battle_floating_text","path":"objects/obj_battle_floating_text/obj_battle_floating_text.yy",},},
     {"id":{"name":"spr_textbox_green","path":"sprites/spr_textbox_green/spr_textbox_green.yy",},},
-    {"id":{"name":"obj_manager","path":"objects/obj_manager/obj_manager.yy",},},
+    {"id":{"name":"obj_debug","path":"objects/obj_debug/obj_debug.yy",},},
     {"id":{"name":"spr_item_battlebrew_white","path":"sprites/spr_item_battlebrew_white/spr_item_battlebrew_white.yy",},},
     {"id":{"name":"fnt_fallout_12","path":"fonts/fnt_fallout_12/fnt_fallout_12.yy",},},
     {"id":{"name":"obj_pickup_battlebrew","path":"objects/obj_pickup_battlebrew/obj_pickup_battlebrew.yy",},},

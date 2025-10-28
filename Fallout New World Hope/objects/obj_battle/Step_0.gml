@@ -14,37 +14,29 @@ if (array_any(_allies, function(_element, _index) {return _element.hp > 0; }) ==
 
 // End battle when enemies are dead
 var _enemies = obj_battle.enemy_units;
-if (array_any(_enemies, function(_element, _index) {return _element.hp > 0; }) == false) 
-{
-	/// Old system
-	/*
-	// Save party data
-	var _save_data = array_create(0); // Make save array
-	for (var i = 0; i < array_length(global.party); i++) // Add party member data to the save array
+if (array_any(_enemies, function(_element, _index) { return _element.hp > 0; }) == false) 
+{	
+	// Find out how much XP to give to the party
+	var xp_earned = 0;
+	for (var i = 0; i < array_length(_enemies); i++)
 	{
-		var _save_entity =	// Make struct
-		{
-			party_member : party_units[i].name,	// Name
-			hp : party_units[i].hp,				// HP
-			//ap : party_units[i].ap,				// AP
-		}
-		array_push(_save_data, _save_entity); // Add struct to save array
+		xp_earned += enemy_units[i].xp_yield;
 	}
-	// Turn this data into a JSON string and save it via a buffer
-	var _string = json_stringify(_save_data);
-	var _buffer = buffer_create(string_byte_length(_string) + 1, buffer_fixed, 1);
-	buffer_write(_buffer, buffer_string, _string);
-	buffer_save(_buffer, "savedgame.save");
-	buffer_delete(_buffer);
 	
-	show_debug_message("Game Saved! " + _string); // Debug message
-	*/
-	
-	// Save party's stats to the global party array
+	// Add XP and save party's stats to the global party array
 	for (var i = 0; i < array_length(global.party); i++)
 	{
-		global.party[i].hp = party_units[i].hp;
-		global.party[i].bet = party_units[i].bet;
+		global.party[i].hp		 = party_units[i].hp;
+		global.party[i].bet		 = party_units[i].bet;
+		global.party[i].xp_total += xp_earned;
+		
+		// Level up
+		if (global.party[i].xp_total >= global.party[i].xp_to_next_level)
+		{
+			global.party[i].level += 1;
+			global.party[i].xp_total -= global.party[i].xp_to_next_level;
+			global.party[i].xp_to_next_level += 100; // TODO: Make exact XP requirements for subequent levels
+		}
 	}
 	
 	// End battle

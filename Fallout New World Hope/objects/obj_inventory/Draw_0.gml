@@ -42,8 +42,9 @@ if (draw_inventory == true)
 	for(var _pos = 0; _pos < array_length(global.party); _pos++)
     {
 		draw_sprite(global.party[_pos].sprites.inventory, 0, _party_xx + 35, _yy + 45);
-		draw_text(_party_xx + 68, _yy + 30, "HP:" + string(global.party[_pos].hp) + "/" + string(global.party[_pos].hp_max));
-		draw_healthbar(_party_xx + 95, _yy + 45, _party_xx + 145, _yy + 46, (global.party[_pos].hp / global.party[_pos].hp_max) * 100, c_gray, c_red, c_green, 0, true, false);
+		draw_text(_party_xx + 62, _yy + 28, "LVL: " + string(global.party[_pos].level));
+		draw_text(_party_xx + 62, _yy + 43, "HP :" + string(global.party[_pos].hp) + "/" + string(global.party[_pos].hp_max));
+		draw_healthbar(_party_xx + 98, _yy + 58, _party_xx + 148, _yy + 58, (global.party[_pos].hp / global.party[_pos].hp_max) * 100, c_gray, c_red, c_green, 0, true, false);
 		_yy += 50;
 	}
 	

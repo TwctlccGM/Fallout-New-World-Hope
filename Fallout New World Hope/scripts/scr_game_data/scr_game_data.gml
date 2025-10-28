@@ -420,6 +420,7 @@ global.party_data =
 		// Name
 		name: "Vaultie",
 		is_player_unit: true,
+		level: 1,
 		// SPECIAL
 		strength: 3,		// Power of melee attacks
 		perception: 6,		// Power of ranged attacks
@@ -437,6 +438,8 @@ global.party_data =
 		bet_max: 100,
 		attack_mult: 1,
 		defense_mult: 1,
+		xp_total: 0,
+		xp_to_next_level: 50,
 		// Sprites
 		sprites: { 
 			idle: spr_vaultie_battle, 
@@ -467,8 +470,9 @@ global.party_data =
 		// Name
 		name: "Lobotomite",
 		is_player_unit: true,
+		level: 1,
 		// SPECIAL
-		strength: 9,		// Power of melee attacks
+		strength: 9999,		// Power of melee attacks
 		perception: 4,		// Power of ranged attacks
 		endurance: 9,		// Base defense value
 		charisma: 3,		// BET rate (and OOC bartering)
@@ -484,6 +488,8 @@ global.party_data =
 		bet_max: 100,
 		attack_mult: 1,
 		defense_mult: 1,
+		xp_total: 0,
+		xp_to_next_level: 50,
 		// Sprites
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_downed, inventory: spr_lobotomite_white },
 		// Actions
@@ -506,6 +512,7 @@ global.party_data =
 		// Name
 		name: "Cyberdog",
 		is_player_unit: true,
+		level: 1,
 		// SPECIAL
 		strength: 7,		// Power of melee attacks
 		perception: 7,		// Power of ranged attacks
@@ -523,6 +530,8 @@ global.party_data =
 		bet_max: 100,
 		attack_mult: 1,
 		defense_mult: 1,
+		xp_total: 0,
+		xp_to_next_level: 50,
 		// Sprites
 		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog_downed, inventory: spr_cyberdog_white },
 		// Actions
@@ -574,6 +583,7 @@ global.enemies =
 		bet_max: 0,
 		attack_mult: 1,
 		defense_mult: 1,
+		xp_yield: 50,
 		// Sprites
 		sprites: { idle: spr_orderly, attack: spr_orderly},
 		// Actions
@@ -615,6 +625,7 @@ global.enemies =
 		bet_max: 0,
 		attack_mult: 1,
 		defense_mult: 1,
+		xp_yield: 50,
 		// Sprites
 		sprites: { idle: spr_cyberdog_enemy, attack: spr_cyberdog_enemy},
 		// Actions
@@ -656,6 +667,7 @@ global.enemies =
 		bet_max: 0,
 		attack_mult: 1,
 		defense_mult: 1,
+		xp_yield: 50,
 		// Sprites
 		sprites: { idle: spr_turret_ceiling, attack: spr_turret_ceiling},
 		// Actions
@@ -697,6 +709,7 @@ global.enemies =
 		bet_max: 0,
 		attack_mult: 1,
 		defense_mult: 1,
+		xp_yield: 50,
 		// Sprites
 		sprites: { idle: spr_traumaharness, attack: spr_traumaharness},
 		// Actions

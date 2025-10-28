@@ -6,7 +6,7 @@ if (state == PLAYER_STATE_LOCKED) exit;
 if (key_activate && delay < 0)
 {
 	delay = 1;
-	var _length = 16, _width = 6;
+	var _length = 16, _width = 8;
 
 	// Start at player position
 	var _start_x = x;
