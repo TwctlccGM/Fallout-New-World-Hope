@@ -39,8 +39,16 @@ if (draw_inventory == true)
 		draw_sprite_stretched(global.ui_textbox, 0, _items_xx, _yy, 160, 180);
 		draw_set_font(fnt_fixedsys);
 		draw_text(_items_xx + 5, _yy + 5, "STATS");
-		draw_text(_items_xx + 10, _yy + 15, "SPECIAL");
-		draw_text(_items_xx + 10, _yy + 25, string(global.party[0].name));
+		draw_text(_items_xx + 10, _yy + 30, string(global.party[cursor.stored_target_index].name));
+		// Special
+		//draw_text(_items_xx + 20, _yy + 45, "SPECIAL");
+			draw_text(_items_xx + 15, _yy + 55, "STR " + string(global.party[cursor.stored_target_index].strength));
+			draw_text(_items_xx + 15, _yy + 70, "PER " + string(global.party[cursor.stored_target_index].perception));
+			draw_text(_items_xx + 15, _yy + 85, "END " + string(global.party[cursor.stored_target_index].endurance));
+			draw_text(_items_xx + 15, _yy + 100, "CHA " + string(global.party[cursor.stored_target_index].charisma));
+			draw_text(_items_xx + 15, _yy + 115, "INT " + string(global.party[cursor.stored_target_index].intelligence));
+			draw_text(_items_xx + 15, _yy + 130, "AGI " + string(global.party[cursor.stored_target_index].agility));
+			draw_text(_items_xx + 15, _yy + 145, "LCK " + string(global.party[cursor.stored_target_index].luck));
 	}
 	else
 	{

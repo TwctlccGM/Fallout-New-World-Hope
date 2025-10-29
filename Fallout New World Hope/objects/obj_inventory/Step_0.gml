@@ -126,13 +126,13 @@ if (cursor.active)
 			target_side = obj_inventory.party;
 			
 			// Move between targets
-			if (_move_v == 1) target_index++;
-			if (_move_v == -1) target_index--;
+			//if (_move_v == 1) target_index++;
+			//if (_move_v == -1) target_index--;
 			
 			// Wrap
-			var _targets = array_length(target_side);
-			if (target_index < 0) target_index = _targets - 1;
-			if (target_index > (_targets - 1)) target_index = 0;
+			//var _targets = array_length(target_side);
+			//if (target_index < 0) target_index = _targets - 1;
+			//if (target_index > (_targets - 1)) target_index = 0;
 		
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
@@ -180,6 +180,7 @@ if (cursor.active)
 				}
 				if (target_side == obj_inventory.party) // Looking at party member stats
 				{
+					stored_target_index = target_index;
 					obj_inventory.party_selected = true;
 					confirm_delay = 0;
 				}

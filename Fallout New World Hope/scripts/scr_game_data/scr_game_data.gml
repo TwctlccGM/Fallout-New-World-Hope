@@ -428,7 +428,7 @@ global.party_data =
 		charisma: 6,		// BET rate (and OOC bartering)
 		intelligence: 7,	// Item effectiveness
 		agility: 6,			// Turn order and AP rate per turn (0 = 0 AP,  1-3 = 1 AP,  4-6 = 2 AP,  7-9 = 3 AP, 10 = 4 AP)
-		luck: 100,			// Crit rate
+		luck: 10,			// Crit rate
 		// Stats
 		hp: 108,
 		hp_max: 108,
