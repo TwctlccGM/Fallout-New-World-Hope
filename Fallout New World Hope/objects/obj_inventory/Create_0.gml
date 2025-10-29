@@ -7,6 +7,7 @@ depth = -9999999999;
 item_pos = 0;
 item_pos_index = 0;
 
+party_selected = false;
 stimpak_selected = false;
 doctorsbag_selected = false;
 draw_inventory = false;

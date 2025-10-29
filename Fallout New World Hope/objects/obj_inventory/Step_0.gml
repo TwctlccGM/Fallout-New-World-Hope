@@ -4,6 +4,7 @@ if (keyboard_check_pressed(vk_tab))
 {
 	if (draw_inventory == true) // Deactivate inventory
 	{ 
+		party_selected = false;
 		stimpak_selected = false;
 		doctorsbag_selected = false;
 		draw_inventory = false; 
@@ -21,6 +22,7 @@ if (keyboard_check_pressed(vk_tab))
 			array_push(party, party_units[i]);
 		}
 
+		party_selected = false;
 		stimpak_selected = false;
 		doctorsbag_selected = false;
 		draw_inventory = true; 
@@ -119,6 +121,25 @@ if (cursor.active)
 				obj_inventory.doctorsbag_selected = false;
 			}
 		}
+		else if (obj_inventory.party_selected == true)
+		{
+			target_side = obj_inventory.party;
+			
+			// Move between targets
+			if (_move_v == 1) target_index++;
+			if (_move_v == -1) target_index--;
+			
+			// Wrap
+			var _targets = array_length(target_side);
+			if (target_index < 0) target_index = _targets - 1;
+			if (target_index > (_targets - 1)) target_index = 0;
+		
+			// Cancel & return to menu
+			if (_key_cancel) && (!_key_confirm)
+			{
+				obj_inventory.party_selected = false;
+			}
+		}
 		else
 		{
 			if (array_length(global.inventory_array) <= 0) { _move_h = -1; } // Stops error when trying to swap to empty item array
@@ -156,6 +177,11 @@ if (cursor.active)
 						obj_inventory.doctorsbag_selected = true;	// Variable used in other events to activate 'using item' logic
 						confirm_delay = 0;
 					}
+				}
+				if (target_side == obj_inventory.party) // Looking at party member stats
+				{
+					obj_inventory.party_selected = true;
+					confirm_delay = 0;
 				}
 			}
 		

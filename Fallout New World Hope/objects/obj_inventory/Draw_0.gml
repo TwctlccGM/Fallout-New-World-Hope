@@ -15,24 +15,7 @@ var _yy = obj_camera.y - 90;
 
 // Draw the inventory
 if (draw_inventory == true) 
-{ 
-	/// Draw inventory tab
-	_yy = obj_camera.y - 90;
-	
-	draw_sprite_stretched(global.ui_textbox, 0, _items_xx, _yy, 160, 180);
-	draw_set_font(fnt_fixedsys);
-	draw_text(_items_xx + 5, _yy + 5, "ITEMS");
-	for(var _pos = 0; _pos < array_length(global.inventory_array); _pos++)
-    {
-		//if (global.item_array[_pos, C_ITEM_AMOUNT] > 0)
-        //{
-			draw_sprite(global.inventory_array[_pos, C_ITEM_INVENTORY_SPRITE], 0, _items_xx + 20, _yy + 40);
-			draw_text(_items_xx + 35, _yy + 30, string(global.inventory_array[_pos, C_ITEM_AMOUNT]));
-			_yy += 25;
-        //}
-		// _yy += 25;
-	}
-	
+{ 	
 	/// Draw party info tab
 	_yy = obj_camera.y - 90;
 	
@@ -48,7 +31,36 @@ if (draw_inventory == true)
 		_yy += 50;
 	}
 	
-	//draw_sprite(spr_pointer_ph, 0, _xx, _yy);
+	if (party_selected == true)
+	{
+		/// Draw stats tab
+		_yy = obj_camera.y - 90;
+	
+		draw_sprite_stretched(global.ui_textbox, 0, _items_xx, _yy, 160, 180);
+		draw_set_font(fnt_fixedsys);
+		draw_text(_items_xx + 5, _yy + 5, "STATS");
+		draw_text(_items_xx + 10, _yy + 15, "SPECIAL");
+		draw_text(_items_xx + 10, _yy + 25, string(global.party[0].name));
+	}
+	else
+	{
+		/// Draw inventory tab
+		_yy = obj_camera.y - 90;
+	
+		draw_sprite_stretched(global.ui_textbox, 0, _items_xx, _yy, 160, 180);
+		draw_set_font(fnt_fixedsys);
+		draw_text(_items_xx + 5, _yy + 5, "ITEMS");
+		for(var _pos = 0; _pos < array_length(global.inventory_array); _pos++)
+	    {
+			//if (global.item_array[_pos, C_ITEM_AMOUNT] > 0)
+	        //{
+				draw_sprite(global.inventory_array[_pos, C_ITEM_INVENTORY_SPRITE], 0, _items_xx + 20, _yy + 40);
+				draw_text(_items_xx + 35, _yy + 30, string(global.inventory_array[_pos, C_ITEM_AMOUNT]));
+				_yy += 25;
+	        //}
+			// _yy += 25;
+		}
+	}
 }
 
 // Draw target cursor
@@ -79,14 +91,14 @@ if (cursor.active)
 		{
 			_yy = obj_camera.y - 90;
 			draw_set_color(c_white)
-			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, stored_target_index * 25 + _y_offset);
+			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (stored_target_index * 50) + _y_offset);
 		}
 		
 		if (obj_inventory.doctorsbag_selected)
 		{
 			_yy = obj_camera.y - 90;
 			draw_set_color(c_white)
-			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, stored_target_index * 25 + _y_offset);
+			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (stored_target_index * 50) + _y_offset);
 		}
 	}
 }
