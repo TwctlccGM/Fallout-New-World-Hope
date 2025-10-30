@@ -34,6 +34,10 @@ if (array_any(_enemies, function(_element, _index) { return _element.hp > 0; }) 
 		if (global.party[i].xp_total >= global.party[i].xp_to_next_level)
 		{
 			global.party[i].level += 1;
+			global.party[i].special_points += 1;
+			global.party[i].perk_points += 1;
+			global.party[i].hp_max += 5 * global.party[i].endurance;
+			global.party[i].hp += 3 * global.party[i].endurance;
 			global.party[i].xp_total -= global.party[i].xp_to_next_level;
 			global.party[i].xp_to_next_level += 100; // TODO: Make exact XP requirements for subequent levels
 		}

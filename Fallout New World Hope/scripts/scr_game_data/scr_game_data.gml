@@ -440,6 +440,8 @@ global.party_data =
 		defense_mult: 1,
 		xp_total: 0,
 		xp_to_next_level: 50,
+		special_points: 0,
+		perk_points: 0,
 		// Sprites
 		sprites: { 
 			idle: spr_vaultie_battle, 
@@ -490,6 +492,8 @@ global.party_data =
 		defense_mult: 1,
 		xp_total: 0,
 		xp_to_next_level: 50,
+		special_points: 0,
+		perk_points: 0,
 		// Sprites
 		sprites: { idle: spr_lobotomite, attack: spr_lobotomite, dodge: spr_lobotomite, down: spr_lobotomite_downed, inventory: spr_lobotomite_white },
 		// Actions
@@ -532,6 +536,8 @@ global.party_data =
 		defense_mult: 1,
 		xp_total: 0,
 		xp_to_next_level: 50,
+		special_points: 0,
+		perk_points: 0,
 		// Sprites
 		sprites: { idle: spr_cyberdog, attack: spr_cyberdog, dodge: spr_cyberdog, down: spr_cyberdog_downed, inventory: spr_cyberdog_white },
 		// Actions

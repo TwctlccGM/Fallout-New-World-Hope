@@ -163,9 +163,19 @@ if (cursor.active)
 			// Confirm action
 			if (_key_confirm)
 			{
-				var member = global.party[stored_target_index];
-				var stat = stat_names[target_index];
-				member[stat] += 1;
+				if (global.party[stored_target_index].special_points > 0) {
+					switch (target_index)
+				    {
+				        case 0: global.party[stored_target_index].strength		+= 1; break;
+				        case 1: global.party[stored_target_index].perception	+= 1; break;
+				        case 2: global.party[stored_target_index].endurance		+= 1; break;
+				        case 3: global.party[stored_target_index].charisma		+= 1; break;
+				        case 4: global.party[stored_target_index].intelligence	+= 1; break;
+				        case 5: global.party[stored_target_index].agility		+= 1; break;
+				        case 6: global.party[stored_target_index].luck			+= 1; break;
+				    }
+					global.party[stored_target_index].special_points -= 1;
+				}
 			}
 		
 			// Cancel & return to menu
