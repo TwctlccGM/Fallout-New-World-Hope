@@ -95,6 +95,14 @@ if (cursor.active)
 			draw_sprite(global.ui_pointer, 0, _party_xx + _x_offset, _yy + (target_index * 50) + _y_offset);
 		}
 		
+		if (target_side = party_member_stats)
+		{
+			_yy = obj_camera.y - 90;
+			draw_set_color(c_white)
+			draw_rectangle(_items_xx + 12, _yy + (target_index * 15) + 56, _items_xx + 65, _yy + (target_index * 15) + 70, true)
+			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (target_index * 15) + _y_offset + 23);
+		}
+		
 		if (obj_inventory.stimpak_selected)
 		{
 			_yy = obj_camera.y - 90;

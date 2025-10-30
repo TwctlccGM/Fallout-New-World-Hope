@@ -13,15 +13,6 @@ if (keyboard_check_pressed(vk_tab))
 	}
 	else if (draw_inventory == false) // Activate inventory
 	{ 
-		party = [];
-		// Make party
-		for (var i = 0; i < array_length(global.party); i++)
-		{
-			// TO-DO: Replace magic numbers here
-			party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), depth + 10, obj_battle_units_player, global.party[i]);
-			array_push(party, party_units[i]);
-		}
-
 		party_selected = false;
 		stimpak_selected = false;
 		doctorsbag_selected = false;
@@ -29,6 +20,27 @@ if (keyboard_check_pressed(vk_tab))
 		cursor.active =  true;
 		global.pause = true; 
 		
+		// Make party
+		party = [];
+		for (var i = 0; i < array_length(global.party); i++)
+		{
+			// TO-DO: Replace magic numbers here
+			party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), depth + 10, obj_battle_units_player, global.party[i]);
+			array_push(party, party_units[i]);
+		}
+		
+		// Dummy stats 
+		cursor.party_member_stats = [
+			global.party[PARTY_VAULTIE].strength,
+			global.party[PARTY_VAULTIE].perception,
+			global.party[PARTY_VAULTIE].endurance,
+			global.party[PARTY_VAULTIE].charisma,
+			global.party[PARTY_VAULTIE].intelligence,
+			global.party[PARTY_VAULTIE].agility,
+			global.party[PARTY_VAULTIE].luck
+		];
+		
+		// Make inventory
 		array_delete(global.inventory_array, 0, array_length(global.inventory_array));
 		var _i = 0;
 		for(var _pos = 0; _pos < array_length(global.item_array); _pos++)
@@ -121,22 +133,46 @@ if (cursor.active)
 				obj_inventory.doctorsbag_selected = false;
 			}
 		}
+		
+		// Party member stats screen
 		else if (obj_inventory.party_selected == true)
 		{
-			target_side = obj_inventory.party;
+			// Make party member's stats
+			party_member_stats = [
+				global.party[stored_target_index].strength,
+				global.party[stored_target_index].perception,
+				global.party[stored_target_index].endurance,
+				global.party[stored_target_index].charisma,
+				global.party[stored_target_index].intelligence,
+				global.party[stored_target_index].agility,
+				global.party[stored_target_index].luck
+			];
+			
+			target_side = party_member_stats;
+			active_target = target_side[target_index];
 			
 			// Move between targets
-			//if (_move_v == 1) target_index++;
-			//if (_move_v == -1) target_index--;
+			if (_move_v == 1) target_index++;
+			if (_move_v == -1) target_index--;
 			
 			// Wrap
-			//var _targets = array_length(target_side);
-			//if (target_index < 0) target_index = _targets - 1;
-			//if (target_index > (_targets - 1)) target_index = 0;
+			var _targets = array_length(target_side);
+			if (target_index < 0) target_index = _targets - 1;
+			if (target_index > (_targets - 1)) target_index = 0;
+			
+			// Confirm action
+			if (_key_confirm)
+			{
+				var member = global.party[stored_target_index];
+				var stat = stat_names[target_index];
+				member[stat] += 1;
+			}
 		
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
 			{
+				target_side = obj_inventory.party;
+				target_index = stored_target_index;
 				obj_inventory.party_selected = false;
 			}
 		}
