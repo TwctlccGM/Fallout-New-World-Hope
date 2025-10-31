@@ -36,10 +36,12 @@ function use_item(_item, _target)
 			case (ITEM_STIMPAK):
 				_heal = global.party[0].intelligence * 10; // Scales off Vaultie's INT
 				battle_change_hp(global.party[_target], _heal, 2, 1, 0); // Heal target
+				new_text_box("Vaultie used a " + string(global.item_array[ITEM_STIMPAK][C_ITEM_NAME]));
 				break;
 			case (ITEM_DOCTORSBAG):
 				_heal = global.party[0].intelligence * 10; // Scales off Vaultie's INT
 				battle_change_hp(global.party[_target], _heal, 2, 1, 1); // Heal target
+				new_text_box("Vaultie used a " + string(global.item_array[ITEM_DOCTORSBAG][C_ITEM_NAME]));
 				break;
 			//case (ITEM_BATTLEBREW):
 			//	_target.attack_value = _target.attack_value * 1.5;

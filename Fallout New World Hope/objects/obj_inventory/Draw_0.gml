@@ -110,14 +110,14 @@ if (cursor.active)
 		{
 			_yy = obj_camera.y - 90;
 			draw_set_color(c_white)
-			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (stored_target_index * 50) + _y_offset);
+			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (stored_target_index * 25) + _y_offset);
 		}
 		
 		if (obj_inventory.doctorsbag_selected)
 		{
 			_yy = obj_camera.y - 90;
 			draw_set_color(c_white)
-			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (stored_target_index * 50) + _y_offset);
+			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (stored_target_index * 25) + _y_offset);
 		}
 	}
 }

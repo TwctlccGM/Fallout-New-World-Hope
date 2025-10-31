@@ -46,7 +46,7 @@ function battle_change_hp(_target, _amount, _notcrit_crit_heal, _outside_battle 
 	if (!_failed) _target.hp = clamp(_target.hp + _amount, 0, _target.hp_max);
 	
 	// Increase BET if player unit takes damage
-	if ((_target.is_player_unit) && (_amount < 0))
+	if ((_target.is_player_unit) && (_amount != "Failed") && (_amount < 0))
 	{
 		battle_change_bet(_target, _amount, true);
 	}

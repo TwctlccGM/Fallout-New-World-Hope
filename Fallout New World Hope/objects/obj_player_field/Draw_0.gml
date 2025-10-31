@@ -3,9 +3,9 @@ draw_self();
 if (state == PLAYER_STATE_LOCKED) exit;
 
 // Interaction
-if (key_activate && delay < 0)
+if (key_activate && delay < 0 && !instance_exists(obj_text))
 {
-	delay = 1;
+	delay = 2;
 	var _length = 16, _width = 8;
 
 	// Start at player position

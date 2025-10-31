@@ -1,7 +1,7 @@
 // Resolution etc.
 #macro RESOLUTION_W 320
 #macro RESOLUTION_H 180
-#macro TILE_SIZE 16
+#macro TILE_SIZE	16
 //surface_resize(application_surface, RESOLUTION_W, RESOLUTION_H);
 
 // Pause
@@ -9,31 +9,32 @@ global.pause = false;
 
 /// Inventory macros
 // Item Definitions
-#macro ITEM_STIMPAK 0
-#macro ITEM_DOCTORSBAG 1
-#macro ITEM_NUKA_COLA 2
-#macro ITEM_MEDX 3
-#macro ITEM_BATTLEBREW 4
-#macro ITEM_KEYCARD 5
-//#macro ITEM_PISTOL 0
-//#macro ITEM_AXE 0
+#macro ITEM_STIMPAK		0
+#macro ITEM_DOCTORSBAG	1
+#macro ITEM_NUKA_COLA	2
+#macro ITEM_MEDX		3
+#macro ITEM_BATTLEBREW	4
+#macro ITEM_KEYCARD		5
+//#macro ITEM_PISTOL	0
+//#macro ITEM_AXE		0
 
 // Array Constants
-#macro C_ITEM_TYPE 0
-#macro C_ITEM_SPRITE 1
-#macro C_ITEM_INVENTORY_SPRITE 2
-#macro C_ITEM_AMOUNT 3
+#macro C_ITEM_TYPE				0
+#macro C_ITEM_SPRITE			1
+#macro C_ITEM_INVENTORY_SPRITE	2
+#macro C_ITEM_AMOUNT			3
+#macro C_ITEM_NAME				4
 
 // Items (the array that's used to keep track of items and item usage)
 global.item_array = array_create(6);
 
-//										Name				Sprite					Inventory Sprite			Amount
-global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5];
-global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5];
-global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5];
-global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5];
-global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5];
-global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];
+//										ID					Sprite					Inventory Sprite			Amount	Name
+global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5,		"Stimpak"		];
+global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5,		"Doctor's Bag"	];
+global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5,		"Nuka Cola"		];
+global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5,		"Med-X"			];
+global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5,		"Battle Brew"	];
+global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0,		"Keycard"		];
 
 // Inventory display
 global.inventory_array = array_create(0);

@@ -4,7 +4,7 @@
 
 state = PLAYER_STATE_ACTIVE;
 last_state = state;
-delay = 1;
+delay = 2;
 
 direction = 270;
 
