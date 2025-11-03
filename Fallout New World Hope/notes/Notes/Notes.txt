@@ -4,13 +4,9 @@
 	- Items (stims and doc bags) get consumed even when they have no effect.
 	- Items not in player's inventory appear in battle (but at least they are greyed out and unusable)
 	- Fix up battle menu a bit (make options appear in order: Attack -> Abilities -> Items -> Flee)
-	- Pointer in inventory menu sometimes goes up too far when selecting an item (idk what triggers this to start happening)
 	- Make abilities/bets greyed out and unselectable when not enough AP/BET to use them (atm they are 'failed' in obj_battle Create event)
-	- Interact box appears in overworld
 	- Move interact code OUT of player's Draw event (and adjust it so that the interact box is positioned correctly)
 	- Rearrange some code (e.g. put key input events like opening the inventory into the player object for consistent keybinds)
-	- Keycard item pickup isn't working for some reason
-	- Diagonal interaction rectangle is fucked up (something to do with 'direction' variable and interaction code only having cases for cardinal directions)
 	
 	// Not sure if fixable
 	- When colliding with an entity from the bottom then moving diagonally across them, if it transitions to a tile collision, the player can clip through a 1 pixel gap.
@@ -20,11 +16,6 @@
 /// FEATURES TO IMPLEMENT
 
 	- Enemies drop items after being defeated
-	- Leveling system
-		- Choose SPECIAL stat to increase per level
-		- Enemies and quests/puzzles give XP
-	- Keys/Keycards to unlock doors.
-		Make individual keycards (e.g. X-8 keycard to open X-8 door)
 	- Implement barter system later on and have prices be affected by CHA.
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)
@@ -56,12 +47,7 @@ Changing UI colour:
 	Should change this system to use a shader so that there's no need for repeat sprites and so many global UI variables (just one global UI colour shader variable).
 
 Damage/Defense calculation:
-	Damage calculation starts with the user's STR/PER for damage.
-		This then get multiplied by an 'attack_mult' value.
-			'attack_mult' is made up of various factors (e.g. equipped weapon, buffs/debuffs).
-	Defense calculation starts with the target's END for defense.
-		This then gets multiplied by a 'defense_mult' value.
-			'defense_mult' is made up of various factors (e.g. equipped armour, buffs/debuffs).
+	Damage calculation starts with the user's STR/PER for damage then reduces that by the target's END.
 			
 Creating text boxes/dialogue:
 	Objects that have 'par_entity' as their parent object are considered 'entities'.
