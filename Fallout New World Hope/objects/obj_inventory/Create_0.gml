@@ -2,6 +2,12 @@
 //draw_set_font(fnt_monofonto);
 //draw_set_halign(fa_right);
 //draw_set_valign(fa_bottom);
+#macro INVENTORY_STATE_ACTIVE 0
+#macro INVENTORY_STATE_LOCKED 1
+
+state = INVENTORY_STATE_ACTIVE;
+last_state = state;
+
 depth = -999;
 
 item_pos = 0;

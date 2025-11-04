@@ -14,9 +14,14 @@ var _min = 0;
 if (response_selected > _max) response_selected = _min;
 if (response_selected < _min) response_selected = _max;
 
+var _message_length = string_length(text_message);
+if (box_type = INVENTORY)
+{
+	text_progress = _message_length; // Show whole message
+}
+
 if (keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(ord("X")))
 {
-	var _message_length = string_length(text_message);
 	if (text_progress >= _message_length) // Already shown the whole message
 	{
 		if (responses[0] != -1)
@@ -31,6 +36,7 @@ if (keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(ord("X")))
 		else
 		{
 			with (obj_player_field) state = last_state;	
+			with (obj_inventory) state = last_state;	
 		}
 		obj_player_field.delay = 2;
 		instance_destroy(); // Remove message

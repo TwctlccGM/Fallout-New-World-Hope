@@ -1,4 +1,7 @@
 /// @description
+#macro FIELD 0
+#macro INVENTORY 1
+#macro DIALOGUE 2
 // Created as part of ARPG Tutorial Part 7
 x1 = RESOLUTION_W / 2 + 200;
 y1 = RESOLUTION_H / 2;
@@ -19,7 +22,10 @@ text_progress = 0;
 //responses = ["Test response", "test response two"];
 response_selected = 0;
 
+box_type = DIALOGUE;
+
 obj_player_field.state = PLAYER_STATE_LOCKED;
+obj_inventory.state = INVENTORY_STATE_LOCKED;
 
 
 

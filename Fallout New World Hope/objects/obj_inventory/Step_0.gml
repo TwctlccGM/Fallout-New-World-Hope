@@ -1,4 +1,5 @@
 /// @description
+if (state == INVENTORY_STATE_LOCKED) exit;
 // Toggle inventory
 if (keyboard_check_pressed(vk_tab))
 {

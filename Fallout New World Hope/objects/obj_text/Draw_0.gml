@@ -13,7 +13,26 @@ draw_text((x1 + x2) / 2, y1 + 8, _print)
 // TO-DO: Change textbox size and positioning based on if it's a dialogue, inventory pop-up, or field pop-up
 var _xx = obj_camera.x - 160;
 var _yy = obj_camera.y;
-draw_sprite_stretched(global.ui_textbox, background, _xx, _yy, 320, 90); 
+switch (box_type) 
+{
+	case FIELD:
+		_xx = obj_camera.x - 160;
+		_yy = obj_camera.y - 90;
+		draw_sprite_stretched(global.ui_textbox, background, _xx, _yy, 320, 30); 
+		break;
+	case INVENTORY:
+		_xx = obj_camera.x - 160;
+		_yy = obj_camera.y - 90;
+		draw_sprite_stretched(global.ui_textbox, background, _xx, _yy, 320, 30); 
+		break;
+	case DIALOGUE:
+		_xx = obj_camera.x - 160;
+		_yy = obj_camera.y;
+		draw_sprite_stretched(global.ui_textbox, background, _xx, _yy, 320, 90); 
+		break;
+	default:
+}
+
 var _print = string_copy(text_message, 1, text_progress);
 
 if (responses[0] != -1) && (text_progress >= string_length(text_message))
