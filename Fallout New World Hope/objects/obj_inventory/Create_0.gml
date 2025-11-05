@@ -8,7 +8,7 @@
 state = INVENTORY_STATE_ACTIVE;
 last_state = state;
 
-depth = -999;
+depth = -9999999;
 
 item_pos = 0;
 item_pos_index = 0;

@@ -8,7 +8,7 @@ function open_door(_key) {
 	}
 	else
 	{
-		new_text_box("This doors requires a Keycard");	
+		new_text_box("This doors requires a Keycard", FIELD);	
 	}
 }
 
