@@ -15,7 +15,7 @@ if (response_selected > _max) response_selected = _min;
 if (response_selected < _min) response_selected = _max;
 
 var _message_length = string_length(text_message);
-if (box_type = INVENTORY)
+if (box_type != DIALOGUE)
 {
 	text_progress = _message_length; // Show whole message
 }
@@ -31,7 +31,11 @@ if (keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(ord("X")))
 		
 		if (instance_exists(obj_text_queued))
 		{
-			with (obj_text_queued) ticket--;	
+			with (obj_text_queued) 
+			{
+				ticket--;
+				if (ticket == 0) instance_change(obj_text, true);
+			}
 		}
 		else
 		{
@@ -45,7 +49,7 @@ if (keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(ord("X")))
 	{
 		if (text_progress > 2) // Hasn't shown the whole message
 		{
-				text_progress = _message_length; // Show whole message
+			text_progress = _message_length; // Show whole message
 		}
 	}
 }

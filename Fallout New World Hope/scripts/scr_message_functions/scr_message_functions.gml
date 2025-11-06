@@ -44,7 +44,7 @@
 
 function new_text_box(_message, _box_type = DIALOGUE, _background = 1, _responses = [-1]) {
 
-    // Defaults (argument-based fallback)
+    // Defaults
     if (argument_count < 2 || !is_real(_box_type))     _box_type = DIALOGUE;
     if (argument_count < 3 || !is_real(_background))   _background = 1;
     if (argument_count < 4 || !is_array(_responses))   _responses = [-1];
@@ -58,12 +58,12 @@ function new_text_box(_message, _box_type = DIALOGUE, _background = 1, _response
         box_type     = _box_type;
         background   = _background;
 
-        // Set interaction origin
+        // Set origin
         if (!obj_inventory.draw_inventory) {
             origin_instance = instance_exists(other) ? other.id : noone;
         }
 
-        // Parse responses
+        // Responses
         responses = [];
         response_scripts = [];
 
@@ -73,12 +73,12 @@ function new_text_box(_message, _box_type = DIALOGUE, _background = 1, _response
 
             for (var i = 0; i < array_length(responses); i++)
             {
-                var s = responses[i];
-                var p = string_pos(":", s);
-                var r = string_copy(s, 1, p - 1);
+                var _string = responses[i];
+                var _pos = string_pos(":", _string);
+                var _resp = string_copy(_string, 1, _pos - 1);
 
-                response_scripts[i] = real(r);
-                responses[i] = string_delete(s, 1, p);
+                response_scripts[i] = real(_resp);
+                responses[i] = string_delete(_string, 1, _pos);
             }
         }
         else

@@ -8,7 +8,7 @@ y1 = RESOLUTION_H / 2;
 x2 = RESOLUTION_W / 2 + 200;
 y2 = RESOLUTION_H / 2;
 
-depth = -99999
+depth = -99999999
 
 x1_target = 0;
 x2_target = RESOLUTION_W;
@@ -21,8 +21,6 @@ text_progress = 0;
 
 //responses = ["Test response", "test response two"];
 response_selected = 0;
-
-box_type = DIALOGUE;
 
 obj_player_field.state = PLAYER_STATE_LOCKED;
 obj_inventory.state = INVENTORY_STATE_LOCKED;

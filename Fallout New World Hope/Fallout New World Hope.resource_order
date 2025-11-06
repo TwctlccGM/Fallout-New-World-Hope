@@ -69,6 +69,7 @@
     {"name":"rm_field_test_y17","order":2,"path":"rooms/rm_field_test_y17/rm_field_test_y17.yy",},
     {"name":"obj_menu","order":6,"path":"objects/obj_menu/obj_menu.yy",},
     {"name":"obj_overworld_slowzone","order":6,"path":"objects/obj_overworld_slowzone/obj_overworld_slowzone.yy",},
+    {"name":"obj_lobotomite_field","order":7,"path":"objects/obj_lobotomite_field/obj_lobotomite_field.yy",},
     {"name":"spr_overworld_destination","order":4,"path":"sprites/spr_overworld_destination/spr_overworld_destination.yy",},
     {"name":"spr_placeholder_3","order":3,"path":"sprites/spr_placeholder_3/spr_placeholder_3.yy",},
     {"name":"spr_effect_debuff_blue_anim","order":11,"path":"sprites/spr_effect_debuff_blue_anim/spr_effect_debuff_blue_anim.yy",},

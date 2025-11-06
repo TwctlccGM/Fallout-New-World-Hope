@@ -1,0 +1,1 @@
+item_drop = ITEM_KEYCARD;

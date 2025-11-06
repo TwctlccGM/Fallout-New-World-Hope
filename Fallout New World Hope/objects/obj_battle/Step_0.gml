@@ -16,12 +16,22 @@ if (array_any(_allies, function(_element, _index) {return _element.hp > 0; }) ==
 var _enemies = obj_battle.enemy_units;
 if (array_any(_enemies, function(_element, _index) { return _element.hp > 0; }) == false) 
 {	
+	instance_activate_all();
+	
+	// Give item drops to the party
+	if (creator.item_drop != -1)
+	{
+		global.item_array[creator.item_drop][C_ITEM_AMOUNT] += 1;
+		new_text_box("Looted a " + string(global.item_array[creator.item_drop][C_ITEM_NAME]), FIELD);
+	}
+	
 	// Find out how much XP to give to the party
 	var xp_earned = 0;
 	for (var i = 0; i < array_length(_enemies); i++)
 	{
 		xp_earned += enemy_units[i].xp_yield;
 	}
+	new_text_box("Earned " + string(xp_earned) + " XP", FIELD);
 	
 	// Add XP and save party's stats to the global party array
 	for (var i = 0; i < array_length(global.party); i++)

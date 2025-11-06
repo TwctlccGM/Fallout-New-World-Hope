@@ -4,13 +4,22 @@ function dialogue_responses() {
 	switch(argument0)
 	{
 		case 0: break;	// End of conversation
-		case 1: new_text_box("The dog looks injured.\nHeal him?", DIALOGUE, 1, ["3:Yes", "2:No"]); break;
-		case 2: new_text_box("You backed away from the dog."); break; 
-		case 3: // Recruit cyberdog
+		case 1: new_text_box("The lobotomite is injured.\nHe'll need medical treatment.", DIALOGUE, 1, ["3:Use a Doctor's Bag", "2:Leave"]); break;
+		case 2: new_text_box("There may be a doctor's bag somewhere\nin this medical facility."); break; 
+		case 3: // Attempt to recruit cyberdog
 		{
-			new_text_box("You healed the dog.\nIt joined your party!");
-			array_insert(global.party, array_length(global.party), global.party_data[PARTY_CYBERDOG]);
-			instance_destroy();
+			// Heal him with a doctor's bag
+			if (global.item_array[ITEM_DOCTORSBAG][C_ITEM_AMOUNT] > 0)
+			{
+				global.item_array[ITEM_DOCTORSBAG][C_ITEM_AMOUNT] -= 1;
+				new_text_box("You healed the lobotomite.\nHe joined your party!", DIALOGUE);
+				array_insert(global.party, array_length(global.party), global.party_data[PARTY_LOBOTOMITE]);
+				instance_destroy();
+			}
+			else
+			{
+				new_text_box("You don't have a doctor's bag.", DIALOGUE);
+			}
 		}
 		break;
 		default: show_debug_message("UNEXPECTED CONVERSATION END!"); break; // Unexpected end of conversation

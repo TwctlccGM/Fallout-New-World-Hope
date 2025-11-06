@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_cyberdog_field",
+  "name": "obj_lobotomite_field",
   "eventList": [],
   "managed": true,
   "overriddenProperties": [
@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_cyberdog_downed",
-    "path": "sprites/spr_cyberdog_downed/spr_cyberdog_downed.yy",
+    "name": "spr_lobotomite_downed",
+    "path": "sprites/spr_lobotomite_downed/spr_lobotomite_downed.yy",
   },
   "spriteMaskId": null,
   "visible": true,

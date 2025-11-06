@@ -29,11 +29,11 @@ global.pause = false;
 global.item_array = array_create(6);
 
 //										ID					Sprite					Inventory Sprite			Amount	Name
-global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5,		"Stimpak"		];
-global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5,		"Doctor's Bag"	];
-global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5,		"Nuka Cola"		];
-global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5,		"Med-X"			];
-global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5,		"Battle Brew"	];
+global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		0,		"Stimpak"		];
+global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	0,		"Doctor's Bag"	];
+global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	0,		"Nuka Cola"		];
+global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		0,		"Med-X"			];
+global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0,		"Battle Brew"	];
 global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0,		"Keycard"		];
 
 // Inventory display
@@ -423,13 +423,13 @@ global.party_data =
 		is_player_unit: true,
 		level: 1,
 		// SPECIAL
-		strength: 3,		// Power of melee attacks
+		strength: 100,		// Power of melee attacks
 		perception: 6,		// Power of ranged attacks
 		endurance: 3,		// Base defense value
 		charisma: 6,		// BET rate (and OOC bartering)
 		intelligence: 7,	// Item effectiveness
 		agility: 6,			// Turn order and AP rate per turn (0 = 0 AP,  1-3 = 1 AP,  4-6 = 2 AP,  7-9 = 3 AP, 10 = 4 AP)
-		luck: 10,			// Crit rate
+		luck: 100,			// Crit rate
 		// Stats
 		hp: 108,
 		hp_max: 108,
@@ -475,7 +475,7 @@ global.party_data =
 		is_player_unit: true,
 		level: 1,
 		// SPECIAL
-		strength: 9999,		// Power of melee attacks
+		strength: 9,		// Power of melee attacks
 		perception: 4,		// Power of ranged attacks
 		endurance: 9,		// Base defense value
 		charisma: 3,		// BET rate (and OOC bartering)
@@ -527,7 +527,7 @@ global.party_data =
 		agility: 8,			// Turn order and AP rate per turn
 		luck: 5,			// Crit rate
 		// Stats
-		hp: 0,
+		hp: 50,
 		hp_max: 108,
 		ap: 10,
 		ap_max: 10,
@@ -563,7 +563,7 @@ global.party_data =
 #macro PARTY_CYBERDOG 2
 
 // 'party' is the current player party
-global.party = [global.party_data[0], global.party_data[1]];
+global.party = [global.party_data[0]];
 
 // Enemy data
 global.enemies =
@@ -666,8 +666,8 @@ global.enemies =
 		agility: 5,			// Turn order and AP rate per turn
 		luck: 5,			// Crit rate
 		// Stats
-		hp: 3000,
-		hp_max: 3000,
+		hp: 300,
+		hp_max: 300,
 		ap: 10,
 		ap_max: 10,
 		bet: 0,
