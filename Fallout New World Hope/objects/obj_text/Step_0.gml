@@ -22,6 +22,7 @@ if (box_type != DIALOGUE)
 
 if (keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(ord("X")))
 {
+	obj_player_field.delay = 2;
 	if (text_progress >= _message_length) // Already shown the whole message
 	{
 		if (responses[0] != -1)
@@ -42,7 +43,6 @@ if (keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(ord("X")))
 			with (obj_player_field) state = last_state;	
 			with (obj_inventory) state = last_state;	
 		}
-		obj_player_field.delay = 2;
 		instance_destroy(); // Remove message
 	}
 	else

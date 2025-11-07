@@ -188,8 +188,8 @@
     {"id":{"name":"rm_field_test_x7b","path":"rooms/rm_field_test_x7b/rm_field_test_x7b.yy",},},
   ],
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_field_test_y17","path":"rooms/rm_field_test_y17/rm_field_test_y17.yy",},},
     {"roomId":{"name":"rm_field_test_x7b","path":"rooms/rm_field_test_x7b/rm_field_test_x7b.yy",},},
+    {"roomId":{"name":"rm_field_test_y17","path":"rooms/rm_field_test_y17/rm_field_test_y17.yy",},},
     {"roomId":{"name":"rm_overworld","path":"rooms/rm_overworld/rm_overworld.yy",},},
   ],
   "templateType": "game",

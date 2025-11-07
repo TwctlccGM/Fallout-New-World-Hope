@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_cyberdog_downed",
-    "path": "sprites/spr_cyberdog_downed/spr_cyberdog_downed.yy",
+    "name": "spr_cyberdog",
+    "path": "sprites/spr_cyberdog/spr_cyberdog.yy",
   },
   "spriteMaskId": null,
   "visible": true,
