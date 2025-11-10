@@ -1,15 +1,15 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_collision_box",
+  "name": "obj_knight_field",
   "eventList": [],
   "managed": true,
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_collision","path":"objects/par_entity/par_entity.yy",},"value":"True",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_interactable","path":"objects/par_entity/par_entity.yy",},"value":"True",},
   ],
   "parent": {
-    "name": "All Areas",
-    "path": "folders/Objects/All Areas.yy",
+    "name": "Field",
+    "path": "folders/Objects/Field.yy",
   },
   "parentObjectId": {
     "name": "par_entity",
@@ -31,9 +31,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_placeholder_2",
-    "path": "sprites/spr_placeholder_2/spr_placeholder_2.yy",
+    "name": "spr_knight",
+    "path": "sprites/spr_knight/spr_knight.yy",
   },
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }

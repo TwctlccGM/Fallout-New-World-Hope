@@ -413,6 +413,11 @@ enum MODE
 	VARIES = 2,
 }
 
+#macro PARTY_VAULTIE 0
+#macro PARTY_LOBOTOMITE 1
+#macro PARTY_CYBERDOG 2
+#macro PARTY_KNIGHT 3
+
 /// Party data
 // 'party_data' is all of the possible party members data
 global.party_data =
@@ -556,11 +561,51 @@ global.party_data =
 		// global.action_library.flee
 		]
 	}
+	,
+	{
+		// Name
+		name: "Knight",
+		is_player_unit: true,
+		level: 1,
+		// SPECIAL
+		strength: 7,		// Power of melee attacks
+		perception: 8,		// Power of ranged attacks
+		endurance: 8,		// Base defense value
+		charisma: 4,		// BET rate (and OOC bartering)
+		intelligence: 5,	// Item effectiveness
+		agility: 4,			// Turn order and AP rate per turn
+		luck: 4,			// Crit rate
+		// Stats
+		hp: 148,
+		hp_max: 148,
+		ap: 10,
+		ap_max: 10,
+		bet: 0,
+		bet_max: 100,
+		attack_mult: 1,
+		defense_mult: 1,
+		xp_total: 0,
+		xp_to_next_level: 50,
+		special_points: 0,
+		perk_points: 0,
+		// Sprites
+		sprites: { idle: spr_knight, attack: spr_knight, dodge: spr_knight, down: spr_knight, inventory: spr_knight_white },
+		// Actions
+		actions: [
+		// Basic attack
+		global.action_library.attack, 
+		// Abilities
+		global.action_library.axe_cleave, 
+		// Items
+		global.action_library.stimpak, 
+		global.action_library.doctors_bag, 
+		global.action_library.nuka_cola, 
+		global.action_library.battle_brew, 
+		global.action_library.med_x
+		// global.action_library.flee
+		]
+	}
 ];
-
-#macro PARTY_VAULTIE 0
-#macro PARTY_LOBOTOMITE 1
-#macro PARTY_CYBERDOG 2
 
 // 'party' is the current player party
 global.party = [global.party_data[0]];
@@ -635,6 +680,48 @@ global.enemies =
 		xp_yield: 50,
 		// Sprites
 		sprites: { idle: spr_cyberdog_enemy, attack: spr_cyberdog_enemy},
+		// Actions
+		actions: [global.action_library.attack],
+		xp: 100,
+		AI_script: function()
+		{
+			/// Enemy turn AI goes here
+			// Attack random party member
+			var _action = actions[0];
+			var _possible_targets = array_filter(obj_battle.party_units, function(_unit, _index)
+			{
+				return (_unit.hp > 0);
+			});
+			var _target = _possible_targets[irandom(array_length(_possible_targets) - 1)];
+			return [_action, _target];	
+		}
+	}
+	,
+	lobotomite_rabid:
+	{
+		// Name
+		name: "Rabid Lobotomite",
+		is_player_unit: false,
+		// SPECIAL
+		strength: 5,		// Power of melee attacks
+		perception: 5,		// Power of ranged attacks
+		endurance: 5,		// Base defense value
+		charisma: 5,		// N/A
+		intelligence: 5,	// Item effectiveness
+		agility: 5,			// Turn order and AP rate per turn
+		luck: 5,			// Crit rate
+		// Stats
+		hp: 30,
+		hp_max: 30,
+		ap: 10,
+		ap_max: 10,
+		bet: 0,
+		bet_max: 0,
+		attack_mult: 1,
+		defense_mult: 1,
+		xp_yield: 50,
+		// Sprites
+		sprites: { idle: spr_lobotomite_enemy, attack: spr_lobotomite_enemy},
 		// Actions
 		actions: [global.action_library.attack],
 		xp: 100,

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_cyberdog",
+  "name": "obj_lobotomite_enemy",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_player_field","path":"objects/obj_player_field/obj_player_field.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
@@ -32,8 +32,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_cyberdog_enemy",
-    "path": "sprites/spr_cyberdog_enemy/spr_cyberdog_enemy.yy",
+    "name": "spr_lobotomite_enemy",
+    "path": "sprites/spr_lobotomite_enemy/spr_lobotomite_enemy.yy",
   },
   "spriteMaskId": null,
   "visible": true,
