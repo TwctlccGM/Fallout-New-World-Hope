@@ -1,0 +1,1 @@
+go_to_room = rm_field_x2_interior;

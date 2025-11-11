@@ -739,6 +739,48 @@ global.enemies =
 		}
 	}
 	,
+	protectron_mk1:
+	{
+		// Name
+		name: "Protectron",
+		is_player_unit: false,
+		// SPECIAL
+		strength: 5,		// Power of melee attacks
+		perception: 5,		// Power of ranged attacks
+		endurance: 5,		// Base defense value
+		charisma: 5,		// N/A
+		intelligence: 5,	// Item effectiveness
+		agility: 5,			// Turn order and AP rate per turn
+		luck: 5,			// Crit rate
+		// Stats
+		hp: 30,
+		hp_max: 30,
+		ap: 10,
+		ap_max: 10,
+		bet: 0,
+		bet_max: 0,
+		attack_mult: 1,
+		defense_mult: 1,
+		xp_yield: 50,
+		// Sprites
+		sprites: { idle: spr_protectron, attack: spr_protectron},
+		// Actions
+		actions: [global.action_library.attack],
+		xp: 100,
+		AI_script: function()
+		{
+			/// Enemy turn AI goes here
+			// Attack random party member
+			var _action = actions[0];
+			var _possible_targets = array_filter(obj_battle.party_units, function(_unit, _index)
+			{
+				return (_unit.hp > 0);
+			});
+			var _target = _possible_targets[irandom(array_length(_possible_targets) - 1)];
+			return [_action, _target];	
+		}
+	}
+	,
 	turret_ceiling:
 	{
 		// Name
