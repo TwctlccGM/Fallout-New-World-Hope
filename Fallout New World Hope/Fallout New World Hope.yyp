@@ -186,6 +186,7 @@
     {"id":{"name":"obj_cyberdog_field","path":"objects/obj_cyberdog_field/obj_cyberdog_field.yy",},},
     {"id":{"name":"spr_item_keycard","path":"sprites/spr_item_keycard/spr_item_keycard.yy",},},
     {"id":{"name":"spr_effect_restore_HP","path":"sprites/spr_effect_restore_HP/spr_effect_restore_HP.yy",},},
+    {"id":{"name":"spr_robobrain","path":"sprites/spr_robobrain/spr_robobrain.yy",},},
     {"id":{"name":"fnt_fallout_6","path":"fonts/fnt_fallout_6/fnt_fallout_6.yy",},},
     {"id":{"name":"spr_effect_debuff_blue","path":"sprites/spr_effect_debuff_blue/spr_effect_debuff_blue.yy",},},
     {"id":{"name":"spr_lobotomite_white","path":"sprites/spr_lobotomite_white/spr_lobotomite_white.yy",},},
