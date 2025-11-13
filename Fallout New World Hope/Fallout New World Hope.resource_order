@@ -52,6 +52,7 @@
     {"name":"obj_door","order":5,"path":"objects/obj_door/obj_door.yy",},
     {"name":"spr_vaultie_field_left","order":4,"path":"sprites/spr_vaultie_field_left/spr_vaultie_field_left.yy",},
     {"name":"spr_battle_background_ph","order":4,"path":"sprites/spr_battle_background_ph/spr_battle_background_ph.yy",},
+    {"name":"scr_party_functions","order":10,"path":"scripts/scr_party_functions/scr_party_functions.yy",},
     {"name":"spr_orderly_field","order":4,"path":"sprites/spr_orderly_field/spr_orderly_field.yy",},
     {"name":"spr_orderly","order":1,"path":"sprites/spr_orderly/spr_orderly.yy",},
     {"name":"spr_lobotomite_downed","order":1,"path":"sprites/spr_lobotomite_downed/spr_lobotomite_downed.yy",},

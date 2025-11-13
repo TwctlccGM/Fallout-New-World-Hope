@@ -1,5 +1,5 @@
 /// @description
-room_goto(rm_overworld);
+room_goto(go_to_room);
 
 
 

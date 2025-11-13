@@ -14,6 +14,8 @@ item_pos = 0;
 item_pos_index = 0;
 
 party_selected = false;
+stats_selected = false;
+swap_selected = false;
 stimpak_selected = false;
 doctorsbag_selected = false;
 draw_inventory = false;

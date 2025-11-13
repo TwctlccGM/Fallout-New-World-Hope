@@ -31,7 +31,7 @@ if (draw_inventory == true)
 		_yy += 50;
 	}
 	
-	if (party_selected == true)
+	if (stats_selected == true)
 	{
 		/// Draw stats tab
 		_yy = obj_camera.y - 90;
@@ -52,6 +52,25 @@ if (draw_inventory == true)
 		// Perks
 		//draw_text(_items_xx + 75, _yy + 95, "Perk\npoints: " + string(global.party[cursor.stored_target_index].perk_points));
 	}
+	
+	else if (swap_selected == true)
+	{
+		/// Draw party info tab
+		_yy = obj_camera.y - 90;
+	
+		draw_sprite_stretched(global.ui_textbox, 0, _items_xx, _yy, 160, 180);
+		draw_set_font(fnt_fixedsys);
+		draw_text(_items_xx + 5, _yy + 5, "SWAP");
+		for(var _pos = 0; _pos < array_length(cursor.party_member_waiting); _pos++)
+	    {
+			draw_sprite(cursor.party_member_waiting[_pos].sprites.inventory, 0, _items_xx + 35, _yy + 45);
+			draw_text(_items_xx + 62, _yy + 28, "LVL: " + string(cursor.party_member_waiting[_pos].level));
+			draw_text(_items_xx + 62, _yy + 43, "HP :" + string(cursor.party_member_waiting[_pos].hp) + "/" + string(cursor.party_member_waiting[_pos].hp_max));
+			draw_healthbar(_items_xx + 98, _yy + 58, _items_xx + 148, _yy + 58, (cursor.party_member_waiting[_pos].hp / cursor.party_member_waiting[_pos].hp_max) * 100, c_gray, c_red, c_green, 0, true, false);
+			_yy += 50;
+		}
+	}
+	
 	else
 	{
 		/// Draw inventory tab
@@ -70,6 +89,16 @@ if (draw_inventory == true)
 	        //}
 			// _yy += 25;
 		}
+	}
+	if (party_selected == true)
+	{
+		/// Draw options tab
+		_yy = obj_camera.y - 90;
+	
+		draw_sprite_stretched(global.ui_textbox, 0, _party_xx + 35, _yy + (cursor.stored_target_index * 50) + 37, 50, 40);
+		draw_set_font(fnt_fixedsys);
+		draw_text(_party_xx + 40, _yy + (cursor.stored_target_index * 50) + 40, "Stats");
+		draw_text(_party_xx + 40, _yy + (cursor.stored_target_index * 50) + 55, "Swap");
 	}
 }
 
@@ -104,6 +133,24 @@ if (cursor.active)
 			draw_rectangle(_items_xx + 12, _yy + (target_index * 15) + 56, _items_xx + 65, _yy + (target_index * 15) + 70, true)
 			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (target_index * 15) + _y_offset + 23);
 			draw_sprite(global.ui_pointer, 0, _party_xx + _x_offset, _yy + (stored_target_index * 50) + _y_offset);
+		}
+		
+		if (target_side = party_member_options)
+		{
+			if (target_index >= 2) { target_index = 0; }
+			_yy = obj_camera.y - 90;
+			draw_set_color(c_white)
+			draw_rectangle(_party_xx + 39, _yy + (stored_target_index * 50) + (target_index * 15) + 42, _party_xx + 80, _yy + (stored_target_index * 50) + (target_index * 15) + 55, true)
+			draw_sprite(global.ui_pointer, 0, _party_xx + 40, _yy + (stored_target_index * 50) + (target_index * 15) + 50);
+			draw_sprite(global.ui_pointer, 0, _party_xx + _x_offset, _yy + (stored_target_index * 50) + _y_offset);
+		}
+		
+		if (target_side = party_member_waiting)
+		{
+			_yy = obj_camera.y - 90;
+			draw_set_color(c_white)
+			draw_rectangle(_items_xx + 10, _yy + (target_index * 50) + 25, _items_xx + 150, _yy + (target_index * 50) + 65, true)
+			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (target_index * 50) + _y_offset);
 		}
 		
 		if (obj_inventory.stimpak_selected)

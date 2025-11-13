@@ -70,6 +70,7 @@
     {"id":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},},
     {"id":{"name":"spr_vaultie_field_left","path":"sprites/spr_vaultie_field_left/spr_vaultie_field_left.yy",},},
     {"id":{"name":"spr_battle_background_ph","path":"sprites/spr_battle_background_ph/spr_battle_background_ph.yy",},},
+    {"id":{"name":"scr_party_functions","path":"scripts/scr_party_functions/scr_party_functions.yy",},},
     {"id":{"name":"spr_cyberdog","path":"sprites/spr_cyberdog/spr_cyberdog.yy",},},
     {"id":{"name":"spr_orderly_field","path":"sprites/spr_orderly_field/spr_orderly_field.yy",},},
     {"id":{"name":"spr_orderly","path":"sprites/spr_orderly/spr_orderly.yy",},},

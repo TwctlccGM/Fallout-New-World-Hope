@@ -73,7 +73,7 @@ global.action_library =
 		func : function(_user, _targets)
 		{
 			var _attack_power =											// Calculate user's attack power
-			max(_user.strength, _user.perception);						//	User's highest damaging stat (STR/PER)
+			max(_user.strength * 3, _user.perception * 3);				//	User's highest damaging stat (STR/PER)
 			
 			var _crit = 0;												// Calculate if it's a critical hit
 			if ((floor(random_range(0, 100)) <= _user.luck))			//	 User's LCK / 100
@@ -120,12 +120,12 @@ global.action_library =
 			var _damage = 0;												// Calculate damage dealt to target
 			if (_crit == 0) {												//	If Normal hit
 				_damage =
-				floor((_user.perception * _user.attack_mult)				//		User attack (PER)
+				floor((_user.perception * 3 * _user.attack_mult)			//		User attack (PER)
 					- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
 			}
 			if (_crit == 1) {												//	If Critical hit
 				_damage =
-				floor((_user.perception * _user.attack_mult * 2)			//		User attack (PER)
+				floor((_user.perception * 3 * _user.attack_mult * 2)		//		User attack (PER)
 					- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
 			}
 			if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
@@ -161,12 +161,12 @@ global.action_library =
 				var _damage = 0;												// Calculate damage dealt to target
 				if (_crit == 0) {												//	If Normal hit
 					_damage =
-					floor((_user.strength * _user.attack_mult)					//		User attack (STR)
+					floor((_user.strength * 3 * _user.attack_mult)				//		User attack (STR)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_crit == 1) {												//	If Critical hit
 					_damage =
-					floor((_user.strength * _user.attack_mult * 2)				//		User attack (STR)
+					floor((_user.strength * 3 * _user.attack_mult * 2)			//		User attack (STR)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
@@ -202,12 +202,12 @@ global.action_library =
 				var _damage = 0;												// Calculate damage dealt to target
 				if (_crit == 0) {												//	If Normal hit
 					_damage =
-					floor((_user.perception * _user.attack_mult)				//		User attack (PER)
+					floor((_user.perception * 3 * _user.attack_mult)			//		User attack (PER)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_crit == 1) {												//	If Critical hit
 					_damage =
-					floor((_user.perception * _user.attack_mult * 2)			//		User attack (PER)
+					floor((_user.perception * 3 * _user.attack_mult * 2)		//		User attack (PER)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
@@ -245,12 +245,12 @@ global.action_library =
 				var _damage = 0;												// Calculate damage dealt to target
 				if (_crit == 0) {												//	If Normal hit
 					_damage =
-					floor((_user.intelligence * _user.attack_mult)				//		User attack (INT)
+					floor((_user.intelligence * 5 * _user.attack_mult)			//		User attack (INT)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_crit == 1) {												//	If Critical hit
 					_damage =
-					floor((_user.intelligence * _user.attack_mult * 2)			//		User attack (INT)
+					floor((_user.intelligence * 5 * _user.attack_mult * 2)		//		User attack (INT)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
@@ -426,15 +426,16 @@ global.party_data =
 		// Name
 		name: "Vaultie",
 		is_player_unit: true,
+		is_recruited: true,
 		level: 1,
 		// SPECIAL
-		strength: 100,		// Power of melee attacks
+		strength: 4,		// Power of melee attacks
 		perception: 6,		// Power of ranged attacks
 		endurance: 3,		// Base defense value
 		charisma: 6,		// BET rate (and OOC bartering)
 		intelligence: 7,	// Item effectiveness
 		agility: 6,			// Turn order and AP rate per turn (0 = 0 AP,  1-3 = 1 AP,  4-6 = 2 AP,  7-9 = 3 AP, 10 = 4 AP)
-		luck: 100,			// Crit rate
+		luck: 10,			// Crit rate
 		// Stats
 		hp: 108,
 		hp_max: 108,
@@ -478,6 +479,7 @@ global.party_data =
 		// Name
 		name: "Lobotomite",
 		is_player_unit: true,
+		is_recruited: false,
 		level: 1,
 		// SPECIAL
 		strength: 9,		// Power of melee attacks
@@ -522,6 +524,7 @@ global.party_data =
 		// Name
 		name: "Cyberdog",
 		is_player_unit: true,
+		is_recruited: false,
 		level: 1,
 		// SPECIAL
 		strength: 7,		// Power of melee attacks
@@ -566,6 +569,7 @@ global.party_data =
 		// Name
 		name: "Knight",
 		is_player_unit: true,
+		is_recruited: false,
 		level: 1,
 		// SPECIAL
 		strength: 7,		// Power of melee attacks

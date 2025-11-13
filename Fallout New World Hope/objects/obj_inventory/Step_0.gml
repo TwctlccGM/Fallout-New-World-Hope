@@ -5,7 +5,7 @@ if (keyboard_check_pressed(vk_tab))
 {
 	if (draw_inventory == true) // Deactivate inventory
 	{ 
-		party_selected = false;
+		stats_selected = false;
 		stimpak_selected = false;
 		doctorsbag_selected = false;
 		draw_inventory = false; 
@@ -14,7 +14,7 @@ if (keyboard_check_pressed(vk_tab))
 	}
 	else if (draw_inventory == false) // Activate inventory
 	{ 
-		party_selected = false;
+		stats_selected = false;
 		stimpak_selected = false;
 		doctorsbag_selected = false;
 		draw_inventory = true; 
@@ -30,7 +30,7 @@ if (keyboard_check_pressed(vk_tab))
 			array_push(party, party_units[i]);
 		}
 		
-		// Dummy stats 
+		// Dummy stats as default
 		cursor.party_member_stats = [
 			global.party[PARTY_VAULTIE].strength,
 			global.party[PARTY_VAULTIE].perception,
@@ -40,6 +40,10 @@ if (keyboard_check_pressed(vk_tab))
 			global.party[PARTY_VAULTIE].agility,
 			global.party[PARTY_VAULTIE].luck
 		];
+		
+		cursor.party_member_options = ["Stats", "Swap"];
+		
+		cursor.party_member_waiting = [];
 		
 		// Make inventory
 		array_delete(global.inventory_array, 0, array_length(global.inventory_array));
@@ -135,8 +139,50 @@ if (cursor.active)
 			}
 		}
 		
-		// Party member stats screen
+		// Party member selected screen
 		else if (obj_inventory.party_selected == true)
+		{
+			if (target_index >= 2) { target_index = 0; }
+			target_side = party_member_options;
+			active_target = target_side[target_index];
+			
+			// Move between targets
+			if (_move_v == 1) target_index++;
+			if (_move_v == -1) target_index--;
+			
+			// Wrap
+			var _targets = array_length(target_side);
+			if (target_index < 0) target_index = _targets - 1;
+			if (target_index > (_targets - 1)) target_index = 0;
+			
+			// Confirm action
+			if (_key_confirm)
+			{
+				// Stats selected
+				if (target_index = 0)
+				{
+					obj_inventory.stats_selected = true;
+					obj_inventory.party_selected = false;
+				}
+				// Swap selected
+				if (target_index = 1)
+				{
+					obj_inventory.swap_selected = true;	
+					obj_inventory.party_selected = false;
+				}
+			}
+		
+			// Cancel & return to menu
+			if (_key_cancel) && (!_key_confirm)
+			{
+				target_side = obj_inventory.party;
+				target_index = stored_target_index;
+				obj_inventory.party_selected = false;
+			}
+		}
+		
+		// Party member stats screen
+		else if (obj_inventory.stats_selected == true)
 		{
 			// Make party member's stats
 			party_member_stats = [
@@ -164,18 +210,60 @@ if (cursor.active)
 			// Confirm action
 			if (_key_confirm)
 			{
+				// Add SPECIAL point to a stat, up to 10 maximum
 				if (global.party[stored_target_index].special_points > 0) {
 					switch (target_index)
 				    {
-				        case 0: global.party[stored_target_index].strength		+= 1; break;
-				        case 1: global.party[stored_target_index].perception	+= 1; break;
-				        case 2: global.party[stored_target_index].endurance		+= 1; break;
-				        case 3: global.party[stored_target_index].charisma		+= 1; break;
-				        case 4: global.party[stored_target_index].intelligence	+= 1; break;
-				        case 5: global.party[stored_target_index].agility		+= 1; break;
-				        case 6: global.party[stored_target_index].luck			+= 1; break;
+				        case 0: 
+							if (global.party[stored_target_index].strength			< 10)
+							{
+								global.party[stored_target_index].strength			+= 1;
+								global.party[stored_target_index].special_points	-= 1;
+							}
+							break;
+				        case 1: 
+							if (global.party[stored_target_index].perception		< 10) 
+							{	
+								global.party[stored_target_index].perception		+= 1; 
+								global.party[stored_target_index].special_points	-= 1;
+							}
+							break;
+				        case 2: 
+							if (global.party[stored_target_index].endurance			< 10)
+							{
+								global.party[stored_target_index].endurance			+= 1; 
+								global.party[stored_target_index].special_points	-= 1;
+							}
+						break;
+				        case 3: 
+							if (global.party[stored_target_index].charisma			< 10)
+							{
+								global.party[stored_target_index].charisma			+= 1; 
+								global.party[stored_target_index].special_points	-= 1;
+							}
+						break;
+				        case 4: 
+							if (global.party[stored_target_index].intelligence		< 10)
+							{
+								global.party[stored_target_index].intelligence		+= 1; 
+								global.party[stored_target_index].special_points	-= 1;
+							}
+						break;
+				        case 5: 
+							if (global.party[stored_target_index].agility			< 10)
+							{
+								global.party[stored_target_index].agility			+= 1; 
+								global.party[stored_target_index].special_points	-= 1;
+							}
+						break;
+				        case 6: 
+							if (global.party[stored_target_index].luck				< 10)
+							{
+								global.party[stored_target_index].luck				+= 1; 
+								global.party[stored_target_index].special_points	-= 1;
+							}
+						break;
 				    }
-					global.party[stored_target_index].special_points -= 1;
 				}
 			}
 		
@@ -184,9 +272,50 @@ if (cursor.active)
 			{
 				target_side = obj_inventory.party;
 				target_index = stored_target_index;
-				obj_inventory.party_selected = false;
+				obj_inventory.stats_selected = false;
 			}
 		}
+		
+		// Party member swap screen
+		else if (obj_inventory.swap_selected == true)
+		{
+			// Make list of waiting party members
+			party_member_waiting = [];
+			for (var i = 0; i < array_length(global.party_data); i++) 
+			{
+				if (!is_in_party(global.party_data[i]))
+				{
+					array_push(party_member_waiting, global.party_data[i]);
+				}
+			}
+			
+			target_side = party_member_waiting;
+			active_target = 0;//target_side[target_index];
+			
+			// Move between targets
+			if (_move_v == 1) target_index++;
+			if (_move_v == -1) target_index--;
+			
+			// Wrap
+			var _targets = array_length(target_side);
+			if (target_index < 0) target_index = _targets - 1;
+			if (target_index > (_targets - 1)) target_index = 0;
+			
+			// Confirm action
+			if (_key_confirm)
+			{
+				
+			}
+		
+			// Cancel & return to menu
+			if (_key_cancel) && (!_key_confirm)
+			{
+				target_side = obj_inventory.party;
+				target_index = stored_target_index;
+				obj_inventory.swap_selected = false;
+			}
+		}
+		
 		else
 		{
 			if (array_length(global.inventory_array) <= 0) { _move_h = -1; } // Stops error when trying to swap to empty item array
