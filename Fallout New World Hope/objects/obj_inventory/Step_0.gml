@@ -304,7 +304,10 @@ if (cursor.active)
 			// Confirm action
 			if (_key_confirm)
 			{
-				
+				if (array_length(global.party) <= 2)
+				{
+					array_insert(global.party, array_length(global.party), global.party_data[party_member_waiting[target_index].party_name]);
+				}
 			}
 		
 			// Cancel & return to menu

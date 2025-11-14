@@ -15,7 +15,15 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT
 
-	- Enemies drop items after being defeated
+	- Limit party to 3
+		- Add ability to swap out party members
+		- Delete 'recruitable' members from rooms once they've been recruited
+	- Describe what each SPECIAL stat does
+	- Add BET attacks to other party members
+	- Show power of an ability in its description
+	- Notify when a party member has levelled up
+	- Add overworld transition to X-2 exterior
+	
 	- Implement barter system later on and have prices be affected by CHA.
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)

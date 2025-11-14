@@ -425,6 +425,7 @@ global.party_data =
 	{
 		// Name
 		name: "Vaultie",
+		party_name: PARTY_VAULTIE,
 		is_player_unit: true,
 		is_recruited: true,
 		level: 1,
@@ -478,6 +479,7 @@ global.party_data =
 	{
 		// Name
 		name: "Lobotomite",
+		party_name: PARTY_LOBOTOMITE,
 		is_player_unit: true,
 		is_recruited: false,
 		level: 1,
@@ -523,6 +525,7 @@ global.party_data =
 	{
 		// Name
 		name: "Cyberdog",
+		party_name: PARTY_CYBERDOG,
 		is_player_unit: true,
 		is_recruited: false,
 		level: 1,
@@ -568,6 +571,7 @@ global.party_data =
 	{
 		// Name
 		name: "Knight",
+		party_name: PARTY_KNIGHT,
 		is_player_unit: true,
 		is_recruited: false,
 		level: 1,
