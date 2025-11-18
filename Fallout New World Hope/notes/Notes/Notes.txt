@@ -15,9 +15,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT
 
-	- Limit party to 3
-		- Add ability to swap out party members
-		- Delete 'recruitable' members from rooms once they've been recruited
+	- Delete 'recruitable' members from rooms once they've been recruited
 	- Describe what each SPECIAL stat does
 	- Add BET attacks to other party members
 	- Show power of an ability in its description

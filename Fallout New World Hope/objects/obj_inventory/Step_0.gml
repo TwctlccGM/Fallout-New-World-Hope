@@ -307,9 +307,15 @@ if (cursor.active)
 			// Confirm action
 			if (_key_confirm)
 			{
-				if (array_length(global.party) <= 2)
+				if (array_length(global.party) <= 2) // Party not full
 				{
 					array_insert(global.party, array_length(global.party), global.party_data[party_member_waiting[target_index].party_name]);
+				}
+				else if (array_length(global.party) > 2) // Party full
+				{
+					array_delete(global.party, stored_target_index, 1);
+					array_insert(global.party, stored_target_index, global.party_data[party_member_waiting[target_index].party_name]);
+					//array_delete(global.party, stored_target_index + 1, 1);
 				}
 			}
 		

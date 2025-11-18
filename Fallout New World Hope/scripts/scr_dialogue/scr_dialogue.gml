@@ -43,14 +43,15 @@ function dialogue_responses() {
 			if (array_length(global.party) >= 2)
 			{
 				new_text_box("As you approach, you are ambushed!\nThe cyberdog fights alongside you!", DIALOGUE, 1, ["5:"]);
-				global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+				global.party_data[PARTY_CYBERDOG].is_recruited = true;
+				array_delete(global.party, 2, 1);
 				array_insert(global.party, 2, global.party_data[PARTY_CYBERDOG]); // Cyberdog replaces last party member
 			}
 			// Party not full
 			else
 			{
 				new_text_box("As you approach, you are ambushed!\nThe cyberdog fights alongside you!", DIALOGUE, 1, ["5:"]);
-				global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+				global.party_data[PARTY_CYBERDOG].is_recruited = true;
 				array_insert(global.party, array_length(global.party), global.party_data[PARTY_CYBERDOG]);
 			}
 		} break;
@@ -67,14 +68,15 @@ function dialogue_responses() {
 			if (array_length(global.party) >= 2)
 			{
 				new_text_box("You are ambushed by enemy lobotomites!\nThe knight comes to your aid!", DIALOGUE, 1, ["7:"]);
-				global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+				global.party_data[PARTY_KNIGHT].is_recruited = true;
+				array_delete(global.party, 2, 1);
 				array_insert(global.party, 2, global.party_data[PARTY_KNIGHT]); // Knight replaces last party member
 			}
 			// Party not full
 			else
 			{
 				new_text_box("You are ambushed by enemy lobotomites!\nThe knight comes to your aid!", DIALOGUE, 1, ["7:"]);
-				global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+				global.party_data[PARTY_KNIGHT].is_recruited = true;
 				array_insert(global.party, array_length(global.party), global.party_data[PARTY_KNIGHT]);
 			}
 		} break;
