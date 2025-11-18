@@ -481,7 +481,7 @@ global.party_data =
 		name: "Lobotomite",
 		party_name: PARTY_LOBOTOMITE,
 		is_player_unit: true,
-		is_recruited: false,
+		is_recruited: true,
 		level: 1,
 		// SPECIAL
 		strength: 9,		// Power of melee attacks
@@ -527,7 +527,7 @@ global.party_data =
 		name: "Cyberdog",
 		party_name: PARTY_CYBERDOG,
 		is_player_unit: true,
-		is_recruited: false,
+		is_recruited: true,
 		level: 1,
 		// SPECIAL
 		strength: 7,		// Power of melee attacks

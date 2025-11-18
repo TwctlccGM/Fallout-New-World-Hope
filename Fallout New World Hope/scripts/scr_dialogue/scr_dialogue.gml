@@ -15,8 +15,20 @@ function dialogue_responses() {
 			if (global.item_array[ITEM_DOCTORSBAG][C_ITEM_AMOUNT] > 0)
 			{
 				global.item_array[ITEM_DOCTORSBAG][C_ITEM_AMOUNT] -= 1;
-				new_text_box("You healed the lobotomite.\nHe joined your party!", DIALOGUE);
-				array_insert(global.party, array_length(global.party), global.party_data[PARTY_LOBOTOMITE]);
+				
+				// Party full
+				if (array_length(global.party) >= 2)
+				{
+					new_text_box("You healed the lobotomite.\nHe can now join the party!", DIALOGUE);
+					global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+				}
+				// Party not full
+				else
+				{
+					new_text_box("You healed the lobotomite.\nHe joined your party!", DIALOGUE);
+					global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+					array_insert(global.party, array_length(global.party), global.party_data[PARTY_LOBOTOMITE]);
+				}
 				instance_destroy();
 			}
 			else
@@ -27,8 +39,20 @@ function dialogue_responses() {
 		
 		case 4: // Approach cyberdog, ambushed by enemy dogs
 		{
-			new_text_box("As you approach, you are ambushed!\nThe cyberdog fights alongside you!", DIALOGUE, 1, ["5:"]);
-			array_insert(global.party, array_length(global.party), global.party_data[PARTY_CYBERDOG]);
+			// Party full
+			if (array_length(global.party) >= 2)
+			{
+				new_text_box("As you approach, you are ambushed!\nThe cyberdog fights alongside you!", DIALOGUE, 1, ["5:"]);
+				global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+				array_insert(global.party, 2, global.party_data[PARTY_CYBERDOG]); // Cyberdog replaces last party member
+			}
+			// Party not full
+			else
+			{
+				new_text_box("As you approach, you are ambushed!\nThe cyberdog fights alongside you!", DIALOGUE, 1, ["5:"]);
+				global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+				array_insert(global.party, array_length(global.party), global.party_data[PARTY_CYBERDOG]);
+			}
 		} break;
 		
 		case 5: 
@@ -39,8 +63,20 @@ function dialogue_responses() {
 		
 		case 6: // Approach knight, ambushed by enemy lobotomites (TODO: Make enemy lobotomite approach player, then have the knight show up)
 		{
-			new_text_box("You are ambushed by enemy lobotomites!\nThe knight comes to your aid!", DIALOGUE, 1, ["7:"]);
-			array_insert(global.party, array_length(global.party), global.party_data[PARTY_KNIGHT]);
+			// Party full
+			if (array_length(global.party) >= 2)
+			{
+				new_text_box("You are ambushed by enemy lobotomites!\nThe knight comes to your aid!", DIALOGUE, 1, ["7:"]);
+				global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+				array_insert(global.party, 2, global.party_data[PARTY_KNIGHT]); // Knight replaces last party member
+			}
+			// Party not full
+			else
+			{
+				new_text_box("You are ambushed by enemy lobotomites!\nThe knight comes to your aid!", DIALOGUE, 1, ["7:"]);
+				global.party_data[PARTY_LOBOTOMITE].is_recruited = true;
+				array_insert(global.party, array_length(global.party), global.party_data[PARTY_KNIGHT]);
+			}
 		} break;
 		
 		case 7: 

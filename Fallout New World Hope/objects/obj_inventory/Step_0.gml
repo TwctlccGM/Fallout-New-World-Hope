@@ -6,6 +6,7 @@ if (keyboard_check_pressed(vk_tab))
 	if (draw_inventory == true) // Deactivate inventory
 	{ 
 		stats_selected = false;
+		swap_selected = false;
 		stimpak_selected = false;
 		doctorsbag_selected = false;
 		draw_inventory = false; 
@@ -15,6 +16,7 @@ if (keyboard_check_pressed(vk_tab))
 	else if (draw_inventory == false) // Activate inventory
 	{ 
 		stats_selected = false;
+		swap_selected = false;
 		stimpak_selected = false;
 		doctorsbag_selected = false;
 		draw_inventory = true; 
@@ -43,8 +45,6 @@ if (keyboard_check_pressed(vk_tab))
 		
 		cursor.party_member_options = ["Stats", "Swap"];
 		
-		cursor.party_member_waiting = [];
-		
 		// Make inventory
 		array_delete(global.inventory_array, 0, array_length(global.inventory_array));
 		var _i = 0;
@@ -58,6 +58,19 @@ if (keyboard_check_pressed(vk_tab))
 				_i++;
 	        }
 			// _yy += 25;
+		}
+	}
+}
+
+// Make list of waiting party members
+cursor.party_member_waiting = [];
+for (var i = 0; i < array_length(global.party_data); i++) 
+{
+	if (!is_in_party(global.party_data[i]))
+	{
+		if (global.party_data[i].is_recruited == true)
+		{
+			array_push(cursor.party_member_waiting, global.party_data[i]);
 		}
 	}
 }
@@ -165,7 +178,7 @@ if (cursor.active)
 					obj_inventory.party_selected = false;
 				}
 				// Swap selected
-				if (target_index = 1)
+				if (target_index = 1 && (array_length(party_member_waiting) > 0))
 				{
 					obj_inventory.swap_selected = true;	
 					obj_inventory.party_selected = false;
@@ -279,16 +292,6 @@ if (cursor.active)
 		// Party member swap screen
 		else if (obj_inventory.swap_selected == true)
 		{
-			// Make list of waiting party members
-			party_member_waiting = [];
-			for (var i = 0; i < array_length(global.party_data); i++) 
-			{
-				if (!is_in_party(global.party_data[i]))
-				{
-					array_push(party_member_waiting, global.party_data[i]);
-				}
-			}
-			
 			target_side = party_member_waiting;
 			active_target = 0;//target_side[target_index];
 			
@@ -312,6 +315,14 @@ if (cursor.active)
 		
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
+			{
+				target_side = obj_inventory.party;
+				target_index = stored_target_index;
+				obj_inventory.swap_selected = false;
+			}
+			
+			// No party members on standby
+			if (array_length(party_member_waiting) <= 0)
 			{
 				target_side = obj_inventory.party;
 				target_index = stored_target_index;
