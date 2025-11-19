@@ -41,14 +41,26 @@ if (draw_inventory == true)
 		draw_text(_items_xx + 5, _yy + 5, "STATS");
 		draw_text(_items_xx + 70, _yy + 5, string(global.party[cursor.stored_target_index].name));
 		// Special
-		draw_text(_items_xx + 10, _yy + 35, "Points: " + string(global.party[cursor.stored_target_index].special_points));
-			draw_text(_items_xx + 15, _yy + 55, "STR " + string(global.party[cursor.stored_target_index].strength));
-			draw_text(_items_xx + 15, _yy + 70, "PER " + string(global.party[cursor.stored_target_index].perception));
-			draw_text(_items_xx + 15, _yy + 85, "END " + string(global.party[cursor.stored_target_index].endurance));
-			draw_text(_items_xx + 15, _yy + 100, "CHA " + string(global.party[cursor.stored_target_index].charisma));
-			draw_text(_items_xx + 15, _yy + 115, "INT " + string(global.party[cursor.stored_target_index].intelligence));
-			draw_text(_items_xx + 15, _yy + 130, "AGI " + string(global.party[cursor.stored_target_index].agility));
-			draw_text(_items_xx + 15, _yy + 145, "LCK " + string(global.party[cursor.stored_target_index].luck));
+		_yy = obj_camera.y - 90;
+		draw_text(_items_xx + 80, _yy + 65, "SPECIAL\nPoints:\n   " + string(global.party[cursor.stored_target_index].special_points));
+		switch (cursor.target_index)
+			{
+				case 0: draw_text(_items_xx + 10, _yy + 25, "Strength affects\nphysical damage.");	break;
+				case 1: draw_text(_items_xx + 10, _yy + 25, "Perception affects\nranged damage.");	break;
+				case 2: draw_text(_items_xx + 10, _yy + 25, "Endurance affects\nmax health.");		break;
+				case 3: draw_text(_items_xx + 10, _yy + 25, "Charisma affects\nbarter costs.");	break;
+				case 4: draw_text(_items_xx + 10, _yy + 25, "Intelligence\naffects items.");		break;
+				case 5: draw_text(_items_xx + 10, _yy + 25, "Agility affects\nturn order.");		break;
+				case 6: draw_text(_items_xx + 10, _yy + 25, "Luck affects\ncrit rate.");			break;
+				default:
+			}
+			draw_text(_items_xx + 15, _yy + 65, "STR " + string(global.party[cursor.stored_target_index].strength));
+			draw_text(_items_xx + 15, _yy + 80, "PER " + string(global.party[cursor.stored_target_index].perception));
+			draw_text(_items_xx + 15, _yy + 95, "END " + string(global.party[cursor.stored_target_index].endurance));
+			draw_text(_items_xx + 15, _yy + 110, "CHA " + string(global.party[cursor.stored_target_index].charisma));
+			draw_text(_items_xx + 15, _yy + 125, "INT " + string(global.party[cursor.stored_target_index].intelligence));
+			draw_text(_items_xx + 15, _yy + 140, "AGI " + string(global.party[cursor.stored_target_index].agility));
+			draw_text(_items_xx + 15, _yy + 155, "LCK " + string(global.party[cursor.stored_target_index].luck));
 		// Perks
 		//draw_text(_items_xx + 75, _yy + 95, "Perk\npoints: " + string(global.party[cursor.stored_target_index].perk_points));
 	}
@@ -128,7 +140,7 @@ if (cursor.active)
 		
 		if (target_side = party_member_stats)
 		{
-			_yy = obj_camera.y - 90;
+			_yy = obj_camera.y - 80;
 			draw_set_color(c_white)
 			draw_rectangle(_items_xx + 12, _yy + (target_index * 15) + 56, _items_xx + 65, _yy + (target_index * 15) + 70, true)
 			draw_sprite(global.ui_pointer, 0, _items_xx + _x_offset, _yy + (target_index * 15) + _y_offset + 23);

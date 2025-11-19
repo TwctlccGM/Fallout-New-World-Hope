@@ -58,7 +58,7 @@ global.action_library =
 	attack :
 	{
 		name : "Attack",
-		description_new : "Single-target damage",
+		description_new : "100% | STR/PER | Single-target damage.",		// Character limit of 39 atm (otherwise it goes outside the text box)
 		description : "{0} attacks!",
 		sub_menu_val : -1,
 		ap_cost : 0,
@@ -99,7 +99,7 @@ global.action_library =
 	targeted_shot :
 	{
 		name : "Targeted Shot",
-		description_new : "Reduces enemy defense",
+		description_new : "150% | PER | Lower enemy's defense.",
 		description : "{0} exposes a weak point!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -120,12 +120,12 @@ global.action_library =
 			var _damage = 0;												// Calculate damage dealt to target
 			if (_crit == 0) {												//	If Normal hit
 				_damage =
-				floor((_user.perception * 3 * _user.attack_mult)			//		User attack (PER)
+				floor((_user.perception * 3 * _user.attack_mult * 1.5)		//		User attack (PER)
 					- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
 			}
 			if (_crit == 1) {												//	If Critical hit
 				_damage =
-				floor((_user.perception * 3 * _user.attack_mult * 2)		//		User attack (PER)
+				floor((_user.perception * 3 * _user.attack_mult * 1.5 * 2)	//		User attack (PER)
 					- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
 			}
 			if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
@@ -138,7 +138,7 @@ global.action_library =
 	axe_cleave :
 	{
 		name : "Axe Cleave",
-		description_new : "Hits all enemies",
+		description_new : "150% | STR | Hit all enemies.",
 		description : "{0} hits all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -161,12 +161,12 @@ global.action_library =
 				var _damage = 0;												// Calculate damage dealt to target
 				if (_crit == 0) {												//	If Normal hit
 					_damage =
-					floor((_user.strength * 3 * _user.attack_mult)				//		User attack (STR)
+					floor((_user.strength * 3 * _user.attack_mult * 1.5)		//		User attack (STR)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_crit == 1) {												//	If Critical hit
 					_damage =
-					floor((_user.strength * 3 * _user.attack_mult * 2)			//		User attack (STR)
+					floor((_user.strength * 3 * _user.attack_mult * 1.5 * 2)	//		User attack (STR)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
@@ -179,7 +179,7 @@ global.action_library =
 	sonic_bark :
 	{
 		name : "Sonic Bark",
-		description_new : "Reduce all enemies' attack power",
+		description_new : "100% | PER | Lower all enemies' attack.",
 		description : "{0} weakens all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -222,7 +222,7 @@ global.action_library =
 	bottlecap_mine :
 	{
 		name : "Cap Mine   (25)",
-		description_new : "Hits all enemies",
+		description_new : "200% | INT | Hit all enemies.",
 		description : "{0} throws an explosive!",
 		sub_menu_val : "Bet",
 		ap_cost : 0,
@@ -245,12 +245,12 @@ global.action_library =
 				var _damage = 0;												// Calculate damage dealt to target
 				if (_crit == 0) {												//	If Normal hit
 					_damage =
-					floor((_user.intelligence * 5 * _user.attack_mult)			//		User attack (INT)
+					floor((_user.intelligence * 5 * _user.attack_mult * 2)		//		User attack (INT)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_crit == 1) {												//	If Critical hit
 					_damage =
-					floor((_user.intelligence * 5 * _user.attack_mult * 2)		//		User attack (INT)
+					floor((_user.intelligence * 5 * _user.attack_mult * 2 * 2)	//		User attack (INT)
 						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
 				}
 				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
@@ -264,7 +264,7 @@ global.action_library =
 	stimpak :
 	{
 		name : "Stimpak",
-		description_new : "Heals an ally",
+		description_new : "INT | Heal an ally.",
 		description : "{0} uses a Stimpak!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -287,7 +287,7 @@ global.action_library =
 	doctors_bag :
 	{
 		name : "Doc Bag",
-		description_new : "Revives an ally",
+		description_new : "INT | Revive an ally.",
 		description : "{0} uses a Doc Bag!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -310,7 +310,7 @@ global.action_library =
 	nuka_cola :
 	{
 		name : "Nuka Cola",
-		description_new : "Restores AP to an ally",
+		description_new : "INT | Restore an ally's AP.",
 		description : "{0} uses a Nuka Cola!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -333,7 +333,7 @@ global.action_library =
 	battle_brew :
 	{
 		name : "Battle Brew",
-		description_new : "Increases an ally's attack",
+		description_new : "INT | Raise an ally's attack.",
 		description : "{0} uses a Battle Brew!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -355,7 +355,7 @@ global.action_library =
 	med_x :
 	{
 		name : "Med-X",
-		description_new : "Increases an ally's defense",
+		description_new : "INT | Raise an ally's defense.",
 		description : "{0} uses a Med-X!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -378,7 +378,7 @@ global.action_library =
 	flee :
 	{
 		name : "Flee",
-		description_new : "Escape from battle",
+		description_new : "Escape from battle.",
 		description : "{0} flees!",
 		sub_menu_val : -1,
 		ap_cost : 0,

@@ -15,10 +15,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT
 
-	- Delete 'recruitable' members from rooms once they've been recruited
-	- Describe what each SPECIAL stat does
 	- Add BET attacks to other party members
-	- Show power of an ability in its description
 	- Notify when a party member has levelled up
 	- Add overworld transition to X-2 exterior
 	
