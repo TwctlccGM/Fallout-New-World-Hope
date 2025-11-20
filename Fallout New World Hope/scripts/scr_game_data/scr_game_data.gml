@@ -49,16 +49,22 @@ global.item_array[position]			=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_whi
 global.item_array[position]			=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0];
 global.item_array[position]			=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];*/
 
+enum MODE
+{
+	NEVER = 0,
+	ALWAYS = 1,
+	VARIES = 2,
+	SELF = 3,
+}
+
 /// Action library
-// Rules:
-// 1: Attack names can only be 13 characters long (otherwise it doesn't fit into the box)
 global.action_library =
 {
 	/// Basic attack
 	attack :
 	{
-		name : "Attack",
-		description_new : "100% | STR/PER | Single-target damage.",		// Character limit of 39 atm (otherwise it goes outside the text box)
+		name : "Attack",												// Character limit of 13
+		description_new : "100% | STR/PER | Single-target damage.",		// Character limit of 39
 		description : "{0} attacks!",
 		sub_menu_val : -1,
 		ap_cost : 0,
@@ -176,6 +182,47 @@ global.action_library =
 		}
 	},
 	
+	barrage :
+	{
+		name : "Barrage",
+		description_new : "150% | PER | Hit all enemies.",
+		description : "{0} hits all enemies!",
+		sub_menu_val : "Abilities",
+		ap_cost : 5,
+		bet_cost : 0,
+		is_item : false,
+		target_required : true,
+		target_enemy_by_default : true,
+		target_all : MODE.ALWAYS,
+		user_animation : "attack",
+		effect_sprite : spr_effect_hit_ability,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{	
+			var _crit = 0;														// Calculate if it's a critical hit
+			if ((floor(random_range(0, 100)) <= _user.luck))					//	 User's LCK / 100
+			{ _crit = 1; };
+
+			for (var i = 0; i < array_length(_targets); i++)					// Hit all enemies
+			{
+				var _damage = 0;												// Calculate damage dealt to target
+				if (_crit == 0) {												//	If Normal hit
+					_damage =
+					floor((_user.perception * 3 * _user.attack_mult * 1.5)		//		User attack (PER)
+						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
+				}
+				if (_crit == 1) {												//	If Critical hit
+					_damage =
+					floor((_user.perception * 3 * _user.attack_mult * 1.5 * 2)	//		User attack (PER)
+						- (_targets[i].endurance * _targets[i].defense_mult));	//		Target defense
+				}
+				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
+				battle_change_hp(_targets[i], -_damage, _crit, 0);				// Inflict damage on target
+			}
+			battle_change_ap(_user, 0, -ap_cost, 0);							// Update user's AP
+		}
+	},
+	
 	sonic_bark :
 	{
 		name : "Sonic Bark",
@@ -221,8 +268,8 @@ global.action_library =
 	/// Bet
 	bottlecap_mine :
 	{
-		name : "Cap Mine   (25)",
-		description_new : "200% | INT | Hit all enemies.",
+		name : "Bottlecap Mine",
+		description_new : "25 BET | INT | Hit all enemies.",
 		description : "{0} throws an explosive!",
 		sub_menu_val : "Bet",
 		ap_cost : 0,
@@ -257,6 +304,54 @@ global.action_library =
 				battle_change_hp(_targets[i], -_damage, _crit, 0);				// Inflict damage on target
 			}
 			battle_change_bet(_user, -bet_cost, false);							// Update user's BET
+		}
+	},
+	
+	sonjaculate :
+	{
+		name : "Sonjaculate",
+		description_new : "25 BET | INT | Heal all allies.",
+		description : "{0} emits a soothing frequency!",
+		sub_menu_val : "Bet",
+		ap_cost : 0,
+		bet_cost : 25,
+		is_item : false,
+		target_required : true,
+		target_enemy_by_default : false,
+		target_all : MODE.ALWAYS,
+		user_animation : "attack",
+		effect_sprite : spr_effect_restore_HP,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			var _heal = (_user.intelligence * 10 * 2);			// Calculate heal
+			for (var i = 0; i < array_length(_targets); i++)	// Multi-target
+			{
+				battle_change_hp(_targets[i], _heal, 2, 0, 0);	// Heal targets
+			}
+			battle_change_bet(_user, -bet_cost, false);			// Update user's BET
+		}
+	},
+	
+	overcharge :
+	{
+		name : "Overcharge",
+		description_new : "25 BET | Double attack power.",
+		description : "{0} loads overcharged cells!",
+		sub_menu_val : "Bet",
+		ap_cost : 0,
+		bet_cost : 25,
+		is_item : false,
+		target_required : true,
+		target_enemy_by_default : false,
+		target_all : MODE.SELF,
+		user_animation : "attack",
+		effect_sprite : spr_effect_buff_red,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			_user.attack_mult *= 2;							// Double user's attack value
+			battle_change_bet(_user, -bet_cost, false);		// Update user's BET
 		}
 	},
 	
@@ -333,7 +428,7 @@ global.action_library =
 	battle_brew :
 	{
 		name : "Battle Brew",
-		description_new : "INT | Raise an ally's attack.",
+		description_new : "INT | Raise an ally's attack power.",
 		description : "{0} uses a Battle Brew!",
 		sub_menu_val : "Items",
 		ap_cost : 0,
@@ -404,13 +499,6 @@ global.action_library =
 			}
 		}
 	}
-}
-
-enum MODE
-{
-	NEVER = 0,
-	ALWAYS = 1,
-	VARIES = 2,
 }
 
 #macro PARTY_VAULTIE 0
@@ -557,7 +645,9 @@ global.party_data =
 		// Basic attack
 		global.action_library.attack, 
 		// Abilities
-		global.action_library.sonic_bark, 
+		global.action_library.sonic_bark,
+		// Bet
+		global.action_library.sonjaculate, 
 		// Items
 		global.action_library.stimpak, 
 		global.action_library.doctors_bag, 
@@ -603,7 +693,9 @@ global.party_data =
 		// Basic attack
 		global.action_library.attack, 
 		// Abilities
-		global.action_library.axe_cleave, 
+		global.action_library.barrage, 
+		// Bet
+		global.action_library.overcharge,
 		// Items
 		global.action_library.stimpak, 
 		global.action_library.doctors_bag, 

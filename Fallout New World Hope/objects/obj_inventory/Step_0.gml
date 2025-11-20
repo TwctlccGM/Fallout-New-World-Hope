@@ -7,6 +7,7 @@ if (keyboard_check_pressed(vk_tab))
 	{ 
 		stats_selected = false;
 		swap_selected = false;
+		party_selected = false;
 		stimpak_selected = false;
 		doctorsbag_selected = false;
 		draw_inventory = false; 
@@ -17,6 +18,7 @@ if (keyboard_check_pressed(vk_tab))
 	{ 
 		stats_selected = false;
 		swap_selected = false;
+		party_selected = false;
 		stimpak_selected = false;
 		doctorsbag_selected = false;
 		draw_inventory = true; 

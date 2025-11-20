@@ -167,6 +167,7 @@
     {"id":{"name":"spr_field_boom_town_ph","path":"sprites/spr_field_boom_town_ph/spr_field_boom_town_ph.yy",},},
     {"id":{"name":"spr_vaultie_field_right","path":"sprites/spr_vaultie_field_right/spr_vaultie_field_right.yy",},},
     {"id":{"name":"obj_turret","path":"objects/obj_turret/obj_turret.yy",},},
+    {"id":{"name":"obj_location_x2","path":"objects/obj_location_x2/obj_location_x2.yy",},},
     {"id":{"name":"spr_effect_hit_ability","path":"sprites/spr_effect_hit_ability/spr_effect_hit_ability.yy",},},
     {"id":{"name":"spr_lobotomite","path":"sprites/spr_lobotomite/spr_lobotomite.yy",},},
     {"id":{"name":"scr_dialogue","path":"scripts/scr_dialogue/scr_dialogue.yy",},},

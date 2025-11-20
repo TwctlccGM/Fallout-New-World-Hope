@@ -133,6 +133,7 @@
     {"name":"obj_location_default","order":5,"path":"objects/obj_location_default/obj_location_default.yy",},
     {"name":"spr_field_boom_town_ph","order":3,"path":"sprites/spr_field_boom_town_ph/spr_field_boom_town_ph.yy",},
     {"name":"spr_vaultie_field_right","order":5,"path":"sprites/spr_vaultie_field_right/spr_vaultie_field_right.yy",},
+    {"name":"obj_location_x2","order":7,"path":"objects/obj_location_x2/obj_location_x2.yy",},
     {"name":"spr_effect_hit_ability","order":4,"path":"sprites/spr_effect_hit_ability/spr_effect_hit_ability.yy",},
     {"name":"scr_dialogue","order":7,"path":"scripts/scr_dialogue/scr_dialogue.yy",},
     {"name":"spr_vaultie_field_front","order":3,"path":"sprites/spr_vaultie_field_front/spr_vaultie_field_front.yy",},

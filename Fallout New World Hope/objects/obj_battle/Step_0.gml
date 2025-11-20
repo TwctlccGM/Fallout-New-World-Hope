@@ -50,10 +50,13 @@ if (array_any(_enemies, function(_element, _index) { return _element.hp > 0; }) 
 			global.party[i].hp += 3 * global.party[i].endurance;
 			global.party[i].xp_total -= global.party[i].xp_to_next_level;
 			global.party[i].xp_to_next_level += 100; // TODO: Make exact XP requirements for subequent levels
+			new_text_box(global.party[i].name + " levelled up!", FIELD);
 		}
 	}
 	
 	// End battle
+	instance_destroy(obj_battle_floating_text);
+	instance_destroy(obj_battle_effect);
 	instance_activate_all();
 	instance_destroy(creator);
 	instance_destroy(obj_battle);
@@ -95,7 +98,12 @@ if (cursor.active)
 		}
 		
 		// Move between targets
-		if (target_all == false) // Single target mode
+		if (active_action.target_all == MODE.SELF) // Target ONLY self
+		{
+			target_side = obj_battle.party_units;
+			active_target = target_side[target_index];
+		}
+		else if (target_all == false) // Single target mode
 		{
 			if (_move_v == 1) target_index++;
 			if (_move_v == -1) target_index--;

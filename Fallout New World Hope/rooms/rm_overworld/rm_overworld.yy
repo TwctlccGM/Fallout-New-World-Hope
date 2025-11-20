@@ -225,6 +225,7 @@
     {"name":"inst_71017867","path":"rooms/rm_overworld/rm_overworld.yy",},
     {"name":"inst_559CEADE","path":"rooms/rm_overworld/rm_overworld.yy",},
     {"name":"inst_3CF4FC64","path":"rooms/rm_overworld/rm_overworld.yy",},
+    {"name":"inst_13595FF1","path":"rooms/rm_overworld/rm_overworld.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -441,6 +442,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_71017867","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_collision_box","path":"objects/obj_collision_box/obj_collision_box.yy",},"properties":[],"rotation":0.0,"scaleX":1.1322169,"scaleY":0.7717755,"x":861.9512,"y":327.1909,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_559CEADE","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_overworld_slowzone","path":"objects/obj_overworld_slowzone/obj_overworld_slowzone.yy",},"properties":[],"rotation":0.0,"scaleX":3.0347176,"scaleY":0.78125,"x":285.27713,"y":788.2343,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_3CF4FC64","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_overworld_slowzone","path":"objects/obj_overworld_slowzone/obj_overworld_slowzone.yy",},"properties":[],"rotation":0.0,"scaleX":1.2534676,"scaleY":2.265625,"x":272.4452,"y":811.75,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_13595FF1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_location_x2","path":"objects/obj_location_x2/obj_location_x2.yy",},"properties":[],"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"x":520.0,"y":904.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances_Act1_Collision","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_2E5C020A","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_collision_box","path":"objects/obj_collision_box/obj_collision_box.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.03664,"y":752.6968,},

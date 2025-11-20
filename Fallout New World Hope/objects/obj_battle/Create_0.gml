@@ -36,7 +36,7 @@ cursor =
 for (var i = 0; i < array_length(enemies); i++)
 {
 	// TO-DO: Replace magic numbers here
-	enemy_units[i] = instance_create_depth(x + 250 + (i * 10), y + 68 + (i * 20), depth - 10, obj_battle_units_enemy, enemies[i]);
+	enemy_units[i] = instance_create_depth(x + 250 + (i * 10), y + 68 + (i * 20), depth - (10 + i), obj_battle_units_enemy, enemies[i]);
 	array_push(units, enemy_units[i]); // Add enemy units to battle units array
 }
 
@@ -269,7 +269,7 @@ function battle_state_perform_action()
 				{
 					for (var i = 0; i <array_length(current_targets); i++)
 					{
-						instance_create_depth(current_targets[i].x - 15, current_targets[i].y - 15, current_targets[i].depth - 1, obj_battle_effect, {sprite_index : current_action.effect_sprite});
+						instance_create_depth(current_targets[i].x - 15, current_targets[i].y - 15, current_targets[i].depth, obj_battle_effect, {sprite_index : current_action.effect_sprite});
 					}
 				}
 				else // Play it at 0, 0
