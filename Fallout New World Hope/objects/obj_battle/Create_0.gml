@@ -141,10 +141,17 @@ function battle_state_select_action()
 					}
 				}
 				
-				// Make abilities unavailable if the user doesn't have enough AP
+				// Make abilities/bet unavailable if the user doesn't have enough AP/BET
 				if (_action.sub_menu_val == "Abilities")
 				{
 					if (_unit.ap < _action.ap_cost)
+					{
+						_available = false;
+					}
+				}
+				if (_action.sub_menu_val == "Bet")
+				{
+					if (_unit.bet < _action.bet_cost)
 					{
 						_available = false;
 					}
@@ -183,6 +190,18 @@ function battle_state_select_action()
 				array_push(_menu_options, [_sub_menus_array[i], sub_menu, [_sub_menus[$ _sub_menus_array[i]]], true]);
 			}
 			
+			// Sort the order of menu options
+			function get_order_index(_name) {
+				var order = ["Attack", "Abilities", "Bet", "Items"];
+			    for (var i = 0; i < array_length(order); i++) {
+			        if (order[i] == _name) return i;
+			    }
+			    return 9999; // If not found, option is pushed to the end
+			}
+			array_sort(_menu_options, function(_a, _b) {
+			    return get_order_index(_a[0]) > get_order_index(_b[0]);
+			});
+
 			// Make the menu
 			menu(x + 10, y + 11, _menu_options, , 74, 60);
 		}

@@ -25,15 +25,6 @@ if (keyboard_check_pressed(vk_tab))
 		cursor.active =  true;
 		global.pause = true; 
 		
-		// Make party
-		party = [];
-		for (var i = 0; i < array_length(global.party); i++)
-		{
-			// TO-DO: Replace magic numbers here
-			party_units[i] = instance_create_depth(x + 70 + (i * 10), y + 68 + (i * 15), depth + 10, obj_battle_units_player, global.party[i]);
-			array_push(party, party_units[i]);
-		}
-		
 		// Dummy stats as default
 		cursor.party_member_stats = [
 			global.party[PARTY_VAULTIE].strength,
@@ -103,7 +94,7 @@ if (cursor.active)
 		/// Using stimpak
 		if (obj_inventory.stimpak_selected == true) // Using item (like a stimpak), player selects which party member to use it on
 		{
-			target_side = obj_inventory.party;
+			target_side = global.party;
 			
 			// Move between targets
 			if (_move_v == 1) target_index++;
@@ -130,7 +121,7 @@ if (cursor.active)
 		/// Using doctors bag
 		else if (obj_inventory.doctorsbag_selected == true) // Using item (like a stimpak), player selects which party member to use it on
 		{
-			target_side = obj_inventory.party;
+			target_side = global.party;
 			
 			// Move between targets
 			if (_move_v == 1) target_index++;
@@ -158,6 +149,7 @@ if (cursor.active)
 		else if (obj_inventory.party_selected == true)
 		{
 			if (target_index >= 2) { target_index = 0; }
+			if (flag_for_target_index_stuff == false) { target_index = 0; flag_for_target_index_stuff = true; }
 			target_side = party_member_options;
 			active_target = target_side[target_index];
 			
@@ -178,19 +170,21 @@ if (cursor.active)
 				{
 					obj_inventory.stats_selected = true;
 					obj_inventory.party_selected = false;
+					flag_for_target_index_stuff = false;
 				}
 				// Swap selected
 				if (target_index = 1 && (array_length(party_member_waiting) > 0))
 				{
 					obj_inventory.swap_selected = true;	
 					obj_inventory.party_selected = false;
+					flag_for_target_index_stuff = false;
 				}
 			}
 		
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
 			{
-				target_side = obj_inventory.party;
+				target_side = global.party;
 				target_index = stored_target_index;
 				obj_inventory.party_selected = false;
 			}
@@ -285,7 +279,7 @@ if (cursor.active)
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
 			{
-				target_side = obj_inventory.party;
+				target_side = global.party;
 				target_index = stored_target_index;
 				obj_inventory.stats_selected = false;
 			}
@@ -319,12 +313,14 @@ if (cursor.active)
 					array_insert(global.party, stored_target_index, global.party_data[party_member_waiting[target_index].party_name]);
 					//array_delete(global.party, stored_target_index + 1, 1);
 				}
+				// Re-make party
+				
 			}
 		
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
 			{
-				target_side = obj_inventory.party;
+				target_side = global.party;
 				target_index = stored_target_index;
 				obj_inventory.swap_selected = false;
 			}
@@ -332,7 +328,7 @@ if (cursor.active)
 			// No party members on standby
 			if (array_length(party_member_waiting) <= 0)
 			{
-				target_side = obj_inventory.party;
+				target_side = global.party;
 				target_index = stored_target_index;
 				obj_inventory.swap_selected = false;
 			}
@@ -341,7 +337,7 @@ if (cursor.active)
 		else
 		{
 			if (array_length(global.inventory_array) <= 0) { _move_h = -1; } // Stops error when trying to swap to empty item array
-			if (_move_h == -1) target_side = obj_inventory.party;
+			if (_move_h == -1) target_side = global.party;
 			if (_move_h == 1) target_side = global.inventory_array;
 		
 			// Move between targets
@@ -356,7 +352,7 @@ if (cursor.active)
 		
 			// Identify target
 			if (target_side == global.inventory_array) { active_target = target_side[target_index]; }
-			if (target_side == obj_inventory.party) { active_target = target_side[target_index]; }
+			if (target_side == global.party) { active_target = target_side[target_index]; }
 		
 			// Confirm action
 			if (_key_confirm)
@@ -376,7 +372,7 @@ if (cursor.active)
 						confirm_delay = 0;
 					}
 				}
-				if (target_side == obj_inventory.party) // Looking at party member stats
+				if (target_side == global.party) // Looking at party member stats
 				{
 					stored_target_index = target_index;
 					obj_inventory.party_selected = true;

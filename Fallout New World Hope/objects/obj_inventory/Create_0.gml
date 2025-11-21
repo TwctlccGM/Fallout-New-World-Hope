@@ -31,5 +31,6 @@ cursor =
 	stored_target_index: 0,
 	target_all: false,
 	confirm_delay: 0,
-	active: false
+	active: false,
+	flag_for_target_index_stuff: false
 };

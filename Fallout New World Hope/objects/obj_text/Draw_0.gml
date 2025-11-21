@@ -21,9 +21,9 @@ switch (box_type)
 		draw_sprite_stretched(global.ui_textbox, background, _xx, _yy, 320, 30); 
 		break;
 	case INVENTORY:
-		_xx = obj_camera.x - 160;
-		_yy = obj_camera.y - 90;
-		draw_sprite_stretched(global.ui_textbox, background, _xx, _yy, 320, 30); 
+		_xx = obj_camera.x - 158;
+		_yy = obj_camera.y - 88;
+		draw_sprite_stretched(global.ui_textbox, background, _xx, _yy, 316, 28); 
 		break;
 	case DIALOGUE:
 		_xx = obj_camera.x - 160;

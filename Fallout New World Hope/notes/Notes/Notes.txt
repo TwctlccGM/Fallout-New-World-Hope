@@ -1,10 +1,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// THINGS TO FIX
 
-	- Items (stims and doc bags) get consumed even when they have no effect.
 	- Items not in player's inventory appear in battle (but at least they are greyed out and unusable)
-	- Fix up battle menu a bit (make options appear in order: Attack -> Abilities -> Items -> Flee)
-	- Make abilities/bets greyed out and unselectable when not enough AP/BET to use them (atm they are 'failed' in obj_battle Create event)
 	- Move interact code OUT of player's Draw event (and adjust it so that the interact box is positioned correctly)
 	- Rearrange some code (e.g. put key input events like opening the inventory into the player object for consistent keybinds)
 	
@@ -15,10 +12,6 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT
 
-	- Add BET attacks to other party members
-	- Notify when a party member has levelled up
-	- Add overworld transition to X-2 exterior
-	
 	- Implement barter system later on and have prices be affected by CHA.
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)

@@ -30,18 +30,37 @@ function use_item(_item, _target)
 {
 	if (global.item_array[_item][C_ITEM_AMOUNT] > 0)
 	{ 
+		var _old_hp = global.party[_target].hp;
+		var _healer = global.party[0];
 		var _heal = 0;
+		var _remove_item = true;
 		switch (_item) 
 		{
 			case (ITEM_STIMPAK):
-				_heal = global.party[0].intelligence * 10; // Scales off Vaultie's INT
+				_heal = _healer.intelligence * 10; // Scales off Vaultie's INT
 				battle_change_hp(global.party[_target], _heal, 2, 1, 0); // Heal target
-				new_text_box("Vaultie used a " + string(global.item_array[ITEM_STIMPAK][C_ITEM_NAME]), INVENTORY);
+				if (global.party[_target].hp = _old_hp) // Heal had no effect
+				{
+					new_text_box("It will have no effect.", INVENTORY);
+					_remove_item = false;
+				}
+				else // Successfully used up the stimpak
+				{
+					new_text_box(string(_healer.name) + " heals " + string(global.party[_target].name) + ".", INVENTORY);
+				}
 				break;
 			case (ITEM_DOCTORSBAG):
-				_heal = global.party[0].intelligence * 10; // Scales off Vaultie's INT
+				_heal = _healer.intelligence * 10; // Scales off Vaultie's INT
 				battle_change_hp(global.party[_target], _heal, 2, 1, 1); // Heal target
-				new_text_box("Vaultie used a " + string(global.item_array[ITEM_DOCTORSBAG][C_ITEM_NAME]), INVENTORY);
+				if (global.party[_target].hp = _old_hp) // Heal had no effect
+				{
+					new_text_box("It will have no effect.", INVENTORY);
+					_remove_item = false;
+				}
+				else // Successfully used up the doctors bag
+				{
+					new_text_box(string(_healer.name) + " revives " + string(global.party[_target].name) + ".", INVENTORY);
+				}
 				break;
 			//case (ITEM_BATTLEBREW):
 			//	_target.attack_value = _target.attack_value * 1.5;
@@ -49,13 +68,16 @@ function use_item(_item, _target)
 			//	break;
 		}
 		
-		global.item_array[_item][C_ITEM_AMOUNT] -= 1; // Remove item
-		// Find inventory index
-		for(var _pos = 0; _pos < array_length(global.inventory_array); _pos++)
-	    {
-			if (global.inventory_array[_pos][C_ITEM_TYPE] == global.item_array[_item][C_ITEM_TYPE])
-	        {
-				global.inventory_array[_pos][C_ITEM_AMOUNT] -= 1; // Remove item
+		if (_remove_item == true)
+		{
+			global.item_array[_item][C_ITEM_AMOUNT] -= 1; // Remove item
+			// Find inventory index
+			for(var _pos = 0; _pos < array_length(global.inventory_array); _pos++)
+		    {
+				if (global.inventory_array[_pos][C_ITEM_TYPE] == global.item_array[_item][C_ITEM_TYPE])
+		        {
+					global.inventory_array[_pos][C_ITEM_AMOUNT] -= 1; // Remove item
+				}
 			}
 		}
 	}

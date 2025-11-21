@@ -29,12 +29,12 @@ global.pause = false;
 global.item_array = array_create(6);
 
 //										ID					Sprite					Inventory Sprite			Amount	Name
-global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		0,		"Stimpak"		];
-global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	0,		"Doctor's Bag"	];
-global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	0,		"Nuka Cola"		];
-global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		0,		"Med-X"			];
-global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0,		"Battle Brew"	];
-global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0,		"Keycard"		];
+global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5,		"Stimpak"		];
+global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5,		"Doctor's Bag"	];
+global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5,		"Nuka Cola"		];
+global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5,		"Med-X"			];
+global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5,		"Battle Brew"	];
+global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		5,		"Keycard"		];
 
 // Inventory display
 global.inventory_array = array_create(0);
@@ -64,7 +64,7 @@ global.action_library =
 	attack :
 	{
 		name : "Attack",												// Character limit of 13
-		description_new : "100% | STR/PER | Single-target damage.",		// Character limit of 39
+		description_new : "100% STR/PER | Single-target damage.",		// Character limit of 39
 		description : "{0} attacks!",
 		sub_menu_val : -1,
 		ap_cost : 0,
@@ -105,7 +105,7 @@ global.action_library =
 	targeted_shot :
 	{
 		name : "Targeted Shot",
-		description_new : "150% | PER | Lower enemy's defense.",
+		description_new : "5 AP | 150% PER | Lower enemy defense.",
 		description : "{0} exposes a weak point!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -144,7 +144,7 @@ global.action_library =
 	axe_cleave :
 	{
 		name : "Axe Cleave",
-		description_new : "150% | STR | Hit all enemies.",
+		description_new : "5 AP | 150% STR | Hit all enemies.",
 		description : "{0} hits all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -185,7 +185,7 @@ global.action_library =
 	barrage :
 	{
 		name : "Barrage",
-		description_new : "150% | PER | Hit all enemies.",
+		description_new : "5 AP | 150% PER | Hit all enemies.",
 		description : "{0} hits all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -226,7 +226,7 @@ global.action_library =
 	sonic_bark :
 	{
 		name : "Sonic Bark",
-		description_new : "100% | PER | Lower all enemies' attack.",
+		description_new : "100% PER | Lower all enemies' attack.",
 		description : "{0} weakens all enemies!",
 		sub_menu_val : "Abilities",
 		ap_cost : 5,
@@ -269,7 +269,7 @@ global.action_library =
 	bottlecap_mine :
 	{
 		name : "Bottlecap Mine",
-		description_new : "25 BET | INT | Hit all enemies.",
+		description_new : "25 BET | 200% INT | Hit all enemies.",
 		description : "{0} throws an explosive!",
 		sub_menu_val : "Bet",
 		ap_cost : 0,
@@ -307,10 +307,55 @@ global.action_library =
 		}
 	},
 	
+	axe_throw :
+	{
+		name : "Axe Throw",
+		description_new : "25 BET | 100% STR/PER | Hit 5 times.",
+		description : "{0} lobs axes!",
+		sub_menu_val : "Bet",
+		ap_cost : 0,
+		bet_cost : 25,
+		is_item : false,
+		target_required : true,
+		target_enemy_by_default : true,
+		target_all : MODE.NEVER,
+		user_animation : "attack",
+		effect_sprite : spr_effect_hit_ability,
+		effect_on_target : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			// NOTE: Because this all happens on one frame, it doesn't FEEL like a multi-hit. Gotta do some code work in obj_battle I think.
+			var _attack_power =													// Calculate user's attack power
+			max(_user.strength, _user.perception);								//	User's highest damaging stat (STR/PER)
+			
+			for (var i = 0; i < 5; i++)
+			{
+				var _crit = 0;													// Calculate if it's a critical hit
+				if ((floor(random_range(0, 100)) <= _user.luck))				//	User's LCK / 100
+				{ _crit = 1; };
+
+				var _damage = 0;												// Calculate damage dealt to target
+				if (_crit == 0) {												//	If Normal hit
+					_damage =
+					floor((_attack_power * 5 * _user.attack_mult)				//		User attack
+						- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
+				}
+				if (_crit == 1) {												//	If Critical hit
+					_damage =
+					floor((_attack_power * 5 * _user.attack_mult * 2)			//		User attack
+						- (_targets[0].endurance * _targets[0].defense_mult));	//		Target defense
+				}
+				if (_damage <= 0) { _damage = 1; };								// Cap lowest damage at '1'
+				battle_change_hp(_targets[0], -_damage, _crit, 0);				// Inflict damage on target
+			}
+			battle_change_bet(_user, -bet_cost, false);							// Update user's BET
+		}
+	},
+	
 	sonjaculate :
 	{
 		name : "Sonjaculate",
-		description_new : "25 BET | INT | Heal all allies.",
+		description_new : "25 BET | 200% INT | Heal all allies.",
 		description : "{0} emits a soothing frequency!",
 		sub_menu_val : "Bet",
 		ap_cost : 0,
@@ -600,6 +645,8 @@ global.party_data =
 		global.action_library.attack, 
 		// Abilities
 		global.action_library.axe_cleave, 
+		// Bet
+		global.action_library.axe_throw,
 		// Items
 		global.action_library.stimpak, 
 		global.action_library.doctors_bag, 
