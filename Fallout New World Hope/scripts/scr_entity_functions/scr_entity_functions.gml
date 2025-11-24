@@ -20,3 +20,7 @@ function pickup_item(_item, _quantity) {
 	new_text_box("Looted a " + string(global.item_array[_item][C_ITEM_NAME]), FIELD);
 	instance_destroy(); // Item goes into inventory
 }
+
+function open_barter_menu() {
+	obj_barter_menu.draw_barter = true;	
+}

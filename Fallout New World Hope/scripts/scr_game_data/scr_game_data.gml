@@ -49,6 +49,16 @@ global.item_array[position]			=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_whi
 global.item_array[position]			=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0];
 global.item_array[position]			=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];*/
 
+// Barter menu array
+global.barter_array = array_create(5);
+
+//										ID						Sprite					Inventory Sprite			Amount	Name
+global.barter_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5,		"Stimpak"		];
+global.barter_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5,		"Doctor's Bag"	];
+global.barter_array[ITEM_NUKA_COLA]		=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5,		"Nuka Cola"		];
+global.barter_array[ITEM_MEDX]			=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5,		"Med-X"			];
+global.barter_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5,		"Battle Brew"	];
+
 enum MODE
 {
 	NEVER = 0,

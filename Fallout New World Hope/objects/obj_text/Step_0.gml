@@ -41,7 +41,8 @@ if (keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(ord("X")))
 		else
 		{
 			with (obj_player_field) state = last_state;	
-			with (obj_inventory) state = last_state;	
+			with (obj_inventory) state = last_state;
+			with (obj_barter_menu) state = last_state;
 		}
 		instance_destroy(); // Remove message
 	}

@@ -59,7 +59,7 @@ function new_text_box(_message, _box_type = DIALOGUE, _background = 1, _response
         background   = _background;
 
         // Set origin
-        if (!obj_inventory.draw_inventory) {
+        if (!obj_inventory.draw_inventory && !obj_barter_menu.draw_barter) {
             origin_instance = instance_exists(other) ? other.id : noone;
         }
 
@@ -105,6 +105,16 @@ function new_text_box(_message, _box_type = DIALOGUE, _background = 1, _response
         {
             last_state = state;
             state = INVENTORY_STATE_LOCKED;
+        }
+    }
+	
+	// Lock barter input
+    with (obj_barter_menu)
+    {
+        if (state != BARTER_STATE_LOCKED)
+        {
+            last_state = state;
+            state = BARTER_STATE_LOCKED;
         }
     }
 }
