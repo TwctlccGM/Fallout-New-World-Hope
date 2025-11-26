@@ -10,11 +10,12 @@ var _yy = obj_camera.y - 90;
 
 if (draw_barter == true)
 {
-	// Draw party items
+	// Draw inventory tab
 	_yy = obj_camera.y - 90;
 	draw_sprite_stretched(global.ui_textbox, 0, _party_xx, _yy, 160, 180);
 	draw_set_font(fnt_fixedsys);
 	draw_text(_party_xx + 5, _yy + 5, "INVENTORY");
+	draw_text(_party_xx + 105, _yy + 5, "CAPS:\n " + string(global.player_caps));
 	for(var _pos = 0; _pos < array_length(global.inventory_array); _pos++)
 	{
 		draw_sprite(global.inventory_array[_pos, C_ITEM_INVENTORY_SPRITE], 0, _party_xx + 20, _yy + 40);
@@ -22,15 +23,18 @@ if (draw_barter == true)
 		_yy += 25;
 	}
 
-	/// Draw inventory tab
+	/// Draw trader tab
 	_yy = obj_camera.y - 90;
 	draw_sprite_stretched(global.ui_textbox, 0, _trader_xx, _yy, 160, 180);
 	draw_set_font(fnt_fixedsys);
 	draw_text(_trader_xx + 5, _yy + 5, "TRADER");
+	draw_text(_trader_xx + 10, _yy + 20, "QUANTITY");
+	draw_text(_trader_xx + 90, _yy + 20, "PRICE");
 	for(var _pos = 0; _pos < array_length(global.barter_array); _pos++)
 	{
-		draw_sprite(global.barter_array[_pos, C_ITEM_INVENTORY_SPRITE], 0, _trader_xx + 20, _yy + 40);
-		draw_text(_trader_xx + 35, _yy + 30, string(global.barter_array[_pos, C_ITEM_AMOUNT]));
+		draw_sprite(global.barter_array[_pos, C_ITEM_INVENTORY_SPRITE], 0, _trader_xx + 20, _yy + 50);
+		draw_text(_trader_xx + 35, _yy + 40, string(global.barter_array[_pos, C_ITEM_AMOUNT]));
+		draw_text(_trader_xx + 90, _yy + 40, string(global.barter_array[_pos, C_ITEM_PRICE]));
 		_yy += 25;
 	}
 }
@@ -55,8 +59,8 @@ if (cursor.active)
 		{
 			_yy = obj_camera.y - 90;
 			draw_set_color(c_white)
-			draw_rectangle(_trader_xx + 10, _yy + (target_index * 25) + 30, _trader_xx + 52, _yy + (target_index * 25) + 50, true)
-			draw_sprite(global.ui_pointer, 0, _trader_xx + _x_offset, _yy + (target_index * 25) + _y_offset);
+			draw_rectangle(_trader_xx + 10, _yy + (target_index * 25) + 40, _trader_xx + 52, _yy + (target_index * 25) + 60, true)
+			draw_sprite(global.ui_pointer, 0, _trader_xx + _x_offset, _yy + (target_index * 25) + _y_offset + 10);
 		}
 	}
 }

@@ -87,16 +87,18 @@ function buy_item(_item, _cost)
 {
 	if (global.barter_array[_item][C_ITEM_AMOUNT] > 0)
 	{ 
-		// if (_cost < player_money)
-		//{
-		//	var _bought_item = true;
-		//}
+		var _bought_item = false;
+		if (global.barter_array[_item][C_ITEM_PRICE] <= global.player_caps)
+		{
+			_bought_item = true;
+		}
 		
-		//if (_bought_item == true)
-		//{
-			new_text_box("Bought a " + string(global.barter_array[_item][C_ITEM_NAME]) + ".", INVENTORY); // Message
-			global.barter_array[_item][C_ITEM_AMOUNT] -= 1; // Remove item from trader inventory
-			global.item_array[_item][C_ITEM_AMOUNT] += 1; // Add item to actual inventory
+		if (_bought_item == true)
+		{
+			new_text_box("Bought a " + string(global.barter_array[_item][C_ITEM_NAME]) + ".", INVENTORY);	// Message
+			global.barter_array[_item][C_ITEM_AMOUNT] -= 1;													// Remove item from trader inventory
+			global.item_array[_item][C_ITEM_AMOUNT] += 1;													// Add item to actual inventory
+			global.player_caps -= global.barter_array[_item][C_ITEM_PRICE];									// Remove caps from player
 			// Find inventory index
 			for(var _pos = 0; _pos < array_length(global.inventory_array); _pos++)
 		    {
@@ -105,7 +107,11 @@ function buy_item(_item, _cost)
 					global.inventory_array[_pos][C_ITEM_AMOUNT] += 1; // Add item to visible inventory
 				}
 			}
-		//}
+		}
+		else
+		{
+			new_text_box("Not enough caps!", INVENTORY);	// Message
+		}
 	}
 }
 	

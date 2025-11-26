@@ -23,18 +23,19 @@ global.pause = false;
 #macro C_ITEM_SPRITE			1
 #macro C_ITEM_INVENTORY_SPRITE	2
 #macro C_ITEM_AMOUNT			3
-#macro C_ITEM_NAME				4
+#macro C_ITEM_PRICE				4
+#macro C_ITEM_NAME				5
 
 // Items (the array that's used to keep track of items and item usage)
 global.item_array = array_create(6);
 
-//										ID					Sprite					Inventory Sprite			Amount	Name
-global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5,		"Stimpak"		];
-global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5,		"Doctor's Bag"	];
-global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5,		"Nuka Cola"		];
-global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5,		"Med-X"			];
-global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5,		"Battle Brew"	];
-global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		5,		"Keycard"		];
+//										ID					Sprite					Inventory Sprite			Amount	Price	Name
+global.item_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5,		5,		"Stimpak"		];
+global.item_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5,		10,		"Doctor's Bag"	];
+global.item_array[ITEM_NUKA_COLA]	=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5,		5,		"Nuka Cola"		];
+global.item_array[ITEM_MEDX]		=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5,		15,		"Med-X"			];
+global.item_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5,		15,		"Battle Brew"	];
+global.item_array[ITEM_KEYCARD]		=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		5,		0,		"Keycard"		];
 
 // Inventory display
 global.inventory_array = array_create(0);
@@ -49,15 +50,18 @@ global.item_array[position]			=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_whi
 global.item_array[position]			=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	0];
 global.item_array[position]			=	[ITEM_KEYCARD,		spr_item_keycard,		spr_item_keycard_white,		0];*/
 
+// Money
+global.player_caps = 100;
+
 // Barter menu array
 global.barter_array = array_create(5);
 
-//										ID						Sprite					Inventory Sprite			Amount	Name
-global.barter_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5,		"Stimpak"		];
-global.barter_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5,		"Doctor's Bag"	];
-global.barter_array[ITEM_NUKA_COLA]		=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5,		"Nuka Cola"		];
-global.barter_array[ITEM_MEDX]			=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5,		"Med-X"			];
-global.barter_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5,		"Battle Brew"	];
+//											ID					Sprite					Inventory Sprite			Amount	Price	Name
+global.barter_array[ITEM_STIMPAK]		=	[ITEM_STIMPAK,		spr_item_stimpak,		spr_item_stimpak_white,		5,		5,		"Stimpak"		];
+global.barter_array[ITEM_DOCTORSBAG]	=	[ITEM_DOCTORSBAG,	spr_item_doctorsbag,	spr_item_doctorsbag_white,	5,		10,		"Doctor's Bag"	];
+global.barter_array[ITEM_NUKA_COLA]		=	[ITEM_NUKA_COLA,	spr_item_nuka_cola,		spr_item_nuka_cola_white,	5,		5,		"Nuka Cola"		];
+global.barter_array[ITEM_MEDX]			=	[ITEM_MEDX,			spr_item_medx,			spr_item_medx_white,		5,		15,		"Med-X"			];
+global.barter_array[ITEM_BATTLEBREW]	=	[ITEM_BATTLEBREW,	spr_item_battlebrew,	spr_item_battlebrew_white,	5,		15,		"Battle Brew"	];
 
 enum MODE
 {
