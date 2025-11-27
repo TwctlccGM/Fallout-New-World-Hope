@@ -54,6 +54,8 @@
     {"name":"inst_73716502","path":"rooms/rm_field_y17/rm_field_y17.yy",},
     {"name":"inst_3644699C","path":"rooms/rm_field_y17/rm_field_y17.yy",},
     {"name":"inst_21278BEE","path":"rooms/rm_field_y17/rm_field_y17.yy",},
+    {"name":"inst_654769B0","path":"rooms/rm_field_y17/rm_field_y17.yy",},
+    {"name":"inst_73DEA763","path":"rooms/rm_field_y17/rm_field_y17.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -118,6 +120,8 @@
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_activate_args","path":"objects/par_entity/par_entity.yy",},"value":"[\"You see an unconscious lobotomite.\\n\", DIALOGUE, 1, [\"1:Examine him\", \"0:Leave\"] ]",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_collision","path":"objects/par_entity/par_entity.yy",},"value":"True",},
           ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":224.0,"y":1216.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_654769B0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_barter_menu","path":"objects/obj_barter_menu/obj_barter_menu.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-32.0,"y":48.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_73DEA763","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_merchant_field","path":"objects/obj_merchant_field/obj_merchant_field.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":144.0,"y":1216.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances_Walls","depth":300,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_5C00C112","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_collision_box","path":"objects/obj_collision_box/obj_collision_box.yy",},"properties":[],"rotation":0.0,"scaleX":17.0,"scaleY":1.5,"x":592.0,"y":200.0,},

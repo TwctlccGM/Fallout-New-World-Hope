@@ -33,6 +33,7 @@
     {"name":"inst_25572046","path":"rooms/rm_field_x7b/rm_field_x7b.yy",},
     {"name":"inst_77A88BB7","path":"rooms/rm_field_x7b/rm_field_x7b.yy",},
     {"name":"inst_538BDDEC","path":"rooms/rm_field_x7b/rm_field_x7b.yy",},
+    {"name":"inst_47692AD3","path":"rooms/rm_field_x7b/rm_field_x7b.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -43,6 +44,7 @@
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_activate_args","path":"objects/par_entity/par_entity.yy",},"value":"[\"You see a friendly cyberdog.\\n\", DIALOGUE, 1, [\"4:Approach the dog\", \"0:Leave\"] ]",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_collision","path":"objects/par_entity/par_entity.yy",},"value":"True",},
           ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":224.0,"y":160.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_47692AD3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_barter_menu","path":"objects/obj_barter_menu/obj_barter_menu.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-32.0,"y":96.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances_Player","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_538BDDEC","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_player_field","path":"objects/obj_player_field/obj_player_field.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":224.0,"y":128.0,},

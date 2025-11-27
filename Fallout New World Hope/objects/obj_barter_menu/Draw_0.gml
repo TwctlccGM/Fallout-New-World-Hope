@@ -34,7 +34,7 @@ if (draw_barter == true)
 	{
 		draw_sprite(global.barter_array[_pos, C_ITEM_INVENTORY_SPRITE], 0, _trader_xx + 20, _yy + 50);
 		draw_text(_trader_xx + 35, _yy + 40, string(global.barter_array[_pos, C_ITEM_AMOUNT]));
-		draw_text(_trader_xx + 90, _yy + 40, string(global.barter_array[_pos, C_ITEM_PRICE]));
+		draw_text(_trader_xx + 90, _yy + 40, string(floor(global.barter_array[_pos, C_ITEM_PRICE] * (1 - 0.05 * (global.party_data[PARTY_VAULTIE].charisma - 1))))); // Price affected by CHA
 		_yy += 25;
 	}
 }

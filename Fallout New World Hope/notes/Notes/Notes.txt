@@ -12,7 +12,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT
 
-	- Implement barter system later on and have prices be affected by CHA.
+	- Quest Log/Journal/Objective display
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)
 		Auto-Stim		(auto heals when below 50% health)

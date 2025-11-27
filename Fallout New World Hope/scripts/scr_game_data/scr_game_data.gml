@@ -580,7 +580,7 @@ global.party_data =
 		strength: 4,		// Power of melee attacks
 		perception: 6,		// Power of ranged attacks
 		endurance: 3,		// Base defense value
-		charisma: 6,		// BET rate (and OOC bartering)
+		charisma: 10,		// BET rate (and OOC bartering)
 		intelligence: 7,	// Item effectiveness
 		agility: 6,			// Turn order and AP rate per turn (0 = 0 AP,  1-3 = 1 AP,  4-6 = 2 AP,  7-9 = 3 AP, 10 = 4 AP)
 		luck: 10,			// Crit rate
@@ -628,7 +628,7 @@ global.party_data =
 		name: "Lobotomite",
 		party_name: PARTY_LOBOTOMITE,
 		is_player_unit: true,
-		is_recruited: true,
+		is_recruited: false,
 		level: 1,
 		// SPECIAL
 		strength: 9,		// Power of melee attacks
@@ -676,7 +676,7 @@ global.party_data =
 		name: "Cyberdog",
 		party_name: PARTY_CYBERDOG,
 		is_player_unit: true,
-		is_recruited: true,
+		is_recruited: false,
 		level: 1,
 		// SPECIAL
 		strength: 7,		// Power of melee attacks
