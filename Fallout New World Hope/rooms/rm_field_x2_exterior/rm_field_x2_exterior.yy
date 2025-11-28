@@ -34,6 +34,7 @@
     {"name":"inst_72D64CA8","path":"rooms/rm_field_x2_exterior/rm_field_x2_exterior.yy",},
     {"name":"inst_5D058BC9","path":"rooms/rm_field_x2_exterior/rm_field_x2_exterior.yy",},
     {"name":"inst_5FFDE451","path":"rooms/rm_field_x2_exterior/rm_field_x2_exterior.yy",},
+    {"name":"inst_66D91F06","path":"rooms/rm_field_x2_exterior/rm_field_x2_exterior.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -44,6 +45,7 @@
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_activate_args","path":"objects/par_entity/par_entity.yy",},"value":"[\"You see a large armoured man.\\n\", DIALOGUE, 1, [\"6:Approach the man\", \"0:Leave\"] ]",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_entity","path":"objects/par_entity/par_entity.yy",},"propertyId":{"name":"entity_collision","path":"objects/par_entity/par_entity.yy",},"value":"True",},
           ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":256.0,"y":160.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_66D91F06","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_objective_display","path":"objects/obj_objective_display/obj_objective_display.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-32.0,"y":128.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances_Player","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_538BDDEC_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_player_field","path":"objects/obj_player_field/obj_player_field.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":288.0,"y":128.0,},

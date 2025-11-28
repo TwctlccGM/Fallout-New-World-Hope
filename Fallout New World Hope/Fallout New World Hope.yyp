@@ -61,6 +61,7 @@
     {"id":{"name":"obj_inventory","path":"objects/obj_inventory/obj_inventory.yy",},},
     {"id":{"name":"obj_cyberdog_enemy","path":"objects/obj_cyberdog_enemy/obj_cyberdog_enemy.yy",},},
     {"id":{"name":"scr_player_functions","path":"scripts/scr_player_functions/scr_player_functions.yy",},},
+    {"id":{"name":"obj_objective_display","path":"objects/obj_objective_display/obj_objective_display.yy",},},
     {"id":{"name":"fnt_fixedsys","path":"fonts/fnt_fixedsys/fnt_fixedsys.yy",},},
     {"id":{"name":"scr_battle_functions","path":"scripts/scr_battle_functions/scr_battle_functions.yy",},},
     {"id":{"name":"scr_item_functions","path":"scripts/scr_item_functions/scr_item_functions.yy",},},
@@ -201,11 +202,11 @@
     {"id":{"name":"rm_field_x7b","path":"rooms/rm_field_x7b/rm_field_x7b.yy",},},
   ],
   "RoomOrderNodes": [
+    {"roomId":{"name":"rm_overworld","path":"rooms/rm_overworld/rm_overworld.yy",},},
     {"roomId":{"name":"rm_field_y17","path":"rooms/rm_field_y17/rm_field_y17.yy",},},
     {"roomId":{"name":"rm_field_x2_interior","path":"rooms/rm_field_x2_interior/rm_field_x2_interior.yy",},},
     {"roomId":{"name":"rm_field_x2_exterior","path":"rooms/rm_field_x2_exterior/rm_field_x2_exterior.yy",},},
     {"roomId":{"name":"rm_field_x7b","path":"rooms/rm_field_x7b/rm_field_x7b.yy",},},
-    {"roomId":{"name":"rm_overworld","path":"rooms/rm_overworld/rm_overworld.yy",},},
   ],
   "templateType": "game",
   "TextureGroups": [

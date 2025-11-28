@@ -13,6 +13,7 @@
 /// FEATURES TO IMPLEMENT
 
 	- Quest Log/Journal/Objective display
+	- Scale UI to overworld proportions
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)
 		Auto-Stim		(auto heals when below 50% health)
