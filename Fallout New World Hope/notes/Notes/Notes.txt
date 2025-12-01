@@ -13,7 +13,13 @@
 /// FEATURES TO IMPLEMENT
 
 	- Quest Log/Journal/Objective display
+		- Make it change based on what the player has accomplished (flag system)
 	- Scale UI to overworld proportions
+	- Title screen/Main menu
+		- Similar to obj_inventory menu but for Continue, New Game, Options (UI colour select), Quit
+	- Save/Load feature
+		- Save player recruited party, levels, quest flags, current room
+	- Intro cutscene
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)
 		Auto-Stim		(auto heals when below 50% health)

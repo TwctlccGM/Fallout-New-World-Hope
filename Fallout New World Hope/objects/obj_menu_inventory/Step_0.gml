@@ -92,7 +92,7 @@ if (cursor.active)
 		var _move_v = _key_down - _key_up;
 		
 		/// Using stimpak
-		if (obj_inventory.stimpak_selected == true) // Using item (like a stimpak), player selects which party member to use it on
+		if (obj_menu_inventory.stimpak_selected == true) // Using item (like a stimpak), player selects which party member to use it on
 		{
 			target_side = global.party;
 			
@@ -114,12 +114,12 @@ if (cursor.active)
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
 			{
-				obj_inventory.stimpak_selected = false;
+				obj_menu_inventory.stimpak_selected = false;
 			}
 		}
 		
 		/// Using doctors bag
-		else if (obj_inventory.doctorsbag_selected == true) // Using item (like a stimpak), player selects which party member to use it on
+		else if (obj_menu_inventory.doctorsbag_selected == true) // Using item (like a stimpak), player selects which party member to use it on
 		{
 			target_side = global.party;
 			
@@ -141,12 +141,12 @@ if (cursor.active)
 			// Cancel & return to menu
 			if (_key_cancel) && (!_key_confirm)
 			{
-				obj_inventory.doctorsbag_selected = false;
+				obj_menu_inventory.doctorsbag_selected = false;
 			}
 		}
 		
 		// Party member selected screen
-		else if (obj_inventory.party_selected == true)
+		else if (obj_menu_inventory.party_selected == true)
 		{
 			if (target_index >= 2) { target_index = 0; }
 			if (flag_for_target_index_stuff == false) { target_index = 0; flag_for_target_index_stuff = true; }
@@ -168,15 +168,15 @@ if (cursor.active)
 				// Stats selected
 				if (target_index = 0)
 				{
-					obj_inventory.stats_selected = true;
-					obj_inventory.party_selected = false;
+					obj_menu_inventory.stats_selected = true;
+					obj_menu_inventory.party_selected = false;
 					flag_for_target_index_stuff = false;
 				}
 				// Swap selected
 				if (target_index = 1 && (array_length(party_member_waiting) > 0))
 				{
-					obj_inventory.swap_selected = true;	
-					obj_inventory.party_selected = false;
+					obj_menu_inventory.swap_selected = true;	
+					obj_menu_inventory.party_selected = false;
 					flag_for_target_index_stuff = false;
 				}
 			}
@@ -186,12 +186,12 @@ if (cursor.active)
 			{
 				target_side = global.party;
 				target_index = stored_target_index;
-				obj_inventory.party_selected = false;
+				obj_menu_inventory.party_selected = false;
 			}
 		}
 		
 		// Party member stats screen
-		else if (obj_inventory.stats_selected == true)
+		else if (obj_menu_inventory.stats_selected == true)
 		{
 			// Make party member's stats
 			party_member_stats = [
@@ -281,12 +281,12 @@ if (cursor.active)
 			{
 				target_side = global.party;
 				target_index = stored_target_index;
-				obj_inventory.stats_selected = false;
+				obj_menu_inventory.stats_selected = false;
 			}
 		}
 		
 		// Party member swap screen
-		else if (obj_inventory.swap_selected == true)
+		else if (obj_menu_inventory.swap_selected == true)
 		{
 			target_side = party_member_waiting;
 			active_target = 0;//target_side[target_index];
@@ -322,7 +322,7 @@ if (cursor.active)
 			{
 				target_side = global.party;
 				target_index = stored_target_index;
-				obj_inventory.swap_selected = false;
+				obj_menu_inventory.swap_selected = false;
 			}
 			
 			// No party members on standby
@@ -330,7 +330,7 @@ if (cursor.active)
 			{
 				target_side = global.party;
 				target_index = stored_target_index;
-				obj_inventory.swap_selected = false;
+				obj_menu_inventory.swap_selected = false;
 			}
 		}
 		
@@ -362,20 +362,20 @@ if (cursor.active)
 					if (target_side[target_index][C_ITEM_TYPE] == ITEM_STIMPAK) // Using a stimpak
 					{
 						stored_target_index = target_index;		// Stores target index to display 'locked' pointer finger in Draw event
-						obj_inventory.stimpak_selected = true;	// Variable used in other events to activate 'usingitem' logic
+						obj_menu_inventory.stimpak_selected = true;	// Variable used in other events to activate 'usingitem' logic
 						confirm_delay = 0;
 					}
 					if (target_side[target_index][C_ITEM_TYPE] == ITEM_DOCTORSBAG) // Using a doctors bag
 					{
 						stored_target_index = target_index;			// Stores target index to display 'locked' pointer finger in Draw event
-						obj_inventory.doctorsbag_selected = true;	// Variable used in other events to activate 'using item' logic
+						obj_menu_inventory.doctorsbag_selected = true;	// Variable used in other events to activate 'using item' logic
 						confirm_delay = 0;
 					}
 				}
 				if (target_side == global.party) // Looking at party member stats
 				{
 					stored_target_index = target_index;
-					obj_inventory.party_selected = true;
+					obj_menu_inventory.party_selected = true;
 					confirm_delay = 0;
 				}
 			}

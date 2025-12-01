@@ -59,7 +59,7 @@ function new_text_box(_message, _box_type = DIALOGUE, _background = 1, _response
         background   = _background;
 
         // Set origin
-        if (!obj_inventory.draw_inventory && !obj_barter_menu.draw_barter) {
+        if (!obj_menu_inventory.draw_inventory && !obj_menu_barter.draw_barter) {
             origin_instance = instance_exists(other) ? other.id : noone;
         }
 
@@ -99,7 +99,7 @@ function new_text_box(_message, _box_type = DIALOGUE, _background = 1, _response
     }
 	
 	// Lock inventory input
-    with (obj_inventory)
+    with (obj_menu_inventory)
     {
         if (state != INVENTORY_STATE_LOCKED)
         {
@@ -109,7 +109,7 @@ function new_text_box(_message, _box_type = DIALOGUE, _background = 1, _response
     }
 	
 	// Lock barter input
-    with (obj_barter_menu)
+    with (obj_menu_barter)
     {
         if (state != BARTER_STATE_LOCKED)
         {

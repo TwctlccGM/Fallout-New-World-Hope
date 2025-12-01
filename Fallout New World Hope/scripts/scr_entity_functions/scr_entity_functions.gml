@@ -22,5 +22,5 @@ function pickup_item(_item, _quantity) {
 }
 
 function open_barter_menu() {
-	obj_barter_menu.draw_barter = true;	
+	obj_menu_barter.draw_barter = true;	
 }

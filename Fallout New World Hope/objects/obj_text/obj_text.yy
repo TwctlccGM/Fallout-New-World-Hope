@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "All Areas",
-    "path": "folders/Objects/All Areas.yy",
+    "name": "Menus",
+    "path": "folders/Objects/Menus.yy",
   },
   "parentObjectId": null,
   "persistent": false,

@@ -23,7 +23,7 @@ text_progress = 0;
 response_selected = 0;
 
 obj_player_field.state = PLAYER_STATE_LOCKED;
-obj_inventory.state = INVENTORY_STATE_LOCKED;
+obj_menu_inventory.state = INVENTORY_STATE_LOCKED;
 
 
 
