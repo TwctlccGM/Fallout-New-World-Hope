@@ -585,8 +585,8 @@ global.party_data =
 		agility: 6,			// Turn order and AP rate per turn (0 = 0 AP,  1-3 = 1 AP,  4-6 = 2 AP,  7-9 = 3 AP, 10 = 4 AP)
 		luck: 10,			// Crit rate
 		// Stats
-		hp: 108,
-		hp_max: 108,
+		hp: 100 + (5 * 3 /*endurance*/ * 1 /*level*/),
+		hp_max: 100 + (5 * 3 /*endurance*/ * 1 /*level*/),
 		ap: 10,
 		ap_max: 10,
 		bet: 50,
@@ -639,8 +639,8 @@ global.party_data =
 		agility: 9,			// Turn order and AP rate per turn
 		luck: 3,			// Crit rate
 		// Stats
-		hp: 108,
-		hp_max: 108,
+		hp: 100 + (5 * 9 /*endurance*/ * 1 /*level*/),
+		hp_max: 100 + (5 * 9 /*endurance*/ * 1 /*level*/),
 		ap: 10,
 		ap_max: 10,
 		bet: 0,
@@ -687,8 +687,8 @@ global.party_data =
 		agility: 8,			// Turn order and AP rate per turn
 		luck: 5,			// Crit rate
 		// Stats
-		hp: 50,
-		hp_max: 108,
+		hp: 100 + (5 * 7 /*endurance*/ * 1 /*level*/),
+		hp_max: 100 + (5 * 7 /*endurance*/ * 1 /*level*/),
 		ap: 10,
 		ap_max: 10,
 		bet: 0,
@@ -735,8 +735,8 @@ global.party_data =
 		agility: 4,			// Turn order and AP rate per turn
 		luck: 4,			// Crit rate
 		// Stats
-		hp: 148,
-		hp_max: 148,
+		hp: 100 + (5 * 8 /*endurance*/ * 1 /*level*/),
+		hp_max: 100 + (5 * 8 /*endurance*/ * 1 /*level*/),
 		ap: 10,
 		ap_max: 10,
 		bet: 0,

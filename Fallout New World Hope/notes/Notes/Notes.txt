@@ -16,9 +16,9 @@
 		- Make it change based on what the player has accomplished (flag system)
 	- Scale UI to overworld proportions
 	- Title screen/Main menu
-		- Similar to obj_inventory menu but for Continue, New Game, Options (UI colour select), Quit
+		- New Game (make it load a preset 'new game, level 1, etc' save file), Continue, Options (UI colour select)
 	- Save/Load feature
-		- Save player recruited party, levels, quest flags, current room
+		- Quest flags
 	- Intro cutscene
 	- More items (don't add all of these, just pick what's best)
 		Super Stimpak	(stronger stim)

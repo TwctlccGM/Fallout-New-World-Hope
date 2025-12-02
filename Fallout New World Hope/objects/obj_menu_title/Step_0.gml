@@ -42,6 +42,44 @@ if (cursor.active)
 					break;
 				case LOAD_GAME:
 					// load game script here
+					if (file_exists("savedgame.save")) // Check if there's a save file
+					{
+						var _buffer = buffer_load("savedgame.save"); // Read from the save file using a buffer
+						var _string = buffer_read(_buffer, buffer_string);
+						buffer_delete(_buffer);
+	
+						var _load_data = json_parse(_string); // Turn JSON data into an array of player unit stats
+						var _reversed_load_data = array_reverse(_load_data); // Reverse the array to assign stats in correct order
+						var _saved_room = rm_overworld;
+						// Edit the global.party_data using saved data
+						for (var i = 0; i < array_length(global.party_data); i++) // Loop for each party member
+						{
+							var _load_entity = array_pop(_reversed_load_data); // Take data from the save data array, then delete it from the array
+												global.party		= _load_entity.party;				// Party setup
+												_saved_room			= _load_entity.saved_room;			// Room
+							global.party_data[i].level				= _load_entity.level;				// Level
+							global.party_data[i].is_recruited		= _load_entity.is_recruited;		// Recruited
+							global.party_data[i].hp					= _load_entity.hp;					// HP
+							global.party_data[i].hp_max				= _load_entity.hp_max;				// HP Max
+							global.party_data[i].bet				= _load_entity.bet;					// BET
+							global.party_data[i].strength			= _load_entity.strength;			// STR
+							global.party_data[i].perception			= _load_entity.perception;			// PER
+							global.party_data[i].endurance			= _load_entity.endurance;			// END
+							global.party_data[i].charisma			= _load_entity.charisma;			// CHA
+							global.party_data[i].intelligence		= _load_entity.intelligence;		// INT
+							global.party_data[i].agility			= _load_entity.agility;				// AGI
+							global.party_data[i].luck				= _load_entity.luck;				// LCK
+							global.party_data[i].xp_total			= _load_entity.xp_total;			// XP
+							global.party_data[i].xp_to_next_level	= _load_entity.xp_to_next_level	;	// XP to next level
+							global.party_data[i].special_points		= _load_entity.special_points;		// SPECIAL points
+							global.party_data[i].perk_points		= _load_entity.perk_points;			// Perk points
+						}
+						room_goto(_saved_room);
+					}
+					else
+					{
+						show_debug_message("Load failed, save file doesn't exist");
+					}
 					break;
 				case OPTIONS:
 					// options script here

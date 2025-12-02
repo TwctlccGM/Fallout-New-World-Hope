@@ -242,6 +242,10 @@ if (cursor.active)
 							{
 								global.party[stored_target_index].endurance			+= 1; 
 								global.party[stored_target_index].special_points	-= 1;
+								// Health increase
+								var _previous_max_hp = global.party[stored_target_index].hp_max;
+								global.party[stored_target_index].hp_max = 100 + (5 * global.party[stored_target_index].endurance * global.party[stored_target_index].level);
+								global.party[stored_target_index].hp += (global.party[stored_target_index].hp_max - _previous_max_hp);
 							}
 						break;
 				        case 3: 
