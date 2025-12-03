@@ -24,6 +24,8 @@
 			xp_to_next_level	:	global.party_data[i].xp_to_next_level,	// XP to next level
 			special_points		:	global.party_data[i].special_points,	// SPECIAL points
 			perk_points			:	global.party_data[i].perk_points,		// Perk points
+			// TO-DO: Saving the item array per character is redundant but icba to optimise it rn.
+			items				:	global.item_array
 		}
 		array_push(_save_data, _save_entity); // Add struct to save array
 	}

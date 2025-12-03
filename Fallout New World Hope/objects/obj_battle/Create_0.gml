@@ -103,7 +103,7 @@ refresh_render_order();
 
 function battle_state_select_action()
 {
-	if (!instance_exists(obj_menu))
+	if (!instance_exists(obj_battle_menu))
 	{
 		// Get current unit
 		var _unit = unit_turn_order[turn];

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_initial_randomize",
+  "name": "scr_initial_randomise",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

@@ -79,6 +79,8 @@ if (array_any(_enemies, function(_element, _index) { return _element.hp > 0; }) 
 			xp_to_next_level	:	global.party_data[i].xp_to_next_level,	// XP to next level
 			special_points		:	global.party_data[i].special_points,	// SPECIAL points
 			perk_points			:	global.party_data[i].perk_points,		// Perk points
+			// TO-DO: Saving the item array per character is redundant but icba to optimise it rn.
+			items				:	global.item_array
 		}
 		array_push(_save_data, _save_entity); // Add struct to save array
 	}
@@ -178,7 +180,7 @@ if (cursor.active)
 			with (obj_battle) begin_action(cursor.active_user, cursor.active_action, cursor.active_target);
 			if (obj_battle.action_failed == false)
 			{
-				with (obj_menu) instance_destroy();
+				with (obj_battle_menu) instance_destroy();
 				active = false;
 				confirm_delay = 0;
 			}
@@ -193,7 +195,7 @@ if (cursor.active)
 		if (_key_cancel) && (!_key_confirm)
 		{
 			obj_battle.battle_text = "";
-			with (obj_menu) active = true;
+			with (obj_battle_menu) active = true;
 			active = false;
 			confirm_delay = 0;
 		}

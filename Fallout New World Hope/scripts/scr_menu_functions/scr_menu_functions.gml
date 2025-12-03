@@ -1,7 +1,7 @@
 // @desc Menu - makes a menu, options provided in the form [["name", function, argument, boolean], [...]]
 function menu(_x, _y, _options, _description = -1, _width = undefined, _height = undefined)
 {
-	with (instance_create_depth(_x, _y, -99999, obj_menu))
+	with (instance_create_depth(_x, _y, -99999, obj_battle_menu))
 	{
 		options = _options;
 		description = _description;
@@ -64,7 +64,7 @@ function menu_go_back()
 
 function menu_select_action(_user, _action)
 {
-	with (obj_menu) active = false;
+	with (obj_battle_menu) active = false;
 	
 	// Activate the targeting cursor if needed, or simply begin the action
 	with (obj_battle) 
@@ -103,7 +103,7 @@ function menu_select_action(_user, _action)
 		{
 			// If no target needed, begin the action and end the menu
 			begin_action(_user, _action, -1);
-			with (obj_menu) instance_destroy();
+			with (obj_battle_menu) instance_destroy();
 		}
 	}
 }

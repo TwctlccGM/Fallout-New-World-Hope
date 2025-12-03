@@ -31,18 +31,3 @@ cursor =
 	active: true,
 	flag_for_target_index_stuff: false
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
