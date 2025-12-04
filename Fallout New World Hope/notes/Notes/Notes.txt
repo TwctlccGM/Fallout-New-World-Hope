@@ -12,6 +12,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /// FEATURES TO IMPLEMENT
 
+	- Remake UI colour system by using shaders instead of current method
 	- Quest Log/Journal/Objective display
 		- Make it change based on what the player has accomplished (flag system)
 	- Scale UI to overworld proportions
